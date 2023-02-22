@@ -1,5 +1,6 @@
-<h1 align="center">Nalognl New Task Development setup</h1>
+# Pager plugin for WordPress
 
 ## Get started
 
-Run `docker-compose up -d` and go to **http://localhost:3333**
+Run `docker-compose up -d` and go to **http://localhost:8888**. You'll need to wait while
+docker will setup everything including WordPress installation and database creation.
