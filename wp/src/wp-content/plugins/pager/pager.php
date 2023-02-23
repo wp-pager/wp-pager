@@ -18,10 +18,12 @@ defined( 'ABSPATH' ) || exit( 'ABSPATH is not defined' );
 define( 'PAGER_VERSION', '1.0.0' );
 define( 'PAGER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PAGER_URL', plugin_dir_url( __FILE__ ) );
+define( 'PAGER_FILES_URL', PAGER_PATH . 'storage/files.json' );
 
-ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
+//ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
 
-require_once __DIR__ . '/inc/functions.php';
+require_once __DIR__ . '/inc/file-handler.php';
 require_once __DIR__ . '/inc/register-scripts.php';
 require_once __DIR__ . '/inc/shortcodes.php';
 require_once __DIR__ . '/inc/admin-menu.php';
+require_once __DIR__ . '/inc/ajax.php';
