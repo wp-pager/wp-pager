@@ -1,7 +1,5 @@
 FROM wordpress:php8.1-apache
 
-ENV PATH="./vendor/bin:$PATH"
-
 RUN docker-php-ext-install pdo pdo_mysql
 
 COPY custom.ini $PHP_INI_DIR/conf.d/

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare( strict_types=1 );
 
 /*
 Plugin Name: Pager
@@ -14,8 +14,6 @@ Text Domain: pager
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-defined('ABSPATH') || exit('ABSPATH is not defined');
-
-add_filter( 'deprecated_constructor_trigger_error', '__return_false' );
+defined( 'ABSPATH' ) || exit( 'ABSPATH is not defined' );
 
 require_once __DIR__ . '/inc/shortcodes.php';

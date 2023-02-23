@@ -1,0 +1,21 @@
+{
+    "include": [
+        "src/**/*",
+    ],
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "strict": true,
+        "jsx": "preserve",
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "@*": [
+                "./src/*"
+            ]
+        }
+    }
+}
