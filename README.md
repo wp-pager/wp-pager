@@ -12,4 +12,6 @@ This project is a Dockerized WordPress installation with Pager plugin installed.
 1. Wait until all containers will be up and running;
 1. Visit **http://localhost:8888**. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more;
 
+> I'm keeping the project with functional programming paradigm, so you will see a lot of functions and closures.
+
 Copyright (c) 2023 [Serhii Chornenkyi](https://github.com/SerhiiCho)

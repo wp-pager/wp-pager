@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ImageFile, ServerResponse } from '@shared/types'
 import { ref, onMounted } from 'vue'
+import { events } from '@shared/appConfig'
+import listenEvent from '@shared/modules/listenEvent'
 import axios from 'axios'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
 import Spinner from '@shared/components/Spinner.vue'
@@ -8,12 +10,17 @@ import Spinner from '@shared/components/Spinner.vue'
 const files = ref<ImageFile[]>([])
 const loading = ref<boolean>(false)
 
-onMounted(() => fetchFiles())
+onMounted(() => {
+    fetchFiles()
+    listenEvent(events.fetchFiles, fetchFiles)
+})
 
 function fetchFiles() {
     loading.value = true
 
-    axios.get<ServerResponse<ImageFile[]>>(`${window.pager.ajaxUrl}?action=pager_get_files`)
+    const url = `${window.pager.ajaxUrl}?action=pager_get_files`
+
+    axios.get<ServerResponse<ImageFile[]>>(url)
         .then(resp => files.value = resp.data.data)
         .catch(err => console.error(err))
         .finally(() => loading.value = false)
