@@ -1,6 +1,13 @@
 # Pager plugin for WordPress
 
+Pager is an open-source and free WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
+
+The main purpose of this plugin is to give users a filling of a real restaurant menu where they can turn pages and see the whole menu.
+
 ## Get started
 
-Run `docker-compose up -d` and go to **http://localhost:8888**. You'll need to wait while
-docker will setup everything including WordPress installation and database creation.
+This project is a Dockerized WordPress installation with Pager plugin installed. You can use it to test the plugin or to develop it. To get started, you need to have Docker and Docker Compose installed on your machine. Then you can follow the instructions below.
+
+1. Run `docker-compose up -d`;
+1. Wait until all containers will be up and running;
+1. Visit **http://localhost:8888**. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more;
