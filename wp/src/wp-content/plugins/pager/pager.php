@@ -15,5 +15,11 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 */
 
 defined( 'ABSPATH' ) || exit( 'ABSPATH is not defined' );
+define( 'PAGER_VERSION', '1.0.0' );
+define( 'PAGER_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PAGER_URL', plugin_dir_url( __FILE__ ) );
 
+ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATED & ~E_STRICT' );
+
+require_once __DIR__ . '/inc/enqueue-scripts.php';
 require_once __DIR__ . '/inc/shortcodes.php';

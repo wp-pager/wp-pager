@@ -1,7 +1,7 @@
 const mix = require('laravel-mix')
 const path = require('path')
 
-mix.ts('src/main.ts', 'frontend/main.js')
+mix.ts('src/main.ts', 'assets/main.js')
     .vue()
     .sourceMaps()
     .disableNotifications()
