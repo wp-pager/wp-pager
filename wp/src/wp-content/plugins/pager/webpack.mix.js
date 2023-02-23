@@ -12,6 +12,7 @@ mix.webpackConfig({
         alias: {
             '@admin': __dirname + '/src/admin',
             '@album': __dirname + '/src/album',
+            '@shared': __dirname + '/src/types',
         }
     },
     module: {

@@ -15,6 +15,7 @@
         "paths": {
             "@admin/*": ["./src/admin/*"],
             "@album/*": ["./src/album/*"],
+            "@shared/*": ["./src/shared/*"]
         },
     },
 }

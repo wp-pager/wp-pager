@@ -19,6 +19,15 @@ section
     max-width: 700px
     min-height: 200px
     background-color: rgba(0, 0, 0, .02)
+    cursor: pointer
+    transition: background-color .2s ease-in-out
+
+    &:hover
+        background-color: rgba(0, 0, 0, .04)
+        border-color: rgba(0, 0, 0, .3)
+
+    &:hover h2
+        color: rgba(0, 0, 0, .7)
 
     h2
         font-size: 1.5rem

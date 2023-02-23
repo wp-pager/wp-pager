@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Uploader from '@admin/components/Uploader/Uploader.vue'
+import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
 </script>
 
 <template>
@@ -7,12 +8,8 @@ import Uploader from '@admin/components/Uploader/Uploader.vue'
         <h1>Pager settings</h1>
 
         <main>
-            <section>
-                <uploader />
-            </section>
-            <section>
-                images..
-            </section>
+            <uploader />
+            <uploaded-files />
         </main>
     </div>
 </template>
