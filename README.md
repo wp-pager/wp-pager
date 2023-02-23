@@ -11,3 +11,5 @@ This project is a Dockerized WordPress installation with Pager plugin installed.
 1. Run `docker-compose up -d`;
 1. Wait until all containers will be up and running;
 1. Visit **http://localhost:8888**. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more;
+
+Copyright (c) 2023 [Serhii Chornenkyi](https://github.com/SerhiiCho)
