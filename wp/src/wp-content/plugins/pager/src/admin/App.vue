@@ -29,4 +29,3 @@ main
     main
         grid-template-columns: 1fr
 </style>
-

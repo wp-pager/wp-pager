@@ -21,6 +21,7 @@ define( 'PAGER_URL', plugin_dir_url( __FILE__ ) );
 
 ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
 
+require_once __DIR__ . '/inc/functions.php';
 require_once __DIR__ . '/inc/register-scripts.php';
 require_once __DIR__ . '/inc/shortcodes.php';
 require_once __DIR__ . '/inc/admin-menu.php';

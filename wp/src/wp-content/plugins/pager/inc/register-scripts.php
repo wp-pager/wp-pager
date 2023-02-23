@@ -14,4 +14,9 @@ add_action( 'admin_enqueue_scripts', 'pager_register_admin_scripts' );
 
 function pager_register_admin_scripts(): void {
 	wp_register_script( 'pager-admin', PAGER_URL . 'assets/admin.js', [], PAGER_VERSION, true );
+
+	wp_localize_script( 'pager-admin', 'pager', [
+		'files'   => pager_image_loader(),
+		'rootUrl' => PAGER_URL,
+	] );
 }
