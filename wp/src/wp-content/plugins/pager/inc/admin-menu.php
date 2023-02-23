@@ -16,11 +16,5 @@ function pager_admin_menu(): void {
 
 function pager_admin_page(): void {
 	wp_enqueue_script( 'pager-admin' );
-
-	echo <<<HTML
-	<div class="wrap">
-		<h1>Pager Settings</h1>
-		<div id="pager-admin-app"></div>
-	</div>
-	HTML;
+	echo '<div id="pager-admin-app"></div>';
 }
