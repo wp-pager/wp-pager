@@ -17,6 +17,5 @@ function pager_register_admin_scripts(): void {
 		'nonce'   => wp_create_nonce( 'pager_delete_file' ),
 		'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 		'rootUrl' => PAGER_URL,
-		'files'   => pager_get_files(),
 	] );
 }

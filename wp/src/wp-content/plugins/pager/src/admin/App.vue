@@ -8,8 +8,8 @@ import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
         <h1>Pager settings</h1>
 
         <main>
-            <uploader />
-            <uploaded-files />
+            <Uploader />
+            <UploadedFiles />
         </main>
     </div>
 </template>

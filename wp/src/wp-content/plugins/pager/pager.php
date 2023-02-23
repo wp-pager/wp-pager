@@ -20,7 +20,7 @@ define( 'PAGER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PAGER_URL', plugin_dir_url( __FILE__ ) );
 define( 'PAGER_FILES_URL', PAGER_PATH . 'storage/files.json' );
 
-//ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
+ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
 
 require_once __DIR__ . '/inc/file-handler.php';
 require_once __DIR__ . '/inc/register-scripts.php';
