@@ -2,4 +2,4 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 createApp(App)
-    .mount('#pager-app')
+    .mount('#pager-album-app')

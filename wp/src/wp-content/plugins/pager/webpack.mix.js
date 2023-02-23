@@ -1,8 +1,8 @@
 const mix = require('laravel-mix')
 const path = require('path')
 
-mix.ts('src/main.ts', 'assets/main.js')
-    .vue()
+mix.ts('src/admin/main.ts', 'assets/admin.js').vue()
+    .ts('src/album/main.ts', 'assets/album.js').vue()
     .sourceMaps()
     .disableNotifications()
 
@@ -10,7 +10,8 @@ mix.webpackConfig({
     resolve: {
         extensions: ['.vue', '.ts', '.js'],
         alias: {
-            '@': __dirname + '/src',
+            '@admin': __dirname + '/src/admin',
+            '@album': __dirname + '/src/album',
         }
     },
     module: {

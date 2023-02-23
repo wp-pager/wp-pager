@@ -1,3 +1,4 @@
 {
-    "/assets/main.js": "/assets/main.js"
+    "/assets/admin.js": "/assets/admin.js",
+    "/assets/album.js": "/assets/album.js"
 }

@@ -13,9 +13,8 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
-            "@*": [
-                "./src/*"
-            ]
-        }
-    }
+            "@admin*": ["./src/admin/*"],
+            "@album*": ["./src/album/*"],
+        },
+    },
 }
