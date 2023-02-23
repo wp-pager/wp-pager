@@ -6,7 +6,7 @@ declare( strict_types=1 );
 Plugin Name: Pager
 Author: Serhii Cho
 Author URI: https://serhii.io/
-Description: WordPress plugin that allows you to easily integrate restaurant menu on your website.
+Description: Pager is an open-source and free WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
 Version: 1.0.0
 License: no
 License URI: https://serhii.io/
