@@ -14,7 +14,7 @@ const url = URL.createObjectURL(props.file)
             alt="Preview"
         />
 
-        <h2>{{ props.file.name }}</h2>
+        <span class="title" :title="props.file.name">{{ props.file.name }}</span>
     </section>
 </template>
 
@@ -34,8 +34,11 @@ img
     border-radius: 6px
     box-shadow: 2px 2px 7px rgba(0, 0, 0, .1)
 
-h2
-    margin: 6px 0 0 0
-    font-size: .8rem
-    color: #888
+.title
+    margin: 8px 0 0 0
+    font-size: .75rem
+    color: #999
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 </style>
