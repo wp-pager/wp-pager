@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
+import useDeleteFile from '@admin/composables/useDeleteFile'
 
 const rootUrl = window.pager.rootUrl
 
@@ -8,6 +9,7 @@ type Props = {
 }
 
 const props = defineProps<Props>()
+const { deleteFile } = useDeleteFile(props.file)
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const props = defineProps<Props>()
             <img :src="`${rootUrl}assets/img/eye.webp`" alt="o" />
         </a>
 
-        <button type="button">
+        <button @click="deleteFile" type="button">
             <img :src="`${rootUrl}assets/img/close.webp`" alt="x" />
         </button>
     </section>
