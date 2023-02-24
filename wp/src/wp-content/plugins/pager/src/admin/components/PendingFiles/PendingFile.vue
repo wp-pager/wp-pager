@@ -11,12 +11,14 @@ const url = URL.createObjectURL(props.file)
 
 <template>
     <section>
-        <img
-            :src="url"
-            alt="Preview"
-        />
+        <div class="img-wrap">
+            <img
+                :src="url"
+                alt="Preview"
+            />
 
-        <RemovePending />
+            <RemovePending />
+        </div>
 
         <span class="title" :title="props.file.name">{{ props.file.name }}</span>
     </section>
@@ -31,6 +33,9 @@ section
     background: rgba(255, 255, 255, .8)
     padding: 6px
     border-radius: 6px
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, .07)
+
+.img-wrap
     position: relative
 
 img
