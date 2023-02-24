@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pager\Dto\Requests;
+namespace WpPager\Dto\Requests;
 
 class AddFilesRequest
 {

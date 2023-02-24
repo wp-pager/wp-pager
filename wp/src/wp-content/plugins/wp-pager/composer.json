@@ -1,8 +1,8 @@
 {
-    "name": "serhiichornenkyi/pager",
+    "name": "serhii/wp-pager",
     "autoload": {
         "psr-4": {
-            "Pager\\": "inc/Pager"
+            "WpPager\\": "inc/WpPager"
         }
     },
     "authors": [

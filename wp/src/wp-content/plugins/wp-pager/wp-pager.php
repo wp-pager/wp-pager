@@ -14,7 +14,7 @@ Text Domain: pager
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
-use Pager\Hook;
+use WpPager\Hook;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
 define('PAGER_VERSION', '1.0.0');

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Pager\Http\Ajax\Handlers;
+namespace WpPager\Http\Ajax\Handlers;
 
-use Pager\Http\Ajax\AjaxResponse;
+use WpPager\Http\Ajax\AjaxResponse;
 
 abstract class Handler
 {

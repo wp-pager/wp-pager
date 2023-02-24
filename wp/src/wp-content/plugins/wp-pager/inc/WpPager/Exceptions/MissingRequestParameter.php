@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pager\Exceptions;
+namespace WpPager\Exceptions;
 
 use Exception;
 

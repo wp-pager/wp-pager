@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Pager;
+namespace WpPager;
 
 use JsonException;
 

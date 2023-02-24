@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Pager\Http\Ajax;
+namespace WpPager\Http\Ajax;
 
 use JsonException;
-use Pager\Dto\Requests\AddFilesRequest;
-use Pager\Dto\Requests\DeleteFileRequest;
-use Pager\Http\Ajax\Handlers\DeleteFileHandler;
-use Pager\Http\Ajax\Handlers\GetFilesHandler;
-use Pager\Http\Ajax\Handlers\Handler;
-use Pager\Http\Ajax\Handlers\AddFilesHandler;
-use Pager\Http\Request;
+use WpPager\Dto\Requests\AddFilesRequest;
+use WpPager\Dto\Requests\DeleteFileRequest;
+use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
+use WpPager\Http\Ajax\Handlers\GetFilesHandler;
+use WpPager\Http\Ajax\Handlers\Handler;
+use WpPager\Http\Ajax\Handlers\AddFilesHandler;
+use WpPager\Http\Request;
 use Throwable;
 
 class Entry

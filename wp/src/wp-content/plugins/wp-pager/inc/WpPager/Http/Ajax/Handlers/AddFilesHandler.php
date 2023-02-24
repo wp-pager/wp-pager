@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Pager\Http\Ajax\Handlers;
+namespace WpPager\Http\Ajax\Handlers;
 
 use JsonException;
-use Pager\Dto\Requests\AddFilesRequest;
-use Pager\File;
+use WpPager\Dto\Requests\AddFilesRequest;
+use WpPager\File;
 
 class AddFilesHandler extends Handler
 {

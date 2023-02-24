@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Pager\Http;
+namespace WpPager\Http;
 
-use Pager\Exceptions\MissingRequestParameter;
+use WpPager\Exceptions\MissingRequestParameter;
 
 class Request
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Pager;
+namespace WpPager;
 
 use JsonException;
-use Pager\Http\Ajax\Entry;
+use WpPager\Http\Ajax\Entry;
 
 class Hook
 {

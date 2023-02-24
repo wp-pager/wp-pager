@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Pager\Http\Ajax;
+namespace WpPager\Http\Ajax;
 
 use JsonException;
-use Pager\Json;
+use WpPager\Json;
 
 trait AjaxResponse
 {

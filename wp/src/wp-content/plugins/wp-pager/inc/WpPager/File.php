@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Pager;
+namespace WpPager;
 
 use JsonException;
-use Pager\Dto\ImageFile;
+use WpPager\Dto\ImageFile;
 
 class File
 {
