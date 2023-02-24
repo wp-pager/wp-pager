@@ -14,7 +14,8 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 
 <template>
     <div data-v-kosbj3f>
-        <h2 class="title">Uploaded Files</h2>
+        <h2>Uploaded Files</h2>
+
         <p class="intro">
             These are the files that have been uploaded to the server.
         </p>
@@ -42,9 +43,10 @@ onMounted(() => store.dispatch('files/fetchFiles'))
         grid-template-columns: repeat(auto-fill, 300px)
         grid-gap: 1rem
 
-    .title
-        margin-top: 0
-        font-size: 1.7rem
+    h2
+        font-size: 2rem
+        font-weight: 400
+        margin-bottom: 1.7rem
 
     .intro
         font-size: 1.2rem

@@ -22,6 +22,8 @@ function dropImage(e: DragEvent): void {
 
 <template>
     <div data-v-plsy94b>
+        <h2>Pager settings</h2>
+
         <section
             @dragover.prevent="drag = true"
             @dragleave.self="drag = false"
@@ -40,6 +42,11 @@ function dropImage(e: DragEvent): void {
 
 <style lang="sass" scoped>
 [data-v-plsy94b]
+    h2
+        font-size: 2rem
+        font-weight: 400
+        margin-bottom: 1.7rem
+
     section
         border: 4px dashed rgba(0, 0, 0, .2)
         padding: 7px
