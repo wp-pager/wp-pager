@@ -51,7 +51,7 @@ function fetchFiles() {
 <style lang="sass" scoped>
 section
     display: grid
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+    grid-template-columns: repeat(auto-fill, 300px)
     grid-gap: 1rem
 
 .title

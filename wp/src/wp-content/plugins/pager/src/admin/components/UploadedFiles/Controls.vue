@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import useDeleteFile from '@admin/composables/useDeleteFile'
+import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
 
 type Props = {
     file: ImageFile
@@ -13,11 +15,11 @@ const { deleteFile } = useDeleteFile(props.file)
 <template>
     <section>
         <a :href="props.file.url" target="_blank" type="button">
-            <img :src="`${$pager.rootUrl}assets/img/icons/eye.webp`" alt="View" />
+            <EyeIcon class="icon" />
         </a>
 
         <button @click="deleteFile" type="button">
-            <img :src="`${$pager.rootUrl}assets/img/icons/close.webp`" alt="Delete" />
+            <CloseIcon class="icon" />
         </button>
     </section>
 </template>
@@ -58,7 +60,8 @@ section
             border-color: #ccc
             box-shadow: none
 
-        img
+        .icon
             width: 35px
             height: 35px
+            color: #333
 </style>

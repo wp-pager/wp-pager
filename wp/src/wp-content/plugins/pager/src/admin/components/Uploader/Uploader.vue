@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import axios from 'axios'
+import DropIcon from '@shared/components/Icons/DropIcon.vue'
 
 type Emits = {
     (e: 'selected', files: File[]): void
@@ -34,8 +35,12 @@ function dropImage(e: DragEvent): void {
             @drop.self.prevent="dropImage"
             :class="{ 'drag': drag }"
         >
-            <h2 v-if="drag">Release files...</h2>
-            <h2 v-else>Drop your files...</h2>
+            <h2>
+                <DropIcon class="icon" />
+
+                <span v-if="drag">Release files...</span>
+                <span v-else> Drop your files...</span>
+            </h2>
         </section>
     </div>
 </template>
@@ -69,4 +74,11 @@ section
         font-weight: 500
         color: rgba(0, 0, 0, .5)
         pointer-events: none
+        display: flex
+        align-items: center
+
+        .icon
+            width: 2rem
+            height: 2rem
+            margin-right: 0.8rem
 </style>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+
 type Emits = {
     (e: 'remove'): void
 }
@@ -11,10 +13,7 @@ const emit = defineEmits<Emits>()
         type="button"
         @click="emit('remove')"
     >
-        <img
-            :src="`${$pager.rootUrl}assets/img/icons/close.webp`"
-            alt="Remove"
-        />
+        <CloseIcon class="icon" />
     </button>
 </template>
 
@@ -35,7 +34,7 @@ button
     opacity: 0
     transition: opacity 100ms ease-in-out
 
-    img
+    .icon
         width: 40px
         height: 40px
 

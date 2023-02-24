@@ -26,7 +26,6 @@ const url = URL.createObjectURL(props.file)
 
 <style lang="sass" scoped>
 section
-    margin-top: 15px
     display: flex
     flex-direction: column
     justify-content: space-between
