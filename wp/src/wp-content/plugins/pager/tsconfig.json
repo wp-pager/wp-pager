@@ -1,7 +1,4 @@
 {
-    "include": [
-        "src/**/*",
-    ],
     "compilerOptions": {
         "target": "esnext",
         "module": "esnext",
@@ -10,7 +7,6 @@
         "noImplicitAny": false,
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "paths": {
             "@admin/*": ["./src/admin/*"],

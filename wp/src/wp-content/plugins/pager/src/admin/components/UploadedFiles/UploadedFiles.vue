@@ -40,9 +40,9 @@ function fetchFiles() {
 
         <section v-else>
             <UploadedFile
-                v-for="f in files"
-                :key="f.id"
-                :file="f"
+                v-for="file in files"
+                :key="file.id"
+                :file="file"
             />
         </section>
     </div>

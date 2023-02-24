@@ -15,7 +15,7 @@ const props = defineProps<Props>()
             :src="props.file.url"
         />
 
-        <Controls />
+        <Controls :file="props.file" />
     </article>
 </template>
 

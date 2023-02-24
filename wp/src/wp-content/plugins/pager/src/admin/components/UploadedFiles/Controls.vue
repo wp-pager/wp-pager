@@ -1,13 +1,21 @@
 <script setup lang="ts">
+import type { ImageFile } from '@shared/types'
+
 const eyeIcon = window.pager.rootUrl + '/assets/img/eye.webp'
 const closeIcon = window.pager.rootUrl + '/assets/img/close.webp'
+
+type Props = {
+    file: ImageFile
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
     <section>
-        <button type="button">
+        <a :href="props.file.url" target="_blank" type="button">
             <img :src="eyeIcon" alt="o" />
-        </button>
+        </a>
 
         <button type="button">
             <img :src="closeIcon" alt="x" />
@@ -34,7 +42,7 @@ section
     &:hover
         opacity: 1
 
-    button
+    button, a
         display: flex
         align-items: center
         justify-content: center
@@ -45,9 +53,11 @@ section
         border: 1px solid transparent
         cursor: pointer
 
+        &:active,
         &:hover
             background-color: white
             border-color: #ccc
+            box-shadow: none
 
         img
             width: 35px
