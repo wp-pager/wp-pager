@@ -14,6 +14,7 @@ function uploadAll(): void {
         return
 
     store.dispatch('files/uploadFiles', files.value)
+    store.dispatch('pendingFiles/clearFiles')
 }
 
 function clearAll(): void {

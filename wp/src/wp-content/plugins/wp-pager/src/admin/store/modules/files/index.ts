@@ -48,7 +48,7 @@ const files: Module<FilesState, RootState> = {
                 .finally(() => state.loading = false)
         },
 
-        UPLOAD_FILES(state, files: File[]): void {
+        async UPLOAD_FILES(state, files: File[]): Promise<void> {
             if (!confirm('Are you sure you want to upload all files?'))
                 return
 
@@ -58,11 +58,14 @@ const files: Module<FilesState, RootState> = {
 
             files.forEach(f => formData.append('files[]', f, f.name))
 
-            axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            })
-                .then(resp => state.files = resp.data.data)
-                .catch(err => console.error(err))
+            const params = { headers: { 'Content-Type': 'multipart/form-data' } }
+
+            try {
+                const resp = await axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData, params)
+                state.files = resp.data.data
+            } catch (err) {
+                console.error(err)
+            }
         },
     },
 
@@ -75,7 +78,7 @@ const files: Module<FilesState, RootState> = {
             commit('DELETE_FILE', id)
         },
 
-        uploadFiles({ commit }, files: File[]): void {
+        uploadFiles({ commit, dispatch }, files: File[]): void {
             commit('UPLOAD_FILES', files)
         },
     },

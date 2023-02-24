@@ -5,4 +5,4 @@ wp/src/wp-content/plugins/*
 
 !wp/src/wp-content/
 !wp/src/wp-content/plugins/
-!wp/src/wp-content/plugins/pager/
+!wp/src/wp-content/plugins/wp-pager/

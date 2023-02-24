@@ -23,9 +23,6 @@ const files: Module<PendingFilesState, RootState> = {
         },
 
         CLEAR_FILES(state): void {
-            if (!confirm('Are you sure you want to clear the file list?'))
-                return
-
             state.files = []
         },
     },
