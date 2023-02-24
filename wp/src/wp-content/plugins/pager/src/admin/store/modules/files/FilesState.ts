@@ -2,7 +2,7 @@ import { ImageFile } from '@shared/types'
 
 type FilesState = {
     files: ImageFile[]
-    pendingFiles: File[]
+    loading: boolean
 }
 
 export default FilesState
