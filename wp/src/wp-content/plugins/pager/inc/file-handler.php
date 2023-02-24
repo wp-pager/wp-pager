@@ -31,7 +31,7 @@ function pager_get_files(): array {
 /**
  * @throws JsonException
  */
-function pager_delete_file( int $id ): void {
+function pager_delete_file( int $id ): array {
 	$files = pager_get_files();
 
 	foreach ( $files as $key => $file ) {
@@ -43,4 +43,6 @@ function pager_delete_file( int $id ): void {
 	$json = json_encode( $files, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
 
 	file_put_contents( PAGER_FILES_URL, $json );
+
+	return $files;
 }

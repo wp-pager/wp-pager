@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
-import useDeleteFile from '@admin/composables/useDeleteFile'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
+import { useStore } from 'vuex'
 
 type Props = {
     file: ImageFile
 }
 
 const props = defineProps<Props>()
-const { deleteFile } = useDeleteFile(props.file)
+const store = useStore()
+
+function deleteFile(): void {
+    store.dispatch('files/deleteFile', props.file.id)
+}
 </script>
 
 <template>
