@@ -3,9 +3,11 @@
 </script>
 
 <template>
-    <section>
-        <h2>Drop your files...</h2>
-    </section>
+    <div>
+        <section>
+            <h2>Drop your files...</h2>
+        </section>
+    </div>
 </template>
 
 <style lang="sass" scoped>
@@ -17,7 +19,7 @@ section
     justify-content: center
     align-items: center
     max-width: 700px
-    min-height: 200px
+    height: 200px
     background-color: rgba(0, 0, 0, .02)
     cursor: pointer
     transition: background-color .2s ease-in-out

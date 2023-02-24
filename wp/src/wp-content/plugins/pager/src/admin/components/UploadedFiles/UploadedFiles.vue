@@ -5,7 +5,7 @@ import { events } from '@shared/appConfig'
 import listenEvent from '@shared/modules/listenEvent'
 import axios from 'axios'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
-import Spinner from '@shared/components/Spinner.vue'
+import FetchingFilesSpinner from '@admin/components/UploadedFiles/FetchingFilesSpinner.vue'
 
 const files = ref<ImageFile[]>([])
 const loading = ref<boolean>(false)
@@ -32,7 +32,7 @@ function fetchFiles() {
         <h2 class="title">Uploaded Files</h2>
         <p class="intro">These are the files that have been uploaded to the server.</p>
 
-        <Spinner v-if="loading" />
+        <FetchingFilesSpinner v-if="loading" />
 
         <h3 v-else-if="files.length === 0" class="no-files">
             There are no files yet...
@@ -52,7 +52,7 @@ function fetchFiles() {
 section
     display: grid
     grid-template-columns: 1fr 1fr
-    grid-gap: 8px
+    grid-gap: 10px
 
 .title
     margin-top: 0

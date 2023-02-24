@@ -24,7 +24,6 @@ article
     background-color: #fff
     border-radius: 0.5rem
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1)
-    padding: 3px
     position: relative
 
     img
