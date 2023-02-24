@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Uploader from '@admin/components/Uploader/Uploader.vue'
 import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
+import PendingFiles from '@admin/components/PendingFiles/PendingFiles.vue'
+
+const pendingFiles = ref<File[]>([])
 </script>
 
 <template>
@@ -8,7 +12,11 @@ import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
         <h1>Pager settings</h1>
 
         <main>
-            <Uploader />
+            <div>
+                <Uploader @selected="(f: File[]) => pendingFiles.push(...f)" />
+                <PendingFiles :files="pendingFiles" />
+            </div>
+
             <UploadedFiles />
         </main>
     </div>
