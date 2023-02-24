@@ -1,0 +1,17 @@
+{
+    "name": "serhiichornenkyi/pager",
+    "autoload": {
+        "psr-4": {
+            "Pager\\": "inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SerhiiCho",
+            "email": "serhiicho@protonmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.2"
+    }
+}

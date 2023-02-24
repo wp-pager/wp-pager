@@ -13,7 +13,7 @@ function uploadAll(): void {
     if (files.value.length === 0)
         return
 
-    store.dispatch('pendingFiles/uploadAll', files)
+    store.dispatch('files/uploadFiles', files.value)
 }
 
 function clearAll(): void {
@@ -26,7 +26,7 @@ function clearAll(): void {
 
 <template>
     <section>
-        <ControlButton class="upload btn" :isDisabled="files.length === 0">
+        <ControlButton @click="uploadAll" class="upload btn" :isDisabled="files.length === 0">
             <UploadIcon  class="icon" /> Upload all
         </ControlButton>
         <ControlButton @click="clearAll" class="clear btn" :isDisabled="files.length === 0">

@@ -19,9 +19,14 @@ define( 'PAGER_VERSION', '1.0.0' );
 define( 'PAGER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PAGER_URL', plugin_dir_url( __FILE__ ) );
 define( 'PAGER_FILES_URL', PAGER_PATH . 'storage/files.json' );
+define( 'PAGER_FILES_DIR', PAGER_PATH . 'storage/files' );
+define( 'PAGER_FILES_DIR_URL', PAGER_URL . 'storage/files' );
 
-ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
+require __DIR__ . '/vendor/autoload.php';
 
+//ini_set( 'error_reporting', 'E_ALL & ~E_DEPRECATEDT' );
+
+require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/file-handler.php';
 require_once __DIR__ . '/inc/register-scripts.php';
 require_once __DIR__ . '/inc/shortcodes.php';

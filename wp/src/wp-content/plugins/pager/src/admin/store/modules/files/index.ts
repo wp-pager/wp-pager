@@ -4,6 +4,7 @@ import type RootState from '@admin/store/RootState'
 import { ImageFile } from '@shared/types'
 import { ServerResponse } from '@shared/types'
 import axios from 'axios'
+import { makeLogger } from 'ts-loader/dist/logger'
 
 const files: Module<FilesState, RootState> = {
     namespaced: true,
@@ -47,13 +48,19 @@ const files: Module<FilesState, RootState> = {
                 .finally(() => state.loading = false)
         },
 
-        UPLOAD_ALL(state, files: File[]): void {
+        UPLOAD_FILES(state, files: File[]): void {
             if (!confirm('Are you sure you want to upload all files?'))
                 return
 
-            const url = pager.ajaxUrl + '?action=pager_upload_files'
+            const formData = new FormData()
 
-            axios.post<ServerResponse<ImageFile[]>>(url)
+            formData.append('action', 'pager_upload_files')
+
+            files.forEach(f => formData.append('files[]', f, f.name))
+
+            axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
                 .then(resp => state.files = resp.data.data)
                 .catch(err => console.error(err))
         },
@@ -68,8 +75,8 @@ const files: Module<FilesState, RootState> = {
             commit('DELETE_FILE', id)
         },
 
-        uploadAll({ commit }, files: File[]): void {
-            commit('UPLOAD_ALL', files)
+        uploadFiles({ commit }, files: File[]): void {
+            commit('UPLOAD_FILES', files)
         },
     },
 }

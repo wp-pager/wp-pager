@@ -40,9 +40,46 @@ function pager_delete_file( int $id ): array {
 		}
 	}
 
-	$json = json_encode( $files, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
-
-	file_put_contents( PAGER_FILES_URL, $json );
+	saveFiles( $files );
 
 	return $files;
+}
+
+/**
+ * @throws JsonException
+ */
+function pager_upload_files( array $files ): array {
+	$all_files = pager_get_files();
+	$latest_id = getLatestFileId( $all_files );
+
+	foreach ( $files as $file ) {
+		$path = PAGER_FILES_DIR . '/' . $file['name'];
+
+		$all_files[] = [
+			'id'   => $latest_id ++,
+			'path' => $path,
+			'url'  => PAGER_FILES_DIR_URL . '/' . $file['name'],
+		];
+
+		move_uploaded_file( $file['tmp_name'], $path );
+	}
+
+	saveFiles( $all_files );
+
+	return $all_files;
+}
+
+/**
+ * @throws JsonException
+ */
+function saveFiles( array $files ): void {
+	$files = array_values( $files );
+	$json  = json_encode( $files, JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
+	file_put_contents( PAGER_FILES_URL, $json );
+}
+
+function getLatestFileId( array $files ): int {
+	$ids = array_column( $files, 'id' );
+
+	return max( $ids ) + 1;
 }

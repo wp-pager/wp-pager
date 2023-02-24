@@ -3,8 +3,9 @@
 declare( strict_types=1 );
 
 $handlers = [
-	'pager_delete_file' => 'pager_delete_file_endpoint',
-	'pager_get_files'   => 'pager_get_files_endpoint',
+	'pager_delete_file'  => 'pager_delete_file_endpoint',
+	'pager_get_files'    => 'pager_get_files_endpoint',
+	'pager_upload_files' => 'pager_upload_file_endpoint',
 ];
 
 foreach ( $handlers as $name => $handler ) {
@@ -29,4 +30,14 @@ function pager_delete_file_endpoint(): void {
 function pager_get_files_endpoint(): void {
 	$files = pager_get_files();
 	wp_send_json_success( $files );
+}
+
+/**
+ * @throws JsonException
+ */
+function pager_upload_file_endpoint(): void {
+	$files = pager_get_files_from_request( 'files' );
+
+	$all_files = pager_upload_files( $files );
+	wp_send_json_success( $all_files );
 }
