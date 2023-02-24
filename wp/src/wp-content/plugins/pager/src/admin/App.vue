@@ -3,8 +3,6 @@ import { ref } from 'vue'
 import Uploader from '@admin/components/Uploader/Uploader.vue'
 import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
 import PendingFiles from '@admin/components/PendingFiles/PendingFiles.vue'
-
-const pendingFiles = ref<File[]>([])
 </script>
 
 <template>
@@ -13,8 +11,8 @@ const pendingFiles = ref<File[]>([])
 
         <main>
             <div>
-                <Uploader @selected="(f: File[]) => pendingFiles.push(...f)" />
-                <PendingFiles :files="pendingFiles" />
+                <Uploader />
+                <PendingFiles />
             </div>
 
             <UploadedFiles />

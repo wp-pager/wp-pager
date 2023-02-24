@@ -9,12 +9,25 @@ const files: Module<PendingFilesState, RootState> = {
         files: [],
     },
 
+    getters: {
+        files: (state): File[] => state.files,
+    },
+
     mutations: {
+        REMOVE_FILE(state, fileName: string): void {
+            state.files = state.files.filter(f => f.name !== fileName)
+        },
+
         ADD_FILES(state, files: File[]): void {
+            state.files = state.files.concat(files)
         },
     },
 
     actions: {
+        removeFile({ commit }, fileName: string): void {
+            commit('REMOVE_FILE', fileName)
+        },
+
         addFiles({ commit }, files: File[]): void {
             commit('ADD_FILES', files)
         },

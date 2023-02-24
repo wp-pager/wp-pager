@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import PendingFile from '@admin/components/PendingFiles/PendingFile.vue'
 import Controls from '@admin/components/PendingFiles/Controls.vue'
 
-type Props = {
-    files: File[]
-}
-
-const props = defineProps<Props>()
+const store = useStore()
+const files = computed<File[]>(() => store.getters['pendingFiles/files'])
 </script>
 
 <template>
@@ -15,7 +14,7 @@ const props = defineProps<Props>()
 
         <div class="files">
             <PendingFile
-                v-for="file in props.files"
+                v-for="file in files"
                 :key="file.name"
                 :file="file"
             />

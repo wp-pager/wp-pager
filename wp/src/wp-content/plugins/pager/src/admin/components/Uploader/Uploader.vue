@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import axios from 'axios'
+import { useStore } from 'vuex'
 import DropIcon from '@shared/components/Icons/DropIcon.vue'
 
-type Emits = {
-    (e: 'selected', files: File[]): void
-}
-
-const emit = defineEmits<Emits>()
-
 const drag = ref(false)
-
-function startDragging(e: DragEvent): void {
-    drag.value = true
-}
+const store = useStore()
 
 function dropImage(e: DragEvent): void {
     if (!e.dataTransfer) {
@@ -21,16 +13,17 @@ function dropImage(e: DragEvent): void {
     }
 
     drag.value = false
+
     const imageFiles = Array.from(e.dataTransfer.files)
 
-    emit('selected', imageFiles)
+    store.dispatch('pendingFiles/addFiles', imageFiles)
 }
 </script>
 
 <template>
     <div>
         <section
-            @dragover.prevent="startDragging"
+            @dragover.prevent="drag = true"
             @dragleave.self="drag = false"
             @drop.self.prevent="dropImage"
             :class="{ 'drag': drag }"

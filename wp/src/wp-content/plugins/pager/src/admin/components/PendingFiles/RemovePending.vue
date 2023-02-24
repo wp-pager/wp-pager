@@ -1,18 +1,22 @@
 <script setup lang="ts">
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+import { useStore } from 'vuex'
 
-type Emits = {
-    (e: 'remove'): void
+type Props = {
+    file: File
 }
 
-const emit = defineEmits<Emits>()
+const props = defineProps<Props>()
+
+const store = useStore()
+
+function removeFile() {
+    store.dispatch('pendingFiles/removeFile', props.file.name)
+}
 </script>
 
 <template>
-    <button
-        type="button"
-        @click="emit('remove')"
-    >
+    <button type="button" @click="removeFile">
         <CloseIcon class="icon" />
     </button>
 </template>

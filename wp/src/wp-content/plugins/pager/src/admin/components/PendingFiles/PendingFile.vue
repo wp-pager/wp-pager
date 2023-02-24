@@ -17,10 +17,12 @@ const url = URL.createObjectURL(props.file)
                 alt="Preview"
             />
 
-            <RemovePending />
+            <RemovePending :file="props.file" />
         </div>
 
-        <span class="title" :title="props.file.name">{{ props.file.name }}</span>
+        <span class="title" :title="props.file.name">
+            {{ props.file.name }}
+        </span>
     </section>
 </template>
 
