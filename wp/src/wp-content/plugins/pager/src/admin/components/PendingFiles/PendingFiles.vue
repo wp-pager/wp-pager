@@ -20,7 +20,7 @@ const props = defineProps<Props>()
 
 <style lang="sass" scoped>
 .files
-    display: flex
-    flex-wrap: wrap
-    gap: 1rem
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+    grid-gap: 1rem
 </style>

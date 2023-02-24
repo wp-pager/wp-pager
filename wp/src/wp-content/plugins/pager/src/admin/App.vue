@@ -31,7 +31,7 @@ h1
 main
     display: grid
     grid-template-columns: 1fr 1fr
-    gap: 1rem
+    gap: 1.7rem
 
 @media screen and (max-width: 600px)
     main

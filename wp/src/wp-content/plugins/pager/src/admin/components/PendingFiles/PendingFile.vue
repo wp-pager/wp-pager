@@ -20,8 +20,13 @@ const url = URL.createObjectURL(props.file)
 
 <style lang="sass" scoped>
 section
-    max-width: 170px
     margin-top: 15px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    background: rgba(255, 255, 255, .8)
+    padding: 6px
+    border-radius: 6px
 
 img
     max-width: 100%
@@ -30,5 +35,7 @@ img
     box-shadow: 2px 2px 7px rgba(0, 0, 0, .1)
 
 h2
-    margin: 3px 0 0 0
+    margin: 6px 0 0 0
+    font-size: .8rem
+    color: #888
 </style>

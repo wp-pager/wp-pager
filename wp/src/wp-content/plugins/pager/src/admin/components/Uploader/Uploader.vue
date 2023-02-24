@@ -48,7 +48,6 @@ section
     display: flex
     justify-content: center
     align-items: center
-    max-width: 700px
     height: 200px
     background-color: rgba(0, 0, 0, .02)
     cursor: pointer
