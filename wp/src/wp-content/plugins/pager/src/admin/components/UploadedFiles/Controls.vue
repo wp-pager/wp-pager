@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 
-const eyeIcon = window.pager.rootUrl + '/assets/img/eye.webp'
-const closeIcon = window.pager.rootUrl + '/assets/img/close.webp'
+const rootUrl = window.pager.rootUrl
 
 type Props = {
     file: ImageFile
@@ -14,11 +13,11 @@ const props = defineProps<Props>()
 <template>
     <section>
         <a :href="props.file.url" target="_blank" type="button">
-            <img :src="eyeIcon" alt="o" />
+            <img :src="`${rootUrl}assets/img/eye.webp`" alt="o" />
         </a>
 
         <button type="button">
-            <img :src="closeIcon" alt="x" />
+            <img :src="`${rootUrl}assets/img/close.webp`" alt="x" />
         </button>
     </section>
 </template>
