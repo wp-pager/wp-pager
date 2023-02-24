@@ -23,9 +23,9 @@ const files: Module<FilesState, RootState> = {
         FETCH_FILES(state): void {
             state.loading = true
 
-            const url = `${pager.ajaxUrl}?action=pager_get_files`
-
-            axios.get<ServerResponse<ImageFile[]>>(url)
+            axios.get<ServerResponse<ImageFile[]>>(pager.ajaxUrl, {
+                params: { action: 'pager_get_files' },
+            })
                 .then(resp => state.files = resp.data.data)
                 .catch(e => console.error(e))
                 .finally(() => state.loading = false)
@@ -37,12 +37,12 @@ const files: Module<FilesState, RootState> = {
 
             state.loading = true
 
-            const url = pager.ajaxUrl + '?action=pager_delete_file'
-
             const formData = new FormData()
-            formData.set('id', id.toString())
 
-            axios.post<ServerResponse<ImageFile[]>>(url, formData)
+            formData.append('id', id.toString())
+            formData.append('action', 'pager_delete_file')
+
+            axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData)
                 .then(resp => state.files = resp.data.data)
                 .catch(err => console.error(err))
                 .finally(() => state.loading = false)
@@ -54,7 +54,7 @@ const files: Module<FilesState, RootState> = {
 
             const formData = new FormData()
 
-            formData.append('action', 'pager_upload_files')
+            formData.append('action', 'pager_add_files')
 
             files.forEach(f => formData.append('files[]', f, f.name))
 

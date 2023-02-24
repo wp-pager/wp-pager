@@ -13,9 +13,11 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 </script>
 
 <template>
-    <div>
+    <div data-v-kosbj3f>
         <h2 class="title">Uploaded Files</h2>
-        <p class="intro">These are the files that have been uploaded to the server.</p>
+        <p class="intro">
+            These are the files that have been uploaded to the server.
+        </p>
 
         <FetchingFilesSpinner v-if="loading" />
 
@@ -23,30 +25,31 @@ onMounted(() => store.dispatch('files/fetchFiles'))
             There are no files yet...
         </h3>
 
-        <section v-else>
+        <div v-else class="files">
             <UploadedFile
                 v-for="file in files"
                 :key="file.id"
                 :file="file"
             />
-        </section>
+        </div>
     </div>
 </template>
 
 <style lang="sass" scoped>
-section
-    display: grid
-    grid-template-columns: repeat(auto-fill, 300px)
-    grid-gap: 1rem
+[data-v-kosbj3f]
+    .files
+        display: grid
+        grid-template-columns: repeat(auto-fill, 300px)
+        grid-gap: 1rem
 
-.title
-    margin-top: 0
-    font-size: 1.7rem
+    .title
+        margin-top: 0
+        font-size: 1.7rem
 
-.intro
-    font-size: 1.2rem
+    .intro
+        font-size: 1.2rem
 
-.no-files
-    font-size: 1.2rem
-    font-weight: 400
+    .no-files
+        font-size: 1.2rem
+        font-weight: 400
 </style>

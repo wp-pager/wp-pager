@@ -17,7 +17,7 @@ function deleteFile(): void {
 </script>
 
 <template>
-    <section>
+    <div data-v-mklq4p19ma>
         <a :href="props.file.url" target="_blank" type="button">
             <EyeIcon class="icon" />
         </a>
@@ -25,47 +25,48 @@ function deleteFile(): void {
         <button @click="deleteFile" type="button">
             <CloseIcon class="icon" />
         </button>
-    </section>
+    </div>
 </template>
 
 <style lang="sass" scoped>
-section
-    opacity: 0
-    display: flex
-    align-items: center
-    justify-content: center
-    gap: 12px
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: rgba(255, 255, 255, 0.6)
-    border-radius: 7px
-    transition: opacity .2s ease-in-out
-
-    &:hover
-        opacity: 1
-
-    button, a
+[data-v-mklq4p19ma]
+    section
+        opacity: 0
         display: flex
         align-items: center
         justify-content: center
-        background: none
-        border: none
-        padding: 7px
-        border-radius: 8px
-        border: 1px solid transparent
-        cursor: pointer
+        gap: 12px
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: rgba(255, 255, 255, 0.6)
+        border-radius: 7px
+        transition: opacity .2s ease-in-out
 
-        &:active,
         &:hover
-            background-color: white
-            border-color: #ccc
-            box-shadow: none
+            opacity: 1
 
-        .icon
-            width: 35px
-            height: 35px
-            color: #333
+        button, a
+            display: flex
+            align-items: center
+            justify-content: center
+            background: none
+            border: none
+            padding: 7px
+            border-radius: 8px
+            border: 1px solid transparent
+            cursor: pointer
+
+            &:active,
+            &:hover
+                background-color: white
+                border-color: #ccc
+                box-shadow: none
+
+            .icon
+                width: 35px
+                height: 35px
+                color: #333
 </style>

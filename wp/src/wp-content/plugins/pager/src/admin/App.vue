@@ -6,7 +6,7 @@ import PendingFiles from '@admin/components/PendingFiles/PendingFiles.vue'
 </script>
 
 <template>
-    <div class="wrap">
+    <div data-v-lnqpslz79s>
         <h1>Pager settings</h1>
 
         <main>
@@ -21,17 +21,19 @@ import PendingFiles from '@admin/components/PendingFiles/PendingFiles.vue'
 </template>
 
 <style lang="sass" scoped>
-h1
-    font-size: 2rem
-    font-weight: 400
-    margin-bottom: 1rem
+[data-v-lnqpslz79s]
+    h1
+        font-size: 2rem
+        font-weight: 400
+        margin-bottom: 1rem
 
-main
-    display: grid
-    grid-template-columns: minmax(200px, 600px) 1fr
-    gap: 1.7rem
+    main
+        display: grid
+        grid-template-columns: minmax(200px, 600px) 1fr
+        gap: 1.7rem
 
 @media screen and (max-width: 600px)
-    main
-        grid-template-columns: 1fr
+    [data-v-lnqpslz79s]
+        main
+            grid-template-columns: 1fr
 </style>

@@ -25,33 +25,43 @@ function clearAll(): void {
 </script>
 
 <template>
-    <section>
-        <ControlButton @click="uploadAll" class="upload btn" :isDisabled="files.length === 0">
+    <div data-v-1fs0uvn0qu>
+        <ControlButton
+            @click="uploadAll"
+            class="upload btn"
+            :isDisabled="files.length === 0"
+        >
             <UploadIcon  class="icon" /> Upload all
         </ControlButton>
-        <ControlButton @click="clearAll" class="clear btn" :isDisabled="files.length === 0">
+
+        <ControlButton
+            @click="clearAll"
+            class="clear btn"
+            :isDisabled="files.length === 0"
+        >
             <CloseIcon class="icon" /> Clear all
         </ControlButton>
-    </section>
+    </div>
 </template>
 
 <style lang="sass" scoped>
-section
-    display: flex
-    gap: .5rem
+[data-v-1fs0uvn0qu]
+    section
+        display: flex
+        gap: .5rem
 
-.btn
-    display: flex
-    align-items: center
-    gap: 7px
+    .btn
+        display: flex
+        align-items: center
+        gap: 7px
 
-    .icon
-        width: 1.3rem
-        height: 1.3rem
+        .icon
+            width: 1.3rem
+            height: 1.3rem
 
-.upload
-    color: #045b04
+    .upload
+        color: #045b04
 
-.clear
-    color: #950909
+    .clear
+        color: #950909
 </style>

@@ -22,7 +22,7 @@ class File
         }
 
         /**
-         * @var array<int, array{id: int, url: string, path: string}>|null $files
+         * @var array<int, array{id: int, name: string, url: string, path: string}>|null $files
          */
         $files = Json::decode($content);
 
@@ -31,7 +31,7 @@ class File
         }
 
         return array_map(function (array $file) {
-            return new ImageFile($file['id'], $file['url'], $file['path']);
+            return new ImageFile($file['id'], $file['name'], $file['url'], $file['path']);
         }, $files);
     }
 
@@ -44,9 +44,12 @@ class File
         $files = $this->getFiles();
 
         foreach ($files as $key => $file) {
-            if ($file['id'] === $id) {
-                unset($files[$key]);
+            if ($file->id !== $id) {
+                continue;
             }
+
+            unlink($file->path);
+            unset($files[$key]);
         }
 
         $this->saveFiles($files);
@@ -62,27 +65,29 @@ class File
      */
     public function addFiles(array $files): array
     {
-        $all_files = $this->getFiles();
-        $latest_id = $this->getLatestFileId($all_files);
+        $result = $this->getFiles();
+        $latest_id = $this->getLatestFileId($result);
 
         foreach ($files as $file) {
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
-            $all_files[] = [
-                'id' => $latest_id++,
-                'path' => $path,
-                'url' => PAGER_FILES_DIR_URL . '/' . $file['name'],
-            ];
+            $result[] = new ImageFile(
+                id: $latest_id++,
+                name: $file['name'],
+                url: PAGER_FILES_DIR_URL . '/' . $file['name'],
+                path: $path,
+            );
 
             move_uploaded_file($file['tmp_name'], $path);
         }
 
-        $this->saveFiles($all_files);
+        $this->saveFiles($result);
 
-        return $all_files;
+        return $result;
     }
 
     /**
+     * @param ImageFile[] $files
      * @throws JsonException
      */
     private function saveFiles(array $files): void

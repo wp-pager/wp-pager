@@ -57,7 +57,8 @@ class Entry
                 try {
                     echo $handler()->handle();
                 } catch (Throwable $e) {
-                    echo $this->error($e->getMessage());
+                    $err_msg = $e->getMessage() . ' in ' . $e->getFile() . ' on line ' . $e->getLine();
+                    echo $this->error($err_msg);
                 }
 
                 exit(200);

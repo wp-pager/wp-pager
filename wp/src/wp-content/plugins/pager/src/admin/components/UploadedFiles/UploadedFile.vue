@@ -10,23 +10,28 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-    <article>
-        <img
-            :src="props.file.url"
-        />
+    <div data-v-1s0gr6mjaq>
+        <article>
+            <img
+                :src="props.file.url"
+            />
 
-        <Controls :file="props.file" />
-    </article>
+            <Controls :file="props.file" />
+        </article>
+    </div>
 </template>
 
 <style lang="sass" scoped>
-article
-    background-color: #fff
-    border-radius: 0.5rem
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1)
-    position: relative
+[data-v-1s0gr6mjaq]
+    article
+        background-color: white
+        border-radius: 0.5rem
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1)
+        position: relative
+        padding: 7px
+        line-height: 0
 
-    img
-        width: 100%
-        border-radius: 5px
+        img
+            width: 100%
+            border-radius: 5px
 </style>
