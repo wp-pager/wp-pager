@@ -54,10 +54,10 @@ class Hook
             };
 
             add_menu_page(
-                'Pager',
-                'Pager',
+                'WP Pager',
+                'WP Pager',
                 'manage_options',
-                'pager',
+                'wp-pager',
                 $handler,
                 'dashicons-format-gallery',
                 20
