@@ -46,9 +46,8 @@ function clearAll(): void {
 
 <style lang="sass" scoped>
 [data-v-1fs0uvn0qu]
-    section
-        display: flex
-        gap: .5rem
+    display: flex
+    gap: .5rem
 
     .btn
         display: flex
