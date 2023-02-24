@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import ControlButton from '@admin/components/PendingFiles/ControlButton.vue'
+import Btn from '@admin/components/Btn.vue'
 import UploadIcon from '@shared/components/Icons/UploadIcon.vue'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 
@@ -26,21 +26,21 @@ function clearAll(): void {
 
 <template>
     <div data-v-1fs0uvn0qu>
-        <ControlButton
+        <Btn
             @click="uploadAll"
             class="upload btn"
             :isDisabled="files.length === 0"
         >
             <UploadIcon  class="icon" /> Upload all
-        </ControlButton>
+        </Btn>
 
-        <ControlButton
+        <Btn
             @click="clearAll"
             class="clear btn"
             :isDisabled="files.length === 0"
         >
             <CloseIcon class="icon" /> Clear all
-        </ControlButton>
+        </Btn>
     </div>
 </template>
 

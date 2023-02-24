@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
-import Controls from '@admin/components/UploadedFiles/Controls.vue'
+import FileControls from '@admin/components/UploadedFiles/FileControls.vue'
 
 type Props = {
     file: ImageFile
@@ -16,7 +16,7 @@ const props = defineProps<Props>()
                 :src="props.file.url"
             />
 
-            <Controls :file="props.file" />
+            <FileControls :file="props.file" />
         </article>
     </div>
 </template>
