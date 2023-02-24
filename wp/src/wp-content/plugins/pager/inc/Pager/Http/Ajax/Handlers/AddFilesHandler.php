@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Pager\Http\Ajax\Handlers;
 
 use JsonException;
-use Pager\Dto\Requests\DeleteFileRequest;
+use Pager\Dto\Requests\AddFilesRequest;
 use Pager\File;
 
-class DeleteFileHandler extends Handler
+class AddFilesHandler extends Handler
 {
-    public function __construct(private readonly DeleteFileRequest $request)
+    public function __construct(private readonly AddFilesRequest $request)
     {
     }
 
@@ -19,7 +19,7 @@ class DeleteFileHandler extends Handler
      */
     public function handle(): string
     {
-        $files = (new File())->deleteFile($this->request->file_id);
+        $files = (new File())->addFiles($this->request->new_files);
         return $this->success($files);
     }
 }

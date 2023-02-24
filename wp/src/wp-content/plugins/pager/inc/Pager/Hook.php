@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Pager;
 
+use JsonException;
+use Pager\Http\Ajax\Entry;
+
 class Hook
 {
     public function init(): void
@@ -60,5 +63,13 @@ class Hook
                 20
             );
         });
+    }
+
+    /**
+     * @throws JsonException
+     */
+    private function exposeJsonApi(): void
+    {
+        (new Entry())->init();
     }
 }

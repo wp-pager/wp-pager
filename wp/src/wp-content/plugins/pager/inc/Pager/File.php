@@ -69,9 +69,9 @@ class File
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
             $all_files[] = [
-                'id'   => $latest_id++,
+                'id' => $latest_id++,
                 'path' => $path,
-                'url'  => PAGER_FILES_DIR_URL . '/' . $file['name'],
+                'url' => PAGER_FILES_DIR_URL . '/' . $file['name'],
             ];
 
             move_uploaded_file($file['tmp_name'], $path);
