@@ -18,13 +18,29 @@ function dropImage(e: DragEvent): void {
 
     store.dispatch('pendingFiles/addFiles', imageFiles)
 }
+
+function chooseImages(e: Event): void {
+    const input = e.target as HTMLInputElement
+    const files = input.files as FileList
+
+    store.dispatch('pendingFiles/addFiles', Array.from(files))
+}
 </script>
 
 <template>
     <div data-v-plsy94b>
-        <h2>Pager settings</h2>
+        <h2>Upload new files</h2>
 
-        <section
+        <input
+            @change="chooseImages"
+            type="file"
+            class="hidden-input"
+            id="pager-file-input"
+            multiple
+        />
+
+        <label
+            for="pager-file-input"
             @dragover.prevent="drag = true"
             @dragleave.self="drag = false"
             @drop.self.prevent="dropImage"
@@ -36,7 +52,7 @@ function dropImage(e: DragEvent): void {
                 <span v-if="drag">Release files...</span>
                 <span v-else> Drop your files...</span>
             </h2>
-        </section>
+        </label>
     </div>
 </template>
 
@@ -47,7 +63,11 @@ function dropImage(e: DragEvent): void {
         font-weight: 400
         margin-bottom: 1.7rem
 
-    section
+    .hidden-input
+        display: none
+        visibility: hidden
+
+    label
         border: 4px dashed rgba(0, 0, 0, .2)
         padding: 7px
         border-radius: 7px

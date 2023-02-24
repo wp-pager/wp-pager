@@ -20,7 +20,7 @@ function clearAll(): void {
     if (files.value.length === 0)
         return
 
-    store.dispatch('pendingFiles/clearAll')
+    store.dispatch('pendingFiles/clearFiles')
 }
 </script>
 
