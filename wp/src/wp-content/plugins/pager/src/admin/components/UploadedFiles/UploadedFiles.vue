@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import { onMounted, computed } from 'vue'
+import { useStore } from 'vuex'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
 import FetchingFilesSpinner from '@admin/components/UploadedFiles/FetchingFilesSpinner.vue'
-import { useStore } from 'vuex'
+import Controls from '@admin/components/UploadedFiles/Controls.vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -19,6 +20,8 @@ onMounted(() => store.dispatch('files/fetchFiles'))
         <p class="intro">
             These are the files that have been uploaded to the server.
         </p>
+
+        <Controls />
 
         <FetchingFilesSpinner v-if="loading" />
 

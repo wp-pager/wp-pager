@@ -9,7 +9,7 @@ const files = computed<File[]>(() => store.getters['pendingFiles/files'])
 </script>
 
 <template>
-    <section data-v-f3f0eg>
+    <div data-v-f3f0egk>
         <Controls />
 
         <div class="files">
@@ -19,15 +19,16 @@ const files = computed<File[]>(() => store.getters['pendingFiles/files'])
                 :file="file"
             />
         </div>
-    </section>
+    </div>
 </template>
 
 <style lang="sass" scoped>
-section[data-v-f3f0eg]
+[data-v-f3f0egk]
     margin-top: 15px
 
-.files
-    display: grid
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
-    grid-gap: 1rem
+    .files
+        margin-top: 15px
+        display: grid
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+        grid-gap: 1rem
 </style>

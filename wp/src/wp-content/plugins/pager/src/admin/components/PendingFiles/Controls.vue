@@ -28,15 +28,17 @@ function clearAll(): void {
     <div data-v-1fs0uvn0qu>
         <Btn
             @click="uploadAll"
-            class="upload btn"
+            class="btn"
+            color="default"
             :isDisabled="files.length === 0"
         >
-            <UploadIcon  class="icon" /> Upload all
+            <UploadIcon class="icon" /> Upload all
         </Btn>
 
         <Btn
             @click="clearAll"
-            class="clear btn"
+            class="btn"
+            color="red"
             :isDisabled="files.length === 0"
         >
             <CloseIcon class="icon" /> Clear all
@@ -57,10 +59,4 @@ function clearAll(): void {
         .icon
             width: 1.3rem
             height: 1.3rem
-
-    .upload
-        color: #045b04
-
-    .clear
-        color: #950909
 </style>
