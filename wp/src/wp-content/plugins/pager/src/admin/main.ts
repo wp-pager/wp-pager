@@ -1,5 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App)
-    .mount('#pager-admin-app')
+const app = createApp(App)
+
+app.config.globalProperties.$pager = pager
+
+app.mount('#pager-admin-app')
+

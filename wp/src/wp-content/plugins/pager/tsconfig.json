@@ -4,6 +4,7 @@
         "module": "esnext",
         "strict": true,
         "jsx": "preserve",
+        "sourceMap": true,
         "noImplicitAny": false,
         "moduleResolution": "node",
         "esModuleInterop": true,

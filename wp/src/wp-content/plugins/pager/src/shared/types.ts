@@ -8,3 +8,9 @@ export type ImageFile = {
     path: string
     url: string
 }
+
+export type Config = {
+    ajaxUrl: string
+    nonce: string
+    rootUrl: string
+}

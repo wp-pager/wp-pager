@@ -2,8 +2,6 @@
 import type { ImageFile } from '@shared/types'
 import useDeleteFile from '@admin/composables/useDeleteFile'
 
-const rootUrl = window.pager.rootUrl
-
 type Props = {
     file: ImageFile
 }
@@ -15,11 +13,11 @@ const { deleteFile } = useDeleteFile(props.file)
 <template>
     <section>
         <a :href="props.file.url" target="_blank" type="button">
-            <img :src="`${rootUrl}assets/img/eye.webp`" alt="o" />
+            <img :src="`${$pager.rootUrl}assets/img/icons/eye.webp`" alt="View" />
         </a>
 
         <button @click="deleteFile" type="button">
-            <img :src="`${rootUrl}assets/img/close.webp`" alt="x" />
+            <img :src="`${$pager.rootUrl}assets/img/icons/close.webp`" alt="Delete" />
         </button>
     </section>
 </template>

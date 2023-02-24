@@ -8,7 +8,7 @@ export default (file: ImageFile) => {
         if (!confirm('Are you sure you want to delete this file?'))
             return
 
-        const url = window.pager.ajaxUrl + '?action=pager_delete_file'
+        const url = pager.ajaxUrl + '?action=pager_delete_file'
 
         const formData = new FormData()
         formData.set('id', file.id.toString())

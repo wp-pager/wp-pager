@@ -18,7 +18,7 @@ onMounted(() => {
 function fetchFiles() {
     loading.value = true
 
-    const url = `${window.pager.ajaxUrl}?action=pager_get_files`
+    const url = `${pager.ajaxUrl}?action=pager_get_files`
 
     axios.get<ServerResponse<ImageFile[]>>(url)
         .then(resp => files.value = resp.data.data)

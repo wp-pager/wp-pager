@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import RemovePending from '@admin/components/PendingFiles/RemovePending.vue'
+
 type Props = {
     file: File
 }
@@ -14,6 +16,8 @@ const url = URL.createObjectURL(props.file)
             alt="Preview"
         />
 
+        <RemovePending />
+
         <span class="title" :title="props.file.name">{{ props.file.name }}</span>
     </section>
 </template>
@@ -27,6 +31,7 @@ section
     background: rgba(255, 255, 255, .8)
     padding: 6px
     border-radius: 6px
+    position: relative
 
 img
     max-width: 100%
