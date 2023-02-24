@@ -26,4 +26,6 @@ define('PAGER_FILES_DIR_URL', PAGER_URL . 'storage/files');
 
 require __DIR__ . '/vendor/autoload.php';
 
+ini_set('error_reporting', 'E_ALL & ~E_NOTICE & ~E_DEPRECATED');
+
 (new Hook())->init();

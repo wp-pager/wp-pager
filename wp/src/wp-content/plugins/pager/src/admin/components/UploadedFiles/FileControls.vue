@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
-import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
 import { useStore } from 'vuex'
 
@@ -23,7 +23,7 @@ function deleteFile(): void {
         </a>
 
         <button @click="deleteFile" type="button">
-            <CloseIcon class="icon" />
+            <DeleteIcon class="icon" />
         </button>
     </div>
 </template>
@@ -34,7 +34,7 @@ function deleteFile(): void {
     display: flex
     align-items: center
     justify-content: center
-    gap: 12px
+    gap: 9px
     position: absolute
     top: 0
     left: 0
@@ -65,7 +65,7 @@ function deleteFile(): void {
             box-shadow: none
 
         .icon
-            width: 35px
-            height: 35px
+            width: 30px
+            height: 30px
             color: #333
 </style>

@@ -11,7 +11,7 @@ const props = defineProps<Props>()
 
 <template>
     <div data-v-1s0gr6mjaq>
-        <article>
+        <article draggable="true">
             <img
                 :src="props.file.url"
             />
@@ -30,6 +30,7 @@ const props = defineProps<Props>()
         position: relative
         padding: 7px
         line-height: 0
+        cursor: move
 
         img
             width: 100%
