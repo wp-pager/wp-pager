@@ -21,6 +21,13 @@ const files: Module<PendingFilesState, RootState> = {
         ADD_FILES(state, files: File[]): void {
             state.files = state.files.concat(files)
         },
+
+        CLEAR_FILES(state): void {
+            if (!confirm('Are you sure you want to clear the file list?'))
+                return
+
+            state.files = []
+        },
     },
 
     actions: {
@@ -30,6 +37,10 @@ const files: Module<PendingFilesState, RootState> = {
 
         addFiles({ commit }, files: File[]): void {
             commit('ADD_FILES', files)
+        },
+
+        clearFiles({ commit }): void {
+            commit('CLEAR_FILES')
         },
     },
 }

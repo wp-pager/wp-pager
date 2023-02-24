@@ -1,15 +1,35 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 import ControlButton from '@admin/components/PendingFiles/ControlButton.vue'
 import UploadIcon from '@shared/components/Icons/UploadIcon.vue'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+
+const store = useStore()
+
+const files = computed<File[]>(() => store.getters['pendingFiles/files'])
+
+function uploadAll(): void {
+    if (files.value.length === 0)
+        return
+
+    store.dispatch('pendingFiles/uploadAll', files)
+}
+
+function clearAll(): void {
+    if (files.value.length === 0)
+        return
+
+    store.dispatch('pendingFiles/clearAll')
+}
 </script>
 
 <template>
     <section>
-        <ControlButton class="upload btn">
-            <UploadIcon class="icon" /> Upload all
+        <ControlButton class="upload btn" :isDisabled="files.length === 0">
+            <UploadIcon  class="icon" /> Upload all
         </ControlButton>
-        <ControlButton class="clear btn">
+        <ControlButton @click="clearAll" class="clear btn" :isDisabled="files.length === 0">
             <CloseIcon class="icon" /> Clear all
         </ControlButton>
     </section>

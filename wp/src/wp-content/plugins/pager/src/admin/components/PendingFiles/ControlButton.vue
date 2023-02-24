@@ -1,5 +1,13 @@
+<script lang="ts" setup>
+type Props = {
+    isDisabled: boolean
+}
+
+const props = defineProps<Props>()
+</script>
+
 <template>
-    <button type="button">
+    <button type="button" :class="{ 'disabled': props.isDisabled }">
         <slot />
     </button>
 </template>
@@ -17,4 +25,11 @@ button
 
     &:hover
         background-color: #f3f3f3
+
+    &.disabled
+        cursor: not-allowed
+        opacity: .5
+
+        &:hover
+            background-color: #fff
 </style>

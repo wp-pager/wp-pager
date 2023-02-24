@@ -46,6 +46,17 @@ const files: Module<FilesState, RootState> = {
                 .catch(err => console.error(err))
                 .finally(() => state.loading = false)
         },
+
+        UPLOAD_ALL(state, files: File[]): void {
+            if (!confirm('Are you sure you want to upload all files?'))
+                return
+
+            const url = pager.ajaxUrl + '?action=pager_upload_files'
+
+            axios.post<ServerResponse<ImageFile[]>>(url)
+                .then(resp => state.files = resp.data.data)
+                .catch(err => console.error(err))
+        },
     },
 
     actions: {
@@ -55,6 +66,10 @@ const files: Module<FilesState, RootState> = {
 
         deleteFile({ commit }, id: number): void {
             commit('DELETE_FILE', id)
+        },
+
+        uploadAll({ commit }, files: File[]): void {
+            commit('UPLOAD_ALL', files)
         },
     },
 }
