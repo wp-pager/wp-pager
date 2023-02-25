@@ -99,10 +99,10 @@ class File
      * @param ImageFile[] $files
      * @throws JsonException
      */
-    private function saveFiles(array $files): void
+    public function saveFiles(array $files): void
     {
         $files = array_values($files);
-        $json  = Json::encode($files);
+        $json = Json::encode($files);
         file_put_contents(PAGER_FILES_URL, $json);
     }
 

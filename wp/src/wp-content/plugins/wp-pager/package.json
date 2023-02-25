@@ -17,19 +17,20 @@
         "prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@types/toastify-js": "^1.11.1",
         "laravel-mix": "^6.0.49",
         "node-sass": "^8.0.0",
         "sass-loader": "^13.2.0",
         "ts-loader": "^9.4.2",
         "typescript": "^4.9.5",
         "vue-loader": "^16.2.0",
-        "@types/toastify-js": "^1.11.1",
         "vue-template-compiler": "^2.7.14"
     },
     "dependencies": {
         "axios": "^1.3.4",
         "toastify-js": "^1.12.0",
         "vue": "^3.2.47",
+        "vue-draggable-next": "^2.1.1",
         "vuex": "^4.1.0"
     }
 }

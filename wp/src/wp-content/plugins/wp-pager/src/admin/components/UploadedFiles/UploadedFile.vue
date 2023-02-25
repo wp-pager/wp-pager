@@ -11,7 +11,17 @@ const props = defineProps<Props>()
 </script>
 
 <template>
-    <ImageCard :name="props.file.name" :url="props.file.url">
-        <FileControls :file="props.file" />
-    </ImageCard>
+    <div data-v-qlo935msqp9>
+        <ImageCard
+            :name="props.file.name"
+            :url="props.file.url"
+        >
+            <FileControls :file="props.file" />
+        </ImageCard>
+    </div>
 </template>
+
+<style lang="sass" scoped>
+[data-v-qlo935msqp9]
+    cursor: move
+</style>

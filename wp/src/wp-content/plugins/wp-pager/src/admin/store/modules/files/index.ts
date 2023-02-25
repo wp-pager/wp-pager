@@ -31,6 +31,18 @@ const files: Module<FilesState, RootState> = {
                 .finally(() => state.loading = false)
         },
 
+        SET_FILES(state, files: ImageFile[]): void {
+            state.files = files
+
+            const formData = new FormData()
+
+            formData.append('action', 'pager_set_files')
+            formData.append('files', JSON.stringify(files))
+
+            axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
+                .catch(err => console.error(err))
+        },
+
         DELETE_FILE(state, id: number): void {
             if (!confirm('Are you sure you want to delete this file?'))
                 return
@@ -94,6 +106,10 @@ const files: Module<FilesState, RootState> = {
 
         deleteFile({ commit }, id: number): void {
             commit('DELETE_FILE', id)
+        },
+
+        setFiles({ commit }, files: ImageFile[]): void {
+            commit('SET_FILES', files)
         },
 
         addFiles({ commit }, files: File[]): void {

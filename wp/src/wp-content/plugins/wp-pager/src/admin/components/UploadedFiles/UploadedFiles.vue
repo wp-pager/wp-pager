@@ -5,10 +5,15 @@ import { useStore } from 'vuex'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
 import FetchingFilesSpinner from '@admin/components/UploadedFiles/FetchingFilesSpinner.vue'
 import Controls from '@admin/components/UploadedFiles/Controls.vue'
+import { VueDraggableNext } from 'vue-draggable-next'
 
 const store = useStore()
-const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const loading = computed<boolean>(() => store.getters['files/loading'])
+
+const files = computed<ImageFile[]>({
+    get: () => store.getters['files/files'],
+    set: (val: ImageFile[]) => store.dispatch('files/setFiles', val),
+})
 
 onMounted(() => store.dispatch('files/fetchFiles'))
 </script>
@@ -29,12 +34,17 @@ onMounted(() => store.dispatch('files/fetchFiles'))
             There are no files yet...
         </h3>
 
-        <div v-else class="pager-files">
-            <UploadedFile
-                v-for="file in files"
-                :key="file.id"
-                :file="file"
-            />
+        <div v-else>
+            <VueDraggableNext
+                class="pager-files list-group w-full"
+                v-model="files"
+            >
+                <UploadedFile
+                    v-for="file in files"
+                    :key="file.id"
+                    :file="file"
+                />
+            </VueDraggableNext>
         </div>
     </div>
 </template>

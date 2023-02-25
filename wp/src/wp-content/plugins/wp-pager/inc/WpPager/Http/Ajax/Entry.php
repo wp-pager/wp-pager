@@ -9,11 +9,13 @@ use JsonException;
 use WpPager\Http\Request;
 use WpPager\Dto\Requests\AddFilesRequest;
 use WpPager\Dto\Requests\DeleteFileRequest;
+use WpPager\Dto\Requests\SetFilesRequest;
 use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
 use WpPager\Http\Ajax\Handlers\GetFilesHandler;
 use WpPager\Http\Ajax\Handlers\Handler;
 use WpPager\Http\Ajax\Handlers\AddFilesHandler;
 use WpPager\Http\Ajax\Handlers\DeleteAllFilesHandler;
+use WpPager\Http\Ajax\Handlers\SetFilesHandler;
 
 class Entry
 {
@@ -45,6 +47,10 @@ class Entry
             },
             'pager_delete_all_files' => function (): Handler {
                 return new DeleteAllFilesHandler();
+            },
+            'pager_set_files' => function (): Handler {
+                $request = new SetFilesRequest($this->request->get('files'));
+                return new SetFilesHandler($request);
             },
         ];
     }
