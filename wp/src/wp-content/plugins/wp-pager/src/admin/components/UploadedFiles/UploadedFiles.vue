@@ -23,7 +23,7 @@ onMounted(() => store.dispatch('files/fetchFiles'))
         <h2 class="pager-title">Uploaded Files</h2>
 
         <p class="pager-intro">
-            These are the files that have been uploaded to the server.
+            These are the files that have been uploaded to the server. You can drag and drop them to change the order.
         </p>
 
         <Controls />
@@ -62,7 +62,7 @@ onMounted(() => store.dispatch('files/fetchFiles'))
         margin-bottom: 1.7rem
 
     .pager-intro
-        font-size: 1.2rem
+        font-size: 1.1rem
 
     .pager-no-files
         font-size: 1.2rem
