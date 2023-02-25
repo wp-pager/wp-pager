@@ -1,8 +1,10 @@
 <script setup lang="ts">
-console.log('nice')
+import Album from '@album/components/Album/Album.vue'
 </script>
 
 <template>
-    <h3>NICE</h3>
+    <div>
+        <Album />
+    </div>
 </template>
 

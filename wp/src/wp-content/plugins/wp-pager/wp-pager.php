@@ -24,6 +24,8 @@ define('PAGER_FILES_URL', PAGER_PATH . 'storage/files.json');
 define('PAGER_FILES_DIR', PAGER_PATH . 'storage/files');
 define('PAGER_FILES_DIR_URL', PAGER_URL . 'storage/files');
 
+error_reporting(E_ERROR | E_PARSE);
+
 require __DIR__ . '/vendor/autoload.php';
 
 (new Hook())->init();

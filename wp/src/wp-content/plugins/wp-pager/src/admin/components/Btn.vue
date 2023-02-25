@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 type Props = {
     isDisabled: boolean
-    color: 'green' | 'red' | 'default'
+    color: 'red' | 'default'
 }
 
 const props = defineProps<Props>()
@@ -12,7 +12,6 @@ const props = defineProps<Props>()
         type="button"
         :class="{
             'pager-disabled': props.isDisabled,
-            'pager-green': props.color === 'green',
             'pager-red': props.color === 'red',
             'pager-default': props.color === 'default'
         }"
@@ -32,12 +31,6 @@ button
     border: none
     color: #fff
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
-
-    &.pager-green
-        background-color: #517d52
-
-        &:hover
-            background-color: #4c714d
 
     &.pager-red
         background-color: #d05045

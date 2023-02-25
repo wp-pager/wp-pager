@@ -1,10 +1,9 @@
 import type { Module } from 'vuex'
 import type FilesState from './FilesState'
 import type RootState from '@admin/store/RootState'
-import { ImageFile } from '@shared/types'
+import type { ImageFile } from '@shared/types'
 import { ServerResponse } from '@shared/types'
 import axios from 'axios'
-import { makeLogger } from 'ts-loader/dist/logger'
 
 const files: Module<FilesState, RootState> = {
     namespaced: true,

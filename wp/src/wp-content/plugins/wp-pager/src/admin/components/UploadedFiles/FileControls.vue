@@ -40,7 +40,7 @@ function deleteFile(): void {
     left: 0
     right: 0
     bottom: 0
-    background-color: rgba(255, 255, 255, 0.8)
+    background-color: rgba(0, 0, 0, .2)
     border-radius: 7px
     transition: opacity .2s ease-in-out
 
@@ -55,17 +55,17 @@ function deleteFile(): void {
         border: none
         padding: 7px
         border-radius: 8px
-        border: 1px solid transparent
+        border: 2px solid #555
         cursor: pointer
+        background-color: white
+        box-shadow: none
+        color: #333
 
-        &:active,
         &:hover
-            background-color: white
-            border-color: #ccc
-            box-shadow: none
+            border-color: green
+            color: green
 
         .pager-icon
             width: 30px
             height: 30px
-            color: #333
 </style>
