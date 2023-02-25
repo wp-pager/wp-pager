@@ -13,7 +13,7 @@ function uploadAll(): void {
     if (files.value.length === 0)
         return
 
-    store.dispatch('files/uploadFiles', files.value)
+    store.dispatch('files/addFiles', files.value)
     store.dispatch('pendingFiles/clearFiles')
 }
 

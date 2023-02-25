@@ -48,7 +48,7 @@ const files: Module<FilesState, RootState> = {
                 .finally(() => state.loading = false)
         },
 
-        async UPLOAD_FILES(state, files: File[]): Promise<void> {
+        async ADD_FILES(state, files: File[]): Promise<void> {
             if (!confirm('Are you sure you want to upload all files?'))
                 return
 
@@ -92,8 +92,8 @@ const files: Module<FilesState, RootState> = {
             commit('DELETE_FILE', id)
         },
 
-        uploadFiles({ commit }, files: File[]): void {
-            commit('UPLOAD_FILES', files)
+        addFiles({ commit }, files: File[]): void {
+            commit('ADD_FILES', files)
         },
 
         deleteAllFiles({ commit }): void {

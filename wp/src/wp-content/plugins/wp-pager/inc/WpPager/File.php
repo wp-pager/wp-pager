@@ -112,6 +112,11 @@ class File
     private function getLatestFileId(array $files): int
     {
         $ids = array_column($files, 'id');
+
+        if (empty($ids)) {
+            return 1;
+        }
+
         return max($ids) + 1;
     }
 }
