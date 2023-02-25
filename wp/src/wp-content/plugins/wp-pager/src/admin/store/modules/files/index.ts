@@ -52,6 +52,8 @@ const files: Module<FilesState, RootState> = {
             if (!confirm('Are you sure you want to upload all files?'))
                 return
 
+            state.loading = true
+
             const formData = new FormData()
             formData.append('action', 'pager_add_files')
 
@@ -65,6 +67,8 @@ const files: Module<FilesState, RootState> = {
             } catch (err) {
                 console.error(err)
             }
+
+            state.loading = false
         },
 
         DELETE_ALL_FILES(state): void {
