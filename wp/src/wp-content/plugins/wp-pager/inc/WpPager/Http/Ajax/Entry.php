@@ -6,6 +6,7 @@ namespace WpPager\Http\Ajax;
 
 use Throwable;
 use JsonException;
+use WpPager\Exceptions\MissingRequestParameter;
 use WpPager\Http\Request;
 use WpPager\Dto\Requests\AddFilesRequest;
 use WpPager\Dto\Requests\DeleteFileRequest;
@@ -25,7 +26,8 @@ class Entry
 
     public function __construct()
     {
-        $this->request = new Request($_POST);
+        $req = count($_GET) > 0 ? $_GET : $_POST;
+        $this->request = new Request($req);
     }
 
     /**
@@ -59,11 +61,17 @@ class Entry
      * Register all actions for all ajax calls.
      *
      * @throws JsonException
+     * @throws MissingRequestParameter
      */
     public function init(): void
     {
         foreach ($this->getHandlers() as $method_name => $handler) {
             $action = function () use ($handler): void {
+                if (!wp_verify_nonce($this->request->get('nonce'), 'pager-nonce-key')) {
+                    echo $this->error('Invalid nonce');
+                    exit(200);
+                }
+
                 try {
                     echo $handler()->handle();
                 } catch (Throwable $e) {

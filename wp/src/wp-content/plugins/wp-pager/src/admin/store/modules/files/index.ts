@@ -23,9 +23,12 @@ const files: Module<FilesState, RootState> = {
         FETCH_FILES(state): void {
             state.loading = true
 
-            axios.get<ServerResponse<ImageFile[]>>(pager.ajaxUrl, {
-                params: { action: 'pager_get_files' },
-            })
+            const params = {
+                action: 'pager_get_files',
+                nonce: pager.nonce,
+            }
+
+            axios.get<ServerResponse<ImageFile[]>>(pager.ajaxUrl, { params })
                 .then(resp => state.files = resp.data.data)
                 .catch(e => console.error(e))
                 .finally(() => state.loading = false)
@@ -37,6 +40,7 @@ const files: Module<FilesState, RootState> = {
             const formData = new FormData()
 
             formData.append('action', 'pager_set_files')
+            formData.append('nonce', pager.nonce)
             formData.append('files', JSON.stringify(files))
 
             axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
@@ -53,6 +57,7 @@ const files: Module<FilesState, RootState> = {
 
             formData.append('id', id.toString())
             formData.append('action', 'pager_delete_file')
+            formData.append('nonce', pager.nonce)
 
             axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData)
                 .then(resp => state.files = resp.data.data)
@@ -68,6 +73,7 @@ const files: Module<FilesState, RootState> = {
 
             const formData = new FormData()
             formData.append('action', 'pager_add_files')
+            formData.append('nonce', pager.nonce)
 
             files.forEach(f => formData.append('files[]', f, f.name))
 
@@ -91,6 +97,7 @@ const files: Module<FilesState, RootState> = {
 
             const formData = new FormData()
             formData.append('action', 'pager_delete_all_files')
+            formData.append('nonce', pager.nonce)
 
             axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
                 .then(resp => state.files = [])

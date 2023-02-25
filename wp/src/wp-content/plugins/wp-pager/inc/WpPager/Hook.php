@@ -22,18 +22,23 @@ class Hook
 
     private function registerAssets(): void
     {
+        function registerJavaScriptGlobalVariables(string $key): void
+        {
+            wp_localize_script($key, 'pager', [
+                'nonce' => wp_create_nonce('pager-nonce-key'),
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'rootUrl' => PAGER_URL,
+            ]);
+        }
+
         add_action('wp_enqueue_scripts', function () {
             wp_register_script('pager-album', PAGER_URL . 'assets/album.js', [], PAGER_VERSION, true);
+            registerJavaScriptGlobalVariables('pager-album');
         });
 
         add_action('admin_enqueue_scripts', function () {
             wp_register_script('pager-admin', PAGER_URL . 'assets/admin.js', [], PAGER_VERSION, true);
-
-            wp_localize_script('pager-admin', 'pager', [
-                'nonce'   => wp_create_nonce('pager_delete_file'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'rootUrl' => PAGER_URL,
-            ]);
+            registerJavaScriptGlobalVariables('pager-admin');
         });
     }
 
