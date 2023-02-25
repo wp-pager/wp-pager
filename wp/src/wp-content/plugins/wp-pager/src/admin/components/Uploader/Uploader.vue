@@ -34,7 +34,7 @@ function chooseImages(e: Event): void {
         <input
             @change="chooseImages"
             type="file"
-            class="hidden-input"
+            class="pager-hidden-input"
             id="pager-file-input"
             multiple
         />
@@ -44,10 +44,10 @@ function chooseImages(e: Event): void {
             @dragover.prevent="drag = true"
             @dragleave.self="drag = false"
             @drop.self.prevent="dropImage"
-            :class="{ 'drag': drag }"
+            :class="{ 'pager-drag': drag }"
         >
             <h2>
-                <DropIcon class="icon" />
+                <DropIcon class="pager-icon" />
 
                 <span v-if="drag">Release files...</span>
                 <span v-else> Drop your files...</span>
@@ -63,7 +63,7 @@ function chooseImages(e: Event): void {
         font-weight: 400
         margin-bottom: 1.7rem
 
-    .hidden-input
+    .pager-hidden-input
         display: none
         visibility: hidden
 
@@ -79,7 +79,7 @@ function chooseImages(e: Event): void {
         cursor: pointer
         transition: background-color .2s ease-in-out
 
-        &.drag
+        &.pager-drag
             background-color: rgba(255, 255, 255, .7)
             border-color: rgba(0, 0, 0, .5)
 
@@ -98,7 +98,7 @@ function chooseImages(e: Event): void {
             display: flex
             align-items: center
 
-            .icon
+            .pager-icon
                 width: 2rem
                 height: 2rem
                 margin-right: 0.8rem

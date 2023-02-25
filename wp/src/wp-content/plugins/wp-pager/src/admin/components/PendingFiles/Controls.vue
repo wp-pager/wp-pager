@@ -29,20 +29,20 @@ function clearAll(): void {
     <div data-v-1fs0uvn0qu>
         <Btn
             @click="uploadAll"
-            class="btn"
+            class="pager-btn"
             color="default"
             :isDisabled="files.length === 0"
         >
-            <UploadIcon class="icon" /> Upload all
+            <UploadIcon class="pager-icon" /> Upload all
         </Btn>
 
         <Btn
             @click="clearAll"
-            class="btn"
+            class="pager-btn"
             color="red"
             :isDisabled="files.length === 0"
         >
-            <CloseIcon class="icon" /> Clear all
+            <CloseIcon class="pager-icon" /> Clear all
         </Btn>
     </div>
 </template>
@@ -52,12 +52,12 @@ function clearAll(): void {
     display: flex
     gap: .5rem
 
-    .btn
+    .pager-btn
         display: flex
         align-items: center
         gap: 7px
 
-        .icon
+        .pager-icon
             width: 1.3rem
             height: 1.3rem
 </style>

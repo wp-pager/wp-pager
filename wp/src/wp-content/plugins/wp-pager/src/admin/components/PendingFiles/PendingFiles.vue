@@ -12,7 +12,7 @@ const files = computed<File[]>(() => store.getters['pendingFiles/files'])
     <div data-v-f3f0egk>
         <Controls />
 
-        <div class="files">
+        <div class="pager-files">
             <PendingFile
                 v-for="file in files"
                 :key="file.name"
@@ -26,7 +26,7 @@ const files = computed<File[]>(() => store.getters['pendingFiles/files'])
 [data-v-f3f0egk]
     margin-top: 15px
 
-    .files
+    .pager-files
         margin-top: 15px
         display: grid
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))

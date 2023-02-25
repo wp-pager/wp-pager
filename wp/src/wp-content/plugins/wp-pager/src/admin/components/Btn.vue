@@ -11,10 +11,10 @@ const props = defineProps<Props>()
     <button
         type="button"
         :class="{
-            'disabled': props.isDisabled,
-            'green': props.color === 'green',
-            'red': props.color === 'red',
-            'default': props.color === 'default'
+            'pager-disabled': props.isDisabled,
+            'pager-green': props.color === 'green',
+            'pager-red': props.color === 'red',
+            'pager-default': props.color === 'default'
         }"
     >
         <slot />
@@ -33,26 +33,26 @@ button
     color: #fff
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
 
-    &.green
+    &.pager-green
         background-color: #517d52
 
         &:hover
             background-color: #4c714d
 
-    &.red
+    &.pager-red
         background-color: #d05045
 
         &:hover
             background-color: #be5148
 
-    &.default
+    &.pager-default
         background-color: #fff
         color: #000
 
         &:hover
             background-color: #f5f5f5
 
-    &.disabled
+    &.pager-disabled
         cursor: not-allowed
         opacity: .5
 </style>

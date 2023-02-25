@@ -11,8 +11,8 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
 
 <template>
     <div data-v-01fk3851k>
-        <Btn class="btn" :isDisabled="files.length === 0" color="red">
-            <DeleteIcon class="icon" />
+        <Btn class="pager-btn" :isDisabled="files.length === 0" color="red">
+            <DeleteIcon class="pager-icon" />
             Delete All
         </Btn>
     </div>
@@ -22,12 +22,12 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
 [data-v-01fk3851k]
     margin-bottom: 1.4rem
 
-    .btn
+    .pager-btn
         display: flex
         align-items: center
         gap: 7px
 
-        .icon
+        .pager-icon
             width: 17px
             height: 17px
 </style>

@@ -19,11 +19,11 @@ function deleteFile(): void {
 <template>
     <div data-v-mklq4p19ma>
         <a :href="props.file.url" target="_blank" type="button">
-            <EyeIcon class="icon" />
+            <EyeIcon class="pager-icon" />
         </a>
 
         <button @click="deleteFile" type="button">
-            <DeleteIcon class="icon" />
+            <DeleteIcon class="pager-icon" />
         </button>
     </div>
 </template>
@@ -64,7 +64,7 @@ function deleteFile(): void {
             border-color: #ccc
             box-shadow: none
 
-        .icon
+        .pager-icon
             width: 30px
             height: 30px
             color: #333

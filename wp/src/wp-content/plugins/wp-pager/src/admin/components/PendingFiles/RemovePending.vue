@@ -17,7 +17,7 @@ function removeFile() {
 
 <template>
     <button type="button" @click="removeFile">
-        <CloseIcon class="icon" />
+        <CloseIcon class="pager-icon" />
     </button>
 </template>
 
@@ -38,7 +38,7 @@ button
     opacity: 0
     transition: opacity 100ms ease-in-out
 
-    .icon
+    .pager-icon
         width: 40px
         height: 40px
 
