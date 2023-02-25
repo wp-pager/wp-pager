@@ -57,6 +57,15 @@ class File
         return $files;
     }
 
+    public function deleteAll(): void
+    {
+        $files = $this->getFiles();
+
+        foreach ($files as $file) {
+            $this->deleteFile($file->id);
+        }
+    }
+
     /**
      * @param ImageFile[] $files
      *

@@ -53,7 +53,6 @@ const files: Module<FilesState, RootState> = {
                 return
 
             const formData = new FormData()
-
             formData.append('action', 'pager_add_files')
 
             files.forEach(f => formData.append('files[]', f, f.name))
@@ -67,6 +66,21 @@ const files: Module<FilesState, RootState> = {
                 console.error(err)
             }
         },
+
+        DELETE_ALL_FILES(state): void {
+            if (!confirm('Are you sure you want to delete all files?'))
+                return
+
+            state.loading = true
+
+            const formData = new FormData()
+            formData.append('action', 'pager_delete_all_files')
+
+            axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
+                .then(resp => state.files = [])
+                .catch(err => console.error(err))
+                .finally(() => state.loading = false)
+        },
     },
 
     actions: {
@@ -78,8 +92,12 @@ const files: Module<FilesState, RootState> = {
             commit('DELETE_FILE', id)
         },
 
-        uploadFiles({ commit, dispatch }, files: File[]): void {
+        uploadFiles({ commit }, files: File[]): void {
             commit('UPLOAD_FILES', files)
+        },
+
+        deleteAllFiles({ commit }): void {
+            commit('DELETE_ALL_FILES')
         },
     },
 }

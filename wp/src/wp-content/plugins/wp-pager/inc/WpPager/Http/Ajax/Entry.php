@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace WpPager\Http\Ajax;
 
+use Throwable;
 use JsonException;
+use WpPager\Http\Request;
 use WpPager\Dto\Requests\AddFilesRequest;
 use WpPager\Dto\Requests\DeleteFileRequest;
 use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
 use WpPager\Http\Ajax\Handlers\GetFilesHandler;
 use WpPager\Http\Ajax\Handlers\Handler;
 use WpPager\Http\Ajax\Handlers\AddFilesHandler;
-use WpPager\Http\Request;
-use Throwable;
+use WpPager\Http\Ajax\Handlers\DeleteAllFilesHandler;
 
 class Entry
 {
@@ -41,6 +42,9 @@ class Entry
             'pager_add_files' => function (): Handler {
                 $request = new AddFilesRequest($this->request->files());
                 return new AddFilesHandler($request);
+            },
+            'pager_delete_all_files' => function (): Handler {
+                return new DeleteAllFilesHandler();
             },
         ];
     }

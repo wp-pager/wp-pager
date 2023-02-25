@@ -7,11 +7,24 @@ import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
+const loading = computed<boolean>(() => store.getters['files/loading'])
+
+function deleteAllFiles(): void {
+    if (loading.value || files.value.length === 0)
+        return
+
+    store.dispatch('files/deleteAllFiles')
+}
 </script>
 
 <template>
     <div data-v-01fk3851k>
-        <Btn class="pager-btn" :isDisabled="files.length === 0" color="red">
+        <Btn
+            @click="deleteAllFiles"
+            class="pager-btn"
+            :isDisabled="files.length === 0 || loading"
+            color="red"
+        >
             <DeleteIcon class="pager-icon" />
             Delete All
         </Btn>
