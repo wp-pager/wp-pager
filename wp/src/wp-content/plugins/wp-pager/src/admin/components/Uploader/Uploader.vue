@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
 import { useStore } from 'vuex'
 import DropIcon from '@shared/components/Icons/DropIcon.vue'
 

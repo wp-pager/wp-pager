@@ -4,7 +4,7 @@ import Spinner from '@shared/components/Spinner.vue'
 
 <template>
     <div data-v-piq81ndlq>
-        <div v-for="i in 4" :key="i" class="pager-placehoder">
+        <div v-for="i in 4" :key="i" class="pager-placeholder">
             <Spinner />
         </div>
     </div>
@@ -16,7 +16,7 @@ import Spinner from '@shared/components/Spinner.vue'
     grid-template-columns: repeat(auto-fill, 300px)
     grid-gap: 1rem
 
-    .pager-placehoder
+    .pager-placeholder
         height: 300px
         background-color: rgba(255, 255, 255, 0.6)
         border-radius: 5px
