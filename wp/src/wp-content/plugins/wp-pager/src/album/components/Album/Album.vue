@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
 import PageInfo from '@album/components/Album/PageInfo/PageInfo.vue'
 import Navigation from '@album/components/Album/Navigation.vue'
+import isTouchDevice from 'is-touch-device'
+import { debounce } from 'lodash'
 
 const store = useStore()
 
@@ -12,7 +14,33 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const pageTurnDirection = computed<string>(() => store.getters['files/pageTurnDirection'])
+
+const debouncedTouchendHandler = debounce(handleTouchend, 100, {
+    leading: true,
+    trailing: false,
+})
+
+const touchStart = ref(0)
+
+function setTouchStart(e: TouchEvent): void {
+    if (!e.changedTouches)
+        return
+
+    touchStart.value = e.changedTouches[0].clientX
+}
+
+function handleTouchend(e: TouchEvent): void {
+    if (!e.changedTouches)
+        return
+
+    const currentX = e.changedTouches[0].clientX
+
+    if (currentX > touchStart.value) {
+        store.dispatch('files/prevPage')
+    } else if (currentX < touchStart.value) {
+        store.dispatch('files/nextPage')
+    }
+}
 </script>
 
 <template>
@@ -24,8 +52,12 @@ const pageTurnDirection = computed<string>(() => store.getters['files/pageTurnDi
         <div v-else-if="files.length > 0">
             <PageInfo />
 
-            <div class="pager-album-image">
-                <Navigation />
+            <div
+                @touchstart="setTouchStart"
+                @touchmove="debouncedTouchendHandler"
+                class="pager-album-image"
+            >
+                <Navigation v-if="!isTouchDevice()" />
 
                 <img
                     v-for="file in files"

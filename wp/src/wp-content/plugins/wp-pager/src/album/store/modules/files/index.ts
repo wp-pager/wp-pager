@@ -12,14 +12,12 @@ const files: Module<FilesState, RootState> = {
         files: [],
         loading: false,
         currentPageNum: 1,
-        pageTurnDirection: 'right',
     },
 
     getters: {
         files: (s): ImageFile[] => s.files,
         loading: (s): boolean => s.loading,
         currentPageNum: (s): number => s.currentPageNum,
-        pageTurnDirection: (s): 'left' | 'right' => s.pageTurnDirection,
     },
 
     mutations: {
@@ -49,8 +47,6 @@ const files: Module<FilesState, RootState> = {
             if (nextPage > state.files.length)
                 return
 
-            state.pageTurnDirection = 'right'
-
             for (const key in state.files) {
                 state.files[key].visible = state.files[key].id === nextPage
             }
@@ -64,13 +60,22 @@ const files: Module<FilesState, RootState> = {
             if (prevPage <= 0)
                 return
 
-            state.pageTurnDirection = 'left'
-
             for (const key in state.files) {
                 state.files[key].visible = state.files[key].id === prevPage
             }
 
             state.currentPageNum = prevPage
+        },
+
+        setPageNum({ state }, pageNum: number): void {
+            if (pageNum <= 0 || pageNum > state.files.length)
+                return
+
+            for (const key in state.files) {
+                state.files[key].visible = state.files[key].id === pageNum
+            }
+
+            state.currentPageNum = pageNum
         },
     },
 }
