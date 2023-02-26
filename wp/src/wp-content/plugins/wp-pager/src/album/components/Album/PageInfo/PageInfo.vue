@@ -10,16 +10,44 @@ const currentPageNum = computed<number>(() => store.getters['files/currentPageNu
 
 <template>
     <div data-v-qpxh391>
-        <span>Page: {{ currentPageNum }}/{{ files.length }}</span>
+        <b
+            v-for="(file, i) in files"
+            :key="file.id"
+            :class="{ 'active': file.visible }"
+        >
+            <span class="pager-number">{{ i + 1 }}</span>
+            <div class="pager-line"></div>
+        </b>
     </div>
 </template>
 
 <style lang="sass" scoped>
 [data-v-qpxh391]
-    background-color: white
-    color: #777
+    display: flex
+    gap: 6px
+    justify-content: space-evenly
     border-radius: 5px
+    background-color: white
+    margin-bottom: 12px
     padding: 3px 7px
-    font-size: .9rem
-    margin-bottom: 10px
+
+    b
+        width: 100%
+        text-align: center
+
+        .pager-number
+            color: #d5d5d5
+
+        .pager-line
+            width: 100%
+            height: 5px
+            display: block
+            background-color: #d5d5d5
+            border-radius: 2px
+
+        &.active .pager-line
+            background-color: #6da816
+
+        &.active .pager-number
+            color: #6da816
 </style>
