@@ -3,6 +3,9 @@ import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
+import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
+import NextPageBtn from '@album/components/Album/NextPageBtn.vue'
+import PageInfo from '@album/components/Album/PageInfo/PageInfo.vue'
 
 const store = useStore()
 
@@ -20,11 +23,23 @@ const currentFile = computed<ImageFile | null>(() => files.value[currentFileInde
             <Spinner />
         </div>
 
-        <div v-else-if="currentFile" class="pager-album-image">
-            <img
-                :src="currentFile.url"
-                :alt="currentFile.name"
-            />
+        <div v-else-if="currentFile">
+            <PageInfo />
+
+            <div class="pager-album-image">
+                <NextPageBtn>
+                    <ArrowRightIcon class="pager-icon" />
+                </NextPageBtn>
+
+                <NextPageBtn>
+                    <ArrowRightIcon class="pager-icon" />
+                </NextPageBtn>
+
+                <img
+                    :src="currentFile.url"
+                    :alt="currentFile.name"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -34,9 +49,16 @@ const currentFile = computed<ImageFile | null>(() => files.value[currentFileInde
     .pager-album-image
         position: relative
 
+        &:hover button
+            opacity: 1
+
         img
             width: 100%
             border-radius: 5px
             pointer-events: none
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
+
+        .pager-icon
+            width: 30px
+            height: 30px
 </style>
