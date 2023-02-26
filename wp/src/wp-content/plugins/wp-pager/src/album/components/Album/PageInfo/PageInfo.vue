@@ -46,9 +46,6 @@ function setPageNum(page: number) {
             .pager-line
                 height: 10px
 
-            .pager-number
-                font-size: 1.8rem
-
         .pager-number
             color: #d5d5d5
             transition: all .1s ease-in-out

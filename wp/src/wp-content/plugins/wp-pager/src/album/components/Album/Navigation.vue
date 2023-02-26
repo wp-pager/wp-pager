@@ -8,7 +8,7 @@ import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
 const store = useStore()
 
 onMounted(() => {
-    window.addEventListener('keydown', (e) => {
+    window.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') {
             store.dispatch('files/nextPage')
         } else if (e.key === 'ArrowLeft') {
