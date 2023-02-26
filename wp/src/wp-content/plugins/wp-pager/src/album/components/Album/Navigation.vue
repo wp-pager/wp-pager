@@ -8,8 +8,7 @@ import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
 const store = useStore()
 
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const currentFileIndex = computed<number>(() => store.getters['files/currentFileIndex'])
-const currentPageNum = computed<number>(() => currentFileIndex.value + 1)
+const currentPageNum = computed<number>(() => store.getters['files/currentPageNum'])
 
 function nextPage(): void {
     store.dispatch('files/nextPage')

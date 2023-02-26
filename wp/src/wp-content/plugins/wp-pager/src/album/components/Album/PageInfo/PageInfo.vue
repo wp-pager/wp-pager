@@ -5,12 +5,12 @@ import { computed } from 'vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const currentFileIndex = computed<number>(() => store.getters['files/currentFileIndex'])
+const currentPageNum = computed<number>(() => store.getters['files/currentPageNum'])
 </script>
 
 <template>
     <div data-v-qpxh391>
-        <span>Page: {{ currentFileIndex + 1 }}/{{ files.length }}</span>
+        <span>Page: {{ currentPageNum }}/{{ files.length }}</span>
     </div>
 </template>
 

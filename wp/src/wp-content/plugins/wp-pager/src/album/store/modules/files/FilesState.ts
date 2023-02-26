@@ -3,7 +3,7 @@ import type { ImageFile } from '@shared/types'
 type FilesState = {
     files: ImageFile[]
     loading: boolean
-    currentFileIndex: number
+    currentPageNum: number
 }
 
 export default FilesState

@@ -31,7 +31,7 @@ class File
         }
 
         return array_map(function (array $file) {
-            return new ImageFile($file['id'], $file['name'], $file['url'], $file['path']);
+            return new ImageFile($file['id'], $file['name'], $file['url'], $file['path'], $file['visible']);
         }, $files);
     }
 
@@ -77,7 +77,7 @@ class File
         $result = $this->getFiles();
         $latest_id = $this->getLatestFileId($result);
 
-        foreach ($files as $file) {
+        foreach ($files as $key => $file) {
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
             $result[] = new ImageFile(
@@ -85,6 +85,7 @@ class File
                 name: $file['name'],
                 url: PAGER_FILES_DIR_URL . '/' . $file['name'],
                 path: $path,
+                visible: $key === 0,
             );
 
             move_uploaded_file($file['tmp_name'], $path);

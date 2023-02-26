@@ -12,8 +12,6 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const currentFileIndex = computed<number>(() => store.getters['files/currentFileIndex'])
-const currentFile = computed<ImageFile | null>(() => files.value[currentFileIndex.value])
 </script>
 
 <template>
@@ -22,16 +20,19 @@ const currentFile = computed<ImageFile | null>(() => files.value[currentFileInde
             <Spinner />
         </div>
 
-        <div v-else-if="currentFile">
+        <div v-else-if="files.length > 0">
             <PageInfo />
 
             <div class="pager-album-image">
                 <Navigation />
 
-                <img
-                    :src="currentFile.url"
-                    :alt="currentFile.name"
-                />
+                <div v-for="file in files" :key="file.id">
+                    <img
+                        v-if="file.visible"
+                        :src="file.url"
+                        :alt="file.name"
+                    />
+                </div>
             </div>
         </div>
     </div>

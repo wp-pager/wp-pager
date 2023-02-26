@@ -21,7 +21,8 @@ abstract class Json
      */
     public static function encode(array|object $input): string
     {
-        $result = json_encode($input, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $flags = JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
+        $result = json_encode($input, $flags);
 
         if (!$result) {
             throw new JsonException('JSON parsing error');

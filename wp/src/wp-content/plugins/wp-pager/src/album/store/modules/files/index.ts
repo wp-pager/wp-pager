@@ -11,13 +11,13 @@ const files: Module<FilesState, RootState> = {
     state: {
         files: [],
         loading: false,
-        currentFileIndex: 0,
+        currentPageNum: 1,
     },
 
     getters: {
         files: (s): ImageFile[] => s.files,
         loading: (s): boolean => s.loading,
-        currentFileIndex: (s): number => s.currentFileIndex,
+        currentPageNum: (s): number => s.currentPageNum,
     },
 
     mutations: {
@@ -42,21 +42,21 @@ const files: Module<FilesState, RootState> = {
         },
 
         nextPage({ state }): void {
-            const nextIndex = state.currentFileIndex + 1
+            const nextPage = state.currentPageNum + 1
 
-            if (nextIndex >= state.files.length)
+            if (nextPage > state.files.length)
                 return
 
-            state.currentFileIndex = nextIndex
+            state.currentPageNum = nextPage
         },
 
         prevPage({ state }): void {
-            const prevIndex = state.currentFileIndex - 1
+            const prevPage = state.currentPageNum - 1
 
-            if (prevIndex < 0)
+            if (prevPage < 0)
                 return
 
-            state.currentFileIndex = prevIndex
+            state.currentPageNum = prevPage
         },
     },
 }

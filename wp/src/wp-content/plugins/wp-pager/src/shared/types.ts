@@ -9,6 +9,7 @@ export type ImageFile = {
     path: string
     url: string
     name: string
+    visible: boolean
 }
 
 export type Config = {
