@@ -40,6 +40,24 @@ const files: Module<FilesState, RootState> = {
         fetchFiles({ commit }): void {
             commit('FETCH_FILES')
         },
+
+        nextPage({ state }): void {
+            const nextIndex = state.currentFileIndex + 1
+
+            if (nextIndex >= state.files.length)
+                return
+
+            state.currentFileIndex = nextIndex
+        },
+
+        prevPage({ state }): void {
+            const prevIndex = state.currentFileIndex - 1
+
+            if (prevIndex < 0)
+                return
+
+            state.currentFileIndex = prevIndex
+        },
     },
 }
 

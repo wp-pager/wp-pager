@@ -10,7 +10,7 @@ const currentFileIndex = computed<number>(() => store.getters['files/currentFile
 
 <template>
     <div data-v-qpxh391>
-        <span>Page: {{ currentFileIndex }}/{{ files.length }}</span>
+        <span>Page: {{ currentFileIndex + 1 }}/{{ files.length }}</span>
     </div>
 </template>
 
