@@ -12,6 +12,7 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
+const pageTurnDirection = computed<string>(() => store.getters['files/pageTurnDirection'])
 </script>
 
 <template>
@@ -26,13 +27,13 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
             <div class="pager-album-image">
                 <Navigation />
 
-                <div v-for="file in files" :key="file.id">
-                    <img
-                        v-if="file.visible"
-                        :src="file.url"
-                        :alt="file.name"
-                    />
-                </div>
+                <img
+                    v-for="file in files"
+                    :key="file.id"
+                    :style="{ opacity: file.visible ? 1 : 0 }"
+                    :src="file.url"
+                    :alt="file.name"
+                />
             </div>
         </div>
     </div>
@@ -42,6 +43,7 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
 [data-v-hw0krsr3]
     .pager-album-image
         position: relative
+        min-height: 700px
 
         &:hover [data-v-bnqp3]
             opacity: 1
@@ -51,4 +53,6 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
             border-radius: 5px
             pointer-events: none
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
+            position: absolute
+            transition: opacity .3s ease-in-out
 </style>

@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
 import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
 
 const store = useStore()
+
+onMounted(() => {
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            store.dispatch('files/nextPage')
+        } else if (e.key === 'ArrowLeft') {
+            store.dispatch('files/prevPage')
+        }
+    })
+})
 
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const currentPageNum = computed<number>(() => store.getters['files/currentPageNum'])
@@ -62,6 +72,7 @@ function prevPage(): void {
         justify-content: center
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
         transition: background-color 200ms ease, opacity 200ms ease
+        z-index: 10
 
         &:hover
             background-color: #f5f5f5
