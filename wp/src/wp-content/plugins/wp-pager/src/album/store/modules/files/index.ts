@@ -43,7 +43,7 @@ const files: Module<FilesState, RootState> = {
             commit('FETCH_FILES')
         },
 
-        nextPage({ state }): void {
+        nextPage({ state, commit }): void {
             const nextPage = state.currPageNum + 1
 
             if (nextPage > state.files.length) {
@@ -57,7 +57,7 @@ const files: Module<FilesState, RootState> = {
             state.currPageNum = nextPage
         },
 
-        prevPage({ state }): void {
+        prevPage({ state, commit }): void {
             const prevPage = state.currPageNum - 1
 
             if (prevPage <= 0) {
@@ -71,7 +71,7 @@ const files: Module<FilesState, RootState> = {
             state.currPageNum = prevPage
         },
 
-        setCurrPageNum({ state }, pageNum: number): void {
+        setCurrPageNum({ state, commit }, pageNum: number): void {
             if (pageNum <= 0 || pageNum > state.files.length)
                 return
 

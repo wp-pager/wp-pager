@@ -4,6 +4,7 @@ import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
 import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
 import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
+import playSound from '@album/modules/playSound'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -28,6 +29,7 @@ function prevPage(): void {
 }
 
 async function handleRightDirection(): Promise<void> {
+    playSound('page-prev')
     await store.dispatch('swipe/setTouchStart', 1)
     await store.dispatch('swipe/setTouchEnd', 0)
     await store.dispatch('files/nextPage')
@@ -35,6 +37,7 @@ async function handleRightDirection(): Promise<void> {
 }
 
 async function handleLeftDirection(): Promise<void> {
+    playSound('page-next')
     await store.dispatch('swipe/setTouchStart', 0)
     await store.dispatch('swipe/setTouchEnd', 1)
     await store.dispatch('files/prevPage')
@@ -91,10 +94,10 @@ async function handleLeftDirection(): Promise<void> {
             background-color: #f5f5f5
 
         &.pager-right-button
-            right: 10px
+            right: 17px
 
         &.pager-left-button
-            left: 10px
+            left: 17px
 
         .pager-icon
             width: 27px

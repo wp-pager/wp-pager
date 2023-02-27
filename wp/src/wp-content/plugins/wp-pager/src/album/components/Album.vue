@@ -84,7 +84,7 @@ function handleTouchend(e: TouchEvent): void {
 [data-v-hw0krsr3]
     overflow: hidden
     position: relative
-    padding: 10px
+    padding: 7px
 
     .pager-album-image
         min-height: 700px

@@ -2,6 +2,7 @@
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import playSound from '@album/modules/playSound'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -11,9 +12,11 @@ async function pageChosenHandler(pageNum: number) {
     if (pageNum > prevPageNum.value) {
         await store.dispatch('swipe/setTouchStart', 1)
         await store.dispatch('swipe/setTouchEnd', 0)
+        playSound('page-prev')
     } else if (pageNum < prevPageNum.value) {
         await store.dispatch('swipe/setTouchStart', 0)
         await store.dispatch('swipe/setTouchEnd', 1)
+        playSound('page-next')
     }
 
     await store.dispatch('files/setPrevPageNum', pageNum)
