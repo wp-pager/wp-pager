@@ -17,3 +17,5 @@ export type Config = {
     nonce: string
     rootUrl: string
 }
+
+export type SwipeDirection = 'left' | 'right'

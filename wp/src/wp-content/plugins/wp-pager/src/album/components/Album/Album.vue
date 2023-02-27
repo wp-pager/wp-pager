@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ImageFile } from '@shared/types'
+import type { ImageFile, SwipeDirection } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed, onMounted, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
@@ -22,22 +22,20 @@ const debouncedTouchendHandler = debounce(handleTouchend, 200, {
     trailing: false,
 })
 
-const touchStart = ref(0)
-const touchEnd = ref(0)
-const swipeDirection = computed<'right' | 'left'>(() => touchStart.value > touchEnd.value ? 'left' : 'right')
+const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
         return
 
-    touchStart.value = e.changedTouches[0].clientX
+    store.dispatch('swipe/setTouchStart', e.changedTouches[0].clientX)
 }
 
 function handleTouchend(e: TouchEvent): void {
     if (!e.changedTouches)
         return
 
-    touchEnd.value = e.changedTouches[0].clientX
+    store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
 
     if (swipeDirection.value === 'right') {
         store.dispatch('files/prevPage')

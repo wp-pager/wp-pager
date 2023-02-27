@@ -1,6 +1,6 @@
 import type { Module } from 'vuex'
 import type FilesState from './FilesState'
-import type RootState from '@admin/store/RootState'
+import type RootState from '@album/store/RootState'
 import type { ImageFile } from '@shared/types'
 import { ServerResponse } from '@shared/types'
 import axios from 'axios'
