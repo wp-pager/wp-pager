@@ -11,9 +11,6 @@ import SwipeLeftTransition from '@shared/components/Transitions/SwipeLeftTransit
 import SwipeRightTransition from '@shared/components/Transitions/SwipeRightTransition.vue'
 
 const store = useStore()
-
-onMounted(() => store.dispatch('files/fetchFiles'))
-
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 
@@ -23,6 +20,8 @@ const debouncedTouchendHandler = debounce(handleTouchend, 100, {
 })
 
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
+
+onMounted(() => store.dispatch('files/fetchFiles'))
 
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
@@ -67,10 +66,7 @@ function handleTouchend(e: TouchEvent): void {
             >
                 <Arrows v-if="!isTouchDevice()" />
 
-                <div
-                    v-for="file in files"
-                    :key="file.id"
-                >
+                <div v-for="file in files" :key="file.id">
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
                             v-if="file.visible"
@@ -88,15 +84,18 @@ function handleTouchend(e: TouchEvent): void {
 [data-v-hw0krsr3]
     overflow: hidden
     position: relative
+    padding: 10px
 
     .pager-album-image
         min-height: 700px
+        user-select: none
 
         &:hover [data-v-bnqp3]
             opacity: 1
 
         img
             width: 100%
+            user-select: none
             border-radius: 5px
             pointer-events: none
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
