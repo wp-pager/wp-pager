@@ -11,13 +11,15 @@ const files: Module<FilesState, RootState> = {
     state: {
         files: [],
         loading: false,
-        currentPageNum: 1,
+        currPageNum: 1,
+        prevPageNum: 1,
     },
 
     getters: {
         files: (s): ImageFile[] => s.files,
         loading: (s): boolean => s.loading,
-        currentPageNum: (s): number => s.currentPageNum,
+        currPageNum: (s): number => s.currPageNum,
+        prevPageNum: (s): number => s.prevPageNum,
     },
 
     mutations: {
@@ -42,7 +44,7 @@ const files: Module<FilesState, RootState> = {
         },
 
         nextPage({ state }): void {
-            const nextPage = state.currentPageNum + 1
+            const nextPage = state.currPageNum + 1
 
             if (nextPage > state.files.length) {
                 return
@@ -52,11 +54,11 @@ const files: Module<FilesState, RootState> = {
                 state.files[key].visible = state.files[key].id === nextPage
             }
 
-            state.currentPageNum = nextPage
+            state.currPageNum = nextPage
         },
 
         prevPage({ state }): void {
-            const prevPage = state.currentPageNum - 1
+            const prevPage = state.currPageNum - 1
 
             if (prevPage <= 0) {
                 return
@@ -66,10 +68,10 @@ const files: Module<FilesState, RootState> = {
                 state.files[key].visible = state.files[key].id === prevPage
             }
 
-            state.currentPageNum = prevPage
+            state.currPageNum = prevPage
         },
 
-        setPageNum({ state }, pageNum: number): void {
+        setCurrPageNum({ state }, pageNum: number): void {
             if (pageNum <= 0 || pageNum > state.files.length)
                 return
 
@@ -77,7 +79,11 @@ const files: Module<FilesState, RootState> = {
                 state.files[key].visible = state.files[key].id === pageNum
             }
 
-            state.currentPageNum = pageNum
+            state.currPageNum = pageNum
+        },
+
+        setPrevPageNum({ state }, pageNum: number): void {
+            state.prevPageNum = pageNum
         },
     },
 }

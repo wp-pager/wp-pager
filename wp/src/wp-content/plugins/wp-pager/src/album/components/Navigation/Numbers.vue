@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const prevPageNum = ref(1)
+const prevPageNum = computed<number>(() => store.getters['files/prevPageNum'])
 
-function pageChosenHandler(pageNum: number) {
+async function pageChosenHandler(pageNum: number) {
     if (pageNum > prevPageNum.value) {
-        store.dispatch('swipe/setTouchStart', 0)
-        store.dispatch('swipe/setTouchEnd', 1)
+        await store.dispatch('swipe/setTouchStart', 1)
+        await store.dispatch('swipe/setTouchEnd', 0)
     } else if (pageNum < prevPageNum.value) {
-        store.dispatch('swipe/setTouchStart', 1)
-        store.dispatch('swipe/setTouchEnd', 0)
+        await store.dispatch('swipe/setTouchStart', 0)
+        await store.dispatch('swipe/setTouchEnd', 1)
     }
 
-    prevPageNum.value = pageNum
-    store.dispatch('files/setPageNum', pageNum)
+    await store.dispatch('files/setPrevPageNum', pageNum)
+    await store.dispatch('files/setCurrPageNum', pageNum)
 }
 </script>
 

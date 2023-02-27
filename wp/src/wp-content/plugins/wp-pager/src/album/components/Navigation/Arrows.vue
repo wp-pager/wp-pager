@@ -6,44 +6,46 @@ import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
 import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
 
 const store = useStore()
+const files = computed<ImageFile[]>(() => store.getters['files/files'])
+const currPageNum = computed<number>(() => store.getters['files/currPageNum'])
 
 onMounted(() => {
-    window.addEventListener('keydown', e => {
+    window.addEventListener('keydown', async e => {
         if (e.key === 'ArrowRight') {
-            store.dispatch('swipe/setTouchStart', 1)
-            store.dispatch('swipe/setTouchEnd', 0)
+            handleRightDirection()
         } else if (e.key === 'ArrowLeft') {
-            store.dispatch('swipe/setTouchStart', 0)
-            store.dispatch('swipe/setTouchEnd', 1)
+            handleLeftDirection()
         }
     })
-
-    window.addEventListener('keyup', e => {
-        if (e.key === 'ArrowRight') {
-            store.dispatch('files/nextPage')
-        } else if (e.key === 'ArrowLeft') {
-            store.dispatch('files/prevPage')
-        }
-    })
-
 })
 
-const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const currentPage = computed<number>(() => store.getters['pages/currentPage'])
-
 function nextPage(): void {
-    store.dispatch('files/nextPage')
+    handleRightDirection()
 }
 
 function prevPage(): void {
-    store.dispatch('files/prevPage')
+    handleLeftDirection()
+}
+
+async function handleRightDirection(): Promise<void> {
+    await store.dispatch('swipe/setTouchStart', 1)
+    await store.dispatch('swipe/setTouchEnd', 0)
+    await store.dispatch('files/nextPage')
+    await store.dispatch('files/setPrevPageNum', currPageNum.value + 1)
+}
+
+async function handleLeftDirection(): Promise<void> {
+    await store.dispatch('swipe/setTouchStart', 0)
+    await store.dispatch('swipe/setTouchEnd', 1)
+    await store.dispatch('files/prevPage')
+    await store.dispatch('files/setPrevPageNum', currPageNum.value - 1)
 }
 </script>
 
 <template>
     <div data-v-bnqp3>
         <button
-            v-if="currentPage > 1"
+            v-if="currPageNum > 1"
             @click="prevPage"
             type="button"
             class="pager-left-button"
@@ -52,7 +54,7 @@ function prevPage(): void {
         </button>
 
         <button
-            v-if="currentPage < files.length"
+            v-if="currPageNum < files.length"
             @click="nextPage"
             type="button"
             class="pager-right-button"
