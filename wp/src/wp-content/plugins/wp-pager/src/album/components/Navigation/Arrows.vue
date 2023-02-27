@@ -10,11 +10,22 @@ const store = useStore()
 onMounted(() => {
     window.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') {
+            store.dispatch('swipe/setTouchStart', 1)
+            store.dispatch('swipe/setTouchEnd', 0)
+        } else if (e.key === 'ArrowLeft') {
+            store.dispatch('swipe/setTouchStart', 0)
+            store.dispatch('swipe/setTouchEnd', 1)
+        }
+    })
+
+    window.addEventListener('keyup', e => {
+        if (e.key === 'ArrowRight') {
             store.dispatch('files/nextPage')
         } else if (e.key === 'ArrowLeft') {
             store.dispatch('files/prevPage')
         }
     })
+
 })
 
 const files = computed<ImageFile[]>(() => store.getters['files/files'])

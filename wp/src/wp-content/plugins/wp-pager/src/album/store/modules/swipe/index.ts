@@ -7,12 +7,17 @@ const swipe: Module<SwipeState, RootState> = {
     namespaced: true,
 
     state: {
-        touchStart: 0,
+        touchStart: 1,
         touchEnd: 0,
     },
 
     getters: {
-        direction: (s): SwipeDirection => s.touchStart > s.touchEnd ? 'left' : 'right',
+        //direction: (s): SwipeDirection => s.touchStart > s.touchEnd ? 'left' : 'right',
+        direction: (s): SwipeDirection => {
+            const res = s.touchStart > s.touchEnd ? 'left' : 'right'
+            console.log(s.touchStart, s.touchEnd)
+            return res
+        },
     },
 
     actions: {

@@ -44,8 +44,9 @@ const files: Module<FilesState, RootState> = {
         nextPage({ state }): void {
             const nextPage = state.currentPageNum + 1
 
-            if (nextPage > state.files.length)
+            if (nextPage > state.files.length) {
                 return
+            }
 
             for (const key in state.files) {
                 state.files[key].visible = state.files[key].id === nextPage
@@ -57,8 +58,9 @@ const files: Module<FilesState, RootState> = {
         prevPage({ state }): void {
             const prevPage = state.currentPageNum - 1
 
-            if (prevPage <= 0)
+            if (prevPage <= 0) {
                 return
+            }
 
             for (const key in state.files) {
                 state.files[key].visible = state.files[key].id === prevPage
