@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import Album from '@album/components/Album/Album.vue'
+import Album from '@album/components/Album.vue'
 </script>
 
 <template>
-    <div>
-        <Album />
-    </div>
+    <Album />
 </template>
 

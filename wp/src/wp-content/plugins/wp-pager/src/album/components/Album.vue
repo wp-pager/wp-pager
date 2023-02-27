@@ -3,8 +3,8 @@ import type { ImageFile, SwipeDirection } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed, onMounted, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
-import PageInfo from '@album/components/Album/PageInfo/PageInfo.vue'
-import Navigation from '@album/components/Album/Navigation.vue'
+import Numbers from '@album/components/Navigation/Numbers.vue'
+import Arrows from '@album/components/Navigation/Arrows.vue'
 import isTouchDevice from 'is-touch-device'
 import { debounce } from 'lodash'
 import SwipeLeftTransition from '@shared/components/Transitions/SwipeLeftTransition.vue'
@@ -17,7 +17,7 @@ onMounted(() => store.dispatch('files/fetchFiles'))
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 
-const debouncedTouchendHandler = debounce(handleTouchend, 200, {
+const debouncedTouchendHandler = debounce(handleTouchend, 100, {
     leading: true,
     trailing: false,
 })
@@ -31,11 +31,16 @@ function setTouchStart(e: TouchEvent): void {
     store.dispatch('swipe/setTouchStart', e.changedTouches[0].clientX)
 }
 
-function handleTouchend(e: TouchEvent): void {
+function setTouchEnd(e: TouchEvent): void {
     if (!e.changedTouches)
         return
 
     store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
+}
+
+function handleTouchend(e: TouchEvent): void {
+    if (!e.changedTouches)
+        return
 
     if (swipeDirection.value === 'right') {
         store.dispatch('files/prevPage')
@@ -52,14 +57,15 @@ function handleTouchend(e: TouchEvent): void {
         </div>
 
         <div v-else-if="files.length > 0">
-            <PageInfo />
+            <Numbers />
 
             <div
                 @touchstart="setTouchStart"
-                @touchmove="debouncedTouchendHandler"
+                @touchmove="setTouchEnd"
+                @touchend="debouncedTouchendHandler"
                 class="pager-album-image"
             >
-                <Navigation v-if="!isTouchDevice()" />
+                <Arrows v-if="!isTouchDevice()" />
 
                 <div
                     v-for="file in files"

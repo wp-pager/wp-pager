@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
+const prevPageNum = ref(1)
 
-function setPageNum(page: number) {
-    store.dispatch('files/setPageNum', page)
+function pageChosenHandler(pageNum: number) {
+    if (pageNum > prevPageNum.value) {
+        store.dispatch('swipe/setTouchStart', 0)
+        store.dispatch('swipe/setTouchEnd', 1)
+    } else if (pageNum < prevPageNum.value) {
+        store.dispatch('swipe/setTouchStart', 1)
+        store.dispatch('swipe/setTouchEnd', 0)
+    }
+
+    prevPageNum.value = pageNum
+    store.dispatch('files/setPageNum', pageNum)
 }
 </script>
 
@@ -17,7 +27,7 @@ function setPageNum(page: number) {
             v-for="(file, i) in files"
             :key="file.id"
             :class="{ 'active': file.visible }"
-            @click="setPageNum(i + 1)"
+            @click="pageChosenHandler(i + 1)"
         >
             <span class="pager-number">{{ i + 1 }}</span>
             <div class="pager-line"></div>
@@ -49,6 +59,7 @@ function setPageNum(page: number) {
         .pager-number
             color: #d5d5d5
             transition: all .1s ease-in-out
+            user-select: none
 
         .pager-line
             width: 100%

@@ -18,7 +18,7 @@ onMounted(() => {
 })
 
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
-const currentPageNum = computed<number>(() => store.getters['files/currentPageNum'])
+const currentPage = computed<number>(() => store.getters['pages/currentPage'])
 
 function nextPage(): void {
     store.dispatch('files/nextPage')
@@ -32,7 +32,7 @@ function prevPage(): void {
 <template>
     <div data-v-bnqp3>
         <button
-            v-if="currentPageNum > 1"
+            v-if="currentPage > 1"
             @click="prevPage"
             type="button"
             class="pager-left-button"
@@ -41,7 +41,7 @@ function prevPage(): void {
         </button>
 
         <button
-            v-if="currentPageNum < files.length"
+            v-if="currentPage < files.length"
             @click="nextPage"
             type="button"
             class="pager-right-button"

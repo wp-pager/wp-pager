@@ -8,7 +8,7 @@
 .pager-swipe-right
     &-enter-active,
     &-leave-active
-        transition: all 0.75s ease-out
+        transition: all .2s ease-out
 
     &-enter-to
         position: absolute
