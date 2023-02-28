@@ -21,8 +21,6 @@ const debouncedTouchendHandler = debounce(handleTouchend, 100, {
 
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 
-onMounted(() => store.dispatch('files/fetchFiles'))
-
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
         return

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace WpPager\Http\Ajax\Handlers;
+namespace WpPager\Http\Ajax\Handlers\Settings;
 
 use WpPager\Settings;
+use WpPager\Http\Ajax\Handlers\Handler;
 
 class GetSettingsHandler extends Handler
 {

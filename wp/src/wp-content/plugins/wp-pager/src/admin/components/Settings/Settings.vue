@@ -6,6 +6,14 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
+
+function updateAlbumSound(newValue: boolean): void {
+    if (!settings.value)
+        return
+
+    const newSettings = { ...settings.value, albumSound: newValue }
+    store.dispatch('settings/updateSettings', newSettings)
+}
 </script>
 
 <template>
@@ -17,9 +25,9 @@ const settings = computed<Settings | null>(() => store.getters['settings/setting
 
         <div v-if="settings" class="pager-form-inputs">
             <Checkbox
-                @changed="settings.albumSound = $event"
+                @changed="updateAlbumSound"
                 id="pager-album-sound"
-                :defaultValue="false"
+                :defaultValue="settings.albumSound || false"
             >
                 Play sound when changing pages
             </Checkbox>

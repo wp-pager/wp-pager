@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace WpPager\Http\Ajax\Handlers;
+namespace WpPager\Http\Ajax\Handlers\Files;
 
 use JsonException;
 use WpPager\Dto\Requests\DeleteFileRequest;
 use WpPager\File;
+use WpPager\Http\Ajax\Handlers\Handler;
 
 class DeleteFileHandler extends Handler
 {

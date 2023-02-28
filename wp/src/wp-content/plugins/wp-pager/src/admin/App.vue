@@ -14,7 +14,7 @@ onMounted((() => {
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup>
+        <TabGroup :selectedIndex="2">
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"
@@ -47,8 +47,8 @@ onMounted((() => {
     margin-bottom: 1.2rem
 
 [data-v-qvrskl39s]
-    max-width: 1400px
     padding: 20px 20px 0 0
+    max-width: 1200px
 
     .pager-tabs
         width: fit-content

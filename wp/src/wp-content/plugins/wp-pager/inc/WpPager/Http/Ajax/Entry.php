@@ -6,18 +6,20 @@ namespace WpPager\Http\Ajax;
 
 use Throwable;
 use JsonException;
+use WpPager\Dto\Requests\UpdateSettingsRequest;
+use WpPager\Http\Ajax\Handlers\Settings\UpdateSettingsHandler;
 use WpPager\Http\Request;
 use WpPager\Http\Ajax\Handlers\Handler;
 use WpPager\Dto\Requests\AddFilesRequest;
 use WpPager\Dto\Requests\SetFilesRequest;
 use WpPager\Dto\Requests\DeleteFileRequest;
 use WpPager\Exceptions\MissingRequestParameter;
-use WpPager\Http\Ajax\Handlers\AddFilesHandler;
-use WpPager\Http\Ajax\Handlers\GetFilesHandler;
-use WpPager\Http\Ajax\Handlers\SetFilesHandler;
-use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
-use WpPager\Http\Ajax\Handlers\GetSettingsHandler;
-use WpPager\Http\Ajax\Handlers\DeleteAllFilesHandler;
+use WpPager\Http\Ajax\Handlers\Files\AddFilesHandler;
+use WpPager\Http\Ajax\Handlers\Files\GetFilesHandler;
+use WpPager\Http\Ajax\Handlers\Files\SetFilesHandler;
+use WpPager\Http\Ajax\Handlers\Files\DeleteFileHandler;
+use WpPager\Http\Ajax\Handlers\Files\DeleteAllFilesHandler;
+use WpPager\Http\Ajax\Handlers\Settings\GetSettingsHandler;
 
 class Entry
 {
@@ -52,6 +54,10 @@ class Entry
             'pager_set_files' => function (): Handler {
                 $request = new SetFilesRequest($this->request->get('files'));
                 return new SetFilesHandler($request);
+            },
+            'pager_update_settings' => function (): Handler {
+                $request = new UpdateSettingsRequest($this->request->get('settings'));
+                return new UpdateSettingsHandler($request);
             },
         ];
     }

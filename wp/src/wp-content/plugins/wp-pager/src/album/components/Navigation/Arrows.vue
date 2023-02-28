@@ -4,11 +4,12 @@ import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
 import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
 import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
-import playSound from '@album/modules/playSound'
+import useSound from '@album/composables/useSound'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const currPageNum = computed<number>(() => store.getters['files/currPageNum'])
+const { playSound } = useSound()
 
 onMounted(() => {
     window.addEventListener('keydown', async e => {

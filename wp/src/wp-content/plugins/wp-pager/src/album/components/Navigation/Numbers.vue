@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { ImageFile } from '@shared/types'
+import type { Settings, ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
-import playSound from '@album/modules/playSound'
+import useSound from '@album/composables/useSound'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const prevPageNum = computed<number>(() => store.getters['files/prevPageNum'])
+const { playSound } = useSound()
 
 async function pageChosenHandler(pageNum: number) {
     if (pageNum > prevPageNum.value) {
