@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Settings } from '@shared/types';
 import { ref } from 'vue'
+import Checkbox from '@admin/components/Settings/Checkbox.vue'
 
 const formData = ref<Settings>({
     albumSound: false,
@@ -14,24 +15,18 @@ const formData = ref<Settings>({
             Settings and configurations for your Pager plugin.
         </p>
 
-        <div>
-            <div class="pager-input">
-                <input v-model="formData.albumSound" type="checkbox" id="pager-album-sound">
-                <label for="pager-album-sound">
-                    Play sound when changing pages
-                </label>
-            </div>
+        <div class="pager-form-inputs">
+            <Checkbox id="pager-album-sound" :defaultValue="false">
+                Play sound when changing pages
+            </Checkbox>
         </div>
     </div>
 </template>
 
 <style lang="sass" scoped>
 [data-v-weyt2y78i]
-    .pager-input
+    .pager-form-inputs
         display: flex
-        align-items: center
-        margin-bottom: 1.2rem
-
-        input
-            margin-right: 0.5rem
+        flex-direction: column
+        gap: 1.2rem
 </style>
