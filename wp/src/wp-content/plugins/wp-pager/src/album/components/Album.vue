@@ -20,6 +20,7 @@ const debouncedTouchendHandler = debounce(handleTouchend, 100, {
 })
 
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
+const isActive = computed<boolean>(() => store.getters['zoom/isActive'])
 
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
@@ -45,10 +46,17 @@ function handleTouchend(e: TouchEvent): void {
         store.dispatch('files/nextPage')
     }
 }
+
+function handleZoom(): void {
+    if (isTouchDevice())
+        return
+
+    store.dispatch('zoom/toggle')
+}
 </script>
 
 <template>
-    <div data-v-hw0krsr3>
+    <div data-v-hw0krsr3 :class="{ 'pager-zoomed': isActive }">
         <div v-if="loading">
             <Spinner />
         </div>
@@ -61,10 +69,15 @@ function handleTouchend(e: TouchEvent): void {
                 @touchmove="setTouchEnd"
                 @touchend="debouncedTouchendHandler"
                 class="pager-album-image"
+                :class="{ 'pager-zoomed': isActive }"
             >
                 <Arrows v-if="!isTouchDevice()" />
 
-                <div v-for="file in files" :key="file.id">
+                <section
+                    v-for="file in files"
+                    :key="file.id"
+                    @click="handleZoom"
+                >
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
                             v-show="file.visible"
@@ -72,7 +85,7 @@ function handleTouchend(e: TouchEvent): void {
                             :alt="file.name"
                         />
                     </component>
-                </div>
+                </section>
             </div>
         </div>
     </div>
@@ -81,21 +94,37 @@ function handleTouchend(e: TouchEvent): void {
 <style lang="sass" scoped>
 [data-v-hw0krsr3]
     overflow: hidden
-    position: relative
     padding: 7px
+
+    &.pager-zoomed
+        cursor: zoom-out
+        position: absolute
+        left: 10px
+        top: 10px
+        right: 10px
+        z-index: 10
+
+        .admin-bar &
+            top: 40px
 
     .pager-album-image
         user-select: none
-        position: relative
         cursor: zoom-in
+        position: relative
+
+        &.pager-zoomed
+            cursor: zoom-out
 
         &:hover [data-v-bnqp3]
             opacity: 1
 
-        img
-            width: 100%
-            user-select: none
-            border-radius: 5px
-            pointer-events: none
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
+        section
+            transition: all .5s ease-in-out
+
+            img
+                width: 100%
+                user-select: none
+                border-radius: 5px
+                pointer-events: none
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
 </style>
