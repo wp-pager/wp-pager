@@ -20,15 +20,6 @@ const debouncedTouchendHandler = debounce(handleTouchend, 100, {
 })
 
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
-const isActive = computed<boolean>(() => store.getters['zoom/isActive'])
-
-window.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-        handleZoom()
-    } else if (e.key === 'Escape') {
-        store.dispatch('zoom/disable')
-    }
-})
 
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
@@ -54,17 +45,10 @@ function handleTouchend(e: TouchEvent): void {
         store.dispatch('files/nextPage')
     }
 }
-
-function handleZoom(): void {
-    if (isTouchDevice())
-        return
-
-    store.dispatch('zoom/toggle')
-}
 </script>
 
 <template>
-    <div data-v-hw0krsr3 :class="{ 'pager-zoomed': isActive }">
+    <div data-v-hw0krsr3>
         <div v-if="loading">
             <Spinner />
         </div>
@@ -77,7 +61,6 @@ function handleZoom(): void {
                 @touchmove="setTouchEnd"
                 @touchend="debouncedTouchendHandler"
                 class="pager-album-image"
-                :class="{ 'pager-zoomed': isActive }"
             >
                 <Arrows v-if="!isTouchDevice()" />
 
@@ -104,24 +87,9 @@ function handleZoom(): void {
     overflow: hidden
     padding: 7px
 
-    &.pager-zoomed
-        cursor: zoom-out
-        position: absolute
-        left: 10px
-        top: 10px
-        right: 10px
-        z-index: 10
-
-        .admin-bar &
-            top: 40px
-
     .pager-album-image
         user-select: none
-        cursor: zoom-in
         position: relative
-
-        &.pager-zoomed
-            cursor: zoom-out
 
         &:hover [data-v-bnqp3]
             opacity: 1
