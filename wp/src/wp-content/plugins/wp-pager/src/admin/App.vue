@@ -14,7 +14,7 @@ onMounted((() => {
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup :selectedIndex="2">
+        <TabGroup>
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"
@@ -37,12 +37,12 @@ onMounted((() => {
 </template>
 
 <style lang="sass" scoped>
-/deep/ .pager-title
+:deep(.pager-title)
     font-size: 2rem
     font-weight: 400
     margin-bottom: 1.2rem
 
-/deep/ .pager-intro
+:deep(.pager-intro)
     font-size: 1.1rem
     margin-bottom: 1.2rem
 

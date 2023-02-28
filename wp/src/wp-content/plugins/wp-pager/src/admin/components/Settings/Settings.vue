@@ -27,7 +27,7 @@ function updateAlbumSound(newValue: boolean): void {
             <Checkbox
                 @changed="updateAlbumSound"
                 id="pager-album-sound"
-                :defaultValue="settings.albumSound || false"
+                :defaultValue="settings!.albumSound || false"
             >
                 Play sound when changing pages
             </Checkbox>
