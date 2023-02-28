@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Settings } from '@shared/types';
-import { ref } from 'vue'
+import type { Settings } from '@shared/types'
 import Checkbox from '@admin/components/Settings/Checkbox.vue'
+import { computed } from '@vue/reactivity'
+import { useStore } from 'vuex'
 
-const formData = ref<Settings>({
-    albumSound: false,
-})
+const store = useStore()
+const settings = computed<Settings | null>(() => store.getters['settings/settings'])
 </script>
 
 <template>
@@ -15,8 +15,12 @@ const formData = ref<Settings>({
             Settings and configurations for your Pager plugin.
         </p>
 
-        <div class="pager-form-inputs">
-            <Checkbox id="pager-album-sound" :defaultValue="false">
+        <div v-if="settings" class="pager-form-inputs">
+            <Checkbox
+                @changed="settings.albumSound = $event"
+                id="pager-album-sound"
+                :defaultValue="false"
+            >
                 Play sound when changing pages
             </Checkbox>
         </div>

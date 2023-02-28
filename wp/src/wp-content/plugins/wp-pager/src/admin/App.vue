@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import tabs from '@admin/modules/tabs'
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+onMounted((() => {
+    store.dispatch('settings/fetchSettings')
+    store.dispatch('files/fetchFiles')
+}))
 </script>
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup :selectedIndex="2">
+        <TabGroup>
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"
@@ -38,6 +47,7 @@ import tabs from '@admin/modules/tabs'
     margin-bottom: 1.2rem
 
 [data-v-qvrskl39s]
+    max-width: 1400px
     padding: 20px 20px 0 0
 
     .pager-tabs

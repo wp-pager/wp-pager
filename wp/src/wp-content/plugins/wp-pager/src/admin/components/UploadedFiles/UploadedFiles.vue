@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
-import { onMounted, computed } from 'vue'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
 import FetchingFilesSpinner from '@admin/components/UploadedFiles/FetchingFilesSpinner.vue'
@@ -11,11 +11,9 @@ const store = useStore()
 const loading = computed<boolean>(() => store.getters['files/loading'])
 
 const files = computed<ImageFile[]>({
-    get: () => store.getters['files/files'],
+    get: (): ImageFile[] => store.getters['files/files'],
     set: (val: ImageFile[]) => store.dispatch('files/setFiles', val),
 })
-
-onMounted(() => store.dispatch('files/fetchFiles'))
 </script>
 
 <template>
