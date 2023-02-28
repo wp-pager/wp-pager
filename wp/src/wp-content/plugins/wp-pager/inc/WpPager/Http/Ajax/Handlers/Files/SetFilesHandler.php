@@ -23,12 +23,6 @@ class SetFilesHandler extends Handler
     {
         $files = Json::decode($this->request->files_json);
 
-        foreach ($files as $key => &$file) {
-            $file['id'] = ++$key;
-        }
-
-        unset($file);
-
         (new File())->saveFiles($files);
 
         return $this->success();

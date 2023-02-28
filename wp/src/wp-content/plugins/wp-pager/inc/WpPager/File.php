@@ -22,7 +22,7 @@ class File
         }
 
         /**
-         * @var array<int, array{id: int, name: string, url: string, path: string}>|null $files
+         * @var array<int, array{page: int, name: string, url: string, path: string}>|null $files
          */
         $files = Json::decode($content);
 
@@ -31,11 +31,11 @@ class File
         }
 
         $result = array_map(function (array $file) {
-            return new ImageFile($file['id'], $file['name'], $file['url'], $file['path'], $file['visible']);
+            return new ImageFile($file['page'], $file['name'], $file['url'], $file['path'], $file['visible']);
         }, $files);
 
         usort($result, function (ImageFile $a, ImageFile $b) {
-            return $a->id <=> $b->id;
+            return $a->page <=> $b->page;
         });
 
         return $result;
@@ -45,12 +45,12 @@ class File
      * @return ImageFile[]
      * @throws JsonException
      */
-    public function deleteFile(int $id): array
+    public function deleteFile(int $page): array
     {
         $files = $this->getFiles();
 
         foreach ($files as $key => $file) {
-            if ($file->id !== $id) {
+            if ($file->page !== $page) {
                 continue;
             }
 
@@ -58,9 +58,7 @@ class File
             unset($files[$key]);
         }
 
-        $this->saveFiles($files);
-
-        return $files;
+        return $this->saveFiles($files);
     }
 
     /**
@@ -70,9 +68,11 @@ class File
     {
         $files = $this->getFiles();
 
-        foreach ($files as $file) {
-            $this->deleteFile($file->id);
+        foreach ($files as $key => $file) {
+            unlink($file->path);
         }
+
+        $this->saveFiles([]);
     }
 
     /**
@@ -84,13 +84,13 @@ class File
     public function addFiles(array $files): array
     {
         $result = $this->getFiles();
-        $latest_id = $this->getLatestFileId($result);
+        $latest_page = $this->getLatestFilePage($result);
 
         foreach ($files as $key => $file) {
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
             $result[] = new ImageFile(
-                id: $latest_id++,
+                page: $latest_page++,
                 name: $file['name'],
                 url: PAGER_FILES_DIR_URL . '/' . $file['name'],
                 path: $path,
@@ -100,33 +100,52 @@ class File
             move_uploaded_file($file['tmp_name'], $path);
         }
 
-        $this->saveFiles($result);
-
-        return $result;
+        return $this->saveFiles($result);
     }
 
     /**
      * @param ImageFile[] $files
+     * @return ImageFile[]
      * @throws JsonException
      */
-    public function saveFiles(array $files): void
+    public function saveFiles(array $files): array
     {
-        $files = array_values($files);
+        $files = $this->resetPageNumbers($files);
+
         $json = Json::encode($files);
         file_put_contents(PAGER_FILES_URL, $json);
+
+        return $files;
     }
 
     /**
      * @param ImageFile[] $files
      */
-    private function getLatestFileId(array $files): int
+    private function getLatestFilePage(array $files): int
     {
-        $ids = array_column($files, 'id');
+        $page_numbers = array_column($files, 'page');
 
-        if (empty($ids)) {
+        if (empty($page_numbers)) {
             return 1;
         }
 
-        return max($ids) + 1;
+        return max($page_numbers) + 1;
+    }
+
+    /**
+     * @param ImageFile[] $files
+     *
+     * @return ImageFile[]
+     */
+    private function resetPageNumbers(array $files): array
+    {
+        foreach ($files as $key => &$file) {
+            $page_number = ++$key;
+
+            $file->page = $page_number;
+            $file->visible = $page_number === 1;
+        }
+
+        return array_values($files);
     }
 }

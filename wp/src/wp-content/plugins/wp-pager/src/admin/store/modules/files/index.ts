@@ -46,7 +46,7 @@ const files: Module<FilesState, RootState> = {
                 .catch(err => console.error(err))
         },
 
-        DELETE_FILE(state, id: number): void {
+        DELETE_FILE(state, page: number): void {
             if (!confirm('Are you sure you want to delete this file?'))
                 return
 
@@ -54,7 +54,7 @@ const files: Module<FilesState, RootState> = {
 
             const formData = new FormData()
 
-            formData.append('id', id.toString())
+            formData.append('id', page.toString())
             formData.append('action', 'pager_delete_file')
             formData.append('nonce', pager.nonce)
 
@@ -110,8 +110,8 @@ const files: Module<FilesState, RootState> = {
             commit('FETCH_FILES')
         },
 
-        deleteFile({ commit }, id: number): void {
-            commit('DELETE_FILE', id)
+        deleteFile({ commit }, page: number): void {
+            commit('DELETE_FILE', page)
         },
 
         setFiles({ commit }, files: ImageFile[]): void {

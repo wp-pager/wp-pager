@@ -28,12 +28,12 @@ async function pageChosenHandler(pageNum: number) {
 <template>
     <div data-v-qpxh391>
         <b
-            v-for="(file, i) in files"
-            :key="file.id"
+            v-for="file in files"
+            :key="file.page"
             :class="{ 'active': file.visible }"
-            @click="pageChosenHandler(i + 1)"
+            @click="pageChosenHandler(file.page)"
         >
-            <span class="pager-number">{{ i + 1 }}</span>
+            <span class="pager-number">{{ file.page }}</span>
             <div class="pager-line"></div>
         </b>
     </div>

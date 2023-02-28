@@ -12,7 +12,7 @@ const props = defineProps<Props>()
 const store = useStore()
 
 function deleteFile(): void {
-    store.dispatch('files/deleteFile', props.file.id)
+    store.dispatch('files/deleteFile', props.file.page)
 }
 </script>
 

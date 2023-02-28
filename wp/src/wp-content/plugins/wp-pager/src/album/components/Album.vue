@@ -66,7 +66,7 @@ function handleTouchend(e: TouchEvent): void {
 
                 <section
                     v-for="file in files"
-                    :key="file.id"
+                    :key="file.page"
                     @click="handleZoom"
                 >
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">

@@ -51,7 +51,7 @@ const files: Module<FilesState, RootState> = {
             }
 
             for (const key in state.files) {
-                state.files[key].visible = state.files[key].id === nextPage
+                state.files[key].visible = state.files[key].page === nextPage
             }
 
             state.currPageNum = nextPage
@@ -65,7 +65,7 @@ const files: Module<FilesState, RootState> = {
             }
 
             for (const key in state.files) {
-                state.files[key].visible = state.files[key].id === prevPage
+                state.files[key].visible = state.files[key].page === prevPage
             }
 
             state.currPageNum = prevPage
@@ -77,7 +77,7 @@ const files: Module<FilesState, RootState> = {
 
             console.log(state.files)
             for (const key in state.files) {
-                state.files[key].visible = state.files[key].id === pageNum
+                state.files[key].visible = state.files[key].page === pageNum
             }
 
             state.currPageNum = pageNum

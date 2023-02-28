@@ -5,7 +5,7 @@ export type ServerResponse<T> = {
 }
 
 export type ImageFile = {
-    id: number
+    page: number
     path: string
     url: string
     name: string

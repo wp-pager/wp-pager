@@ -7,7 +7,7 @@ namespace WpPager\Dto;
 class ImageFile
 {
     public function __construct(
-        public int $id,
+        public int $page,
         public string $name,
         public string $url,
         public string $path,

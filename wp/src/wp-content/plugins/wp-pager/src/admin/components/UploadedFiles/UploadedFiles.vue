@@ -39,7 +39,7 @@ const files = computed<ImageFile[]>({
             >
                 <UploadedFile
                     v-for="file in files"
-                    :key="file.id"
+                    :key="file.page"
                     :file="file"
                 />
             </VueDraggableNext>
