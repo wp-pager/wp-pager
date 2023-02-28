@@ -12,15 +12,22 @@
 
     &-enter-to
         transform: translateX(0)
+        position: relative
+        z-index: 1
 
     &-enter-from
         transform: translateX(100%)
+        position: relative
+        z-index: 1
 
     &-leave-to
         position: absolute
-        transform: translateX(-100%)
+        z-index: 0
         top: 0
 
     &-leave-from
+        position: absolute
+        top: 0
         transform: translateX(0)
+        z-index: 0
 </style>

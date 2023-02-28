@@ -30,9 +30,15 @@ class File
             return [];
         }
 
-        return array_map(function (array $file) {
+        $result = array_map(function (array $file) {
             return new ImageFile($file['id'], $file['name'], $file['url'], $file['path'], $file['visible']);
         }, $files);
+
+        usort($result, function (ImageFile $a, ImageFile $b) {
+            return $a->id <=> $b->id;
+        });
+
+        return $result;
     }
 
     /**
