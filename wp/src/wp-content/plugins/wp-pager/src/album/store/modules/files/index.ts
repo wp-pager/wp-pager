@@ -75,6 +75,7 @@ const files: Module<FilesState, RootState> = {
             if (pageNum <= 0 || pageNum > state.files.length)
                 return
 
+            console.log(state.files)
             for (const key in state.files) {
                 state.files[key].visible = state.files[key].id === pageNum
             }

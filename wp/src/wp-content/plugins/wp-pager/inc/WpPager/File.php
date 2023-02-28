@@ -63,6 +63,9 @@ class File
         return $files;
     }
 
+    /**
+     * @throws JsonException
+     */
     public function deleteAll(): void
     {
         $files = $this->getFiles();
