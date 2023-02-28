@@ -67,7 +67,7 @@ function handleTouchend(e: TouchEvent): void {
                 <div v-for="file in files" :key="file.id">
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
-                            v-if="file.visible"
+                            v-show="file.visible"
                             :src="file.url"
                             :alt="file.name"
                         />
@@ -85,8 +85,8 @@ function handleTouchend(e: TouchEvent): void {
     padding: 7px
 
     .pager-album-image
-        min-height: 700px
         user-select: none
+        position: relative
 
         &:hover [data-v-bnqp3]
             opacity: 1

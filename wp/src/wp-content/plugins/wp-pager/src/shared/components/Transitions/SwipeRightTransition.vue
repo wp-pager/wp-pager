@@ -8,21 +8,21 @@
 .pager-swipe-right
     &-enter-active,
     &-leave-active
-        transition: all .4s ease-out
+        transition: all .3s ease-out
 
     &-enter-to
-        position: absolute
-        left: 0
+        transform: translateX(0)
 
     &-enter-from
-        position: absolute
-        left: -100%
+        transform: translateX(-100%)
 
     &-leave-to
         position: absolute
+        top: 0
         right: -100%
 
     &-leave-from
         position: absolute
+        top: 0
         right: 0
 </style>
