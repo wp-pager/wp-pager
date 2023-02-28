@@ -29,7 +29,10 @@ function chooseImages(e: Event): void {
 
 <template>
     <div data-v-plsy94b>
-        <h2>Upload new files</h2>
+        <h2 class="pager-title">Upload new files</h2>
+        <p class="pager-intro">
+            Drop your files into the dropping area or click it to choose files from your device.
+        </p>
 
         <input
             @change="chooseImages"
@@ -60,11 +63,6 @@ function chooseImages(e: Event): void {
 
 <style lang="sass" scoped>
 [data-v-plsy94b]
-    h2
-        font-size: 2rem
-        font-weight: 400
-        margin-bottom: 1.7rem
-
     .pager-hidden-input
         display: none
         visibility: hidden

@@ -56,14 +56,6 @@ onMounted(() => store.dispatch('files/fetchFiles'))
         grid-template-columns: repeat(auto-fill, 300px)
         grid-gap: 1rem
 
-    .pager-title
-        font-size: 2rem
-        font-weight: 400
-        margin-bottom: 1.7rem
-
-    .pager-intro
-        font-size: 1.1rem
-
     .pager-no-files
         font-size: 1.2rem
         font-weight: 400
