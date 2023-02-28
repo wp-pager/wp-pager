@@ -5,7 +5,7 @@ import tabs from '@admin/modules/tabs'
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup>
+        <TabGroup :selectedIndex="2">
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"

@@ -18,4 +18,8 @@ export type Config = {
     rootUrl: string
 }
 
+export type Settings = {
+    albumSound: boolean
+}
+
 export type SwipeDirection = 'left' | 'right'
