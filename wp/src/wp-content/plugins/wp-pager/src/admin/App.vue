@@ -48,7 +48,7 @@ onMounted((() => {
 
 [data-v-qvrskl39s]
     padding: 20px 20px 0 0
-    max-width: 1200px
+    max-width: 1300px
 
     .pager-tabs
         width: fit-content
