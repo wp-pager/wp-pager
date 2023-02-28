@@ -18,11 +18,9 @@
 
     &-leave-to
         position: absolute
+        transform: translateX(-100%)
         top: 0
-        left: -100%
 
     &-leave-from
-        position: absolute
-        left: 0
-        top: 0
+        transform: translateX(0)
 </style>

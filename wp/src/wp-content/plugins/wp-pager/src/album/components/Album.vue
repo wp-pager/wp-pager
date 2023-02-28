@@ -86,6 +86,7 @@ function handleTouchend(e: TouchEvent): void {
 [data-v-hw0krsr3]
     overflow: hidden
     padding: 7px
+    position: relative
 
     .pager-album-image
         user-select: none

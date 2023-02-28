@@ -47,8 +47,8 @@ async function pageChosenHandler(pageNum: number) {
     align-items: flex-end
     border-radius: 5px
     background-color: white
-    padding: 7px 10px 12px 10px
-    height: 30px
+    padding: 5px 5px 15px 5px
+    height: 33px
 
     b
         width: 100%
