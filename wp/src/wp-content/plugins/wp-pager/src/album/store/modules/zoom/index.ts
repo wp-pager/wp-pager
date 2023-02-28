@@ -18,6 +18,10 @@ const zoom: Module<ZoomState, RootState> = {
         toggle({ state }): void {
             state.isActive = !state.isActive
         },
+
+        disable({ state }): void {
+            state.isActive = false
+        },
     },
 }
 

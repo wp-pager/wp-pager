@@ -22,6 +22,14 @@ const debouncedTouchendHandler = debounce(handleTouchend, 100, {
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 const isActive = computed<boolean>(() => store.getters['zoom/isActive'])
 
+window.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        handleZoom()
+    } else if (e.key === 'Escape') {
+        store.dispatch('zoom/disable')
+    }
+})
+
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
         return
