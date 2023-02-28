@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RemovePending from '@admin/components/PendingFiles/RemovePending.vue'
+import RemovePending from '@admin/components/Uploader/PendingFiles/RemovePending.vue'
 import ImageCard from '@admin/components/ImageCard.vue'
 
 type Props = {

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import DropIcon from '@shared/components/Icons/DropIcon.vue'
+import PendingFiles from '@admin/components/Uploader/PendingFiles/PendingFiles.vue'
 
 const drag = ref(false)
 const store = useStore()
@@ -53,6 +54,8 @@ function chooseImages(e: Event): void {
             </h2>
         </label>
     </div>
+
+    <PendingFiles />
 </template>
 
 <style lang="sass" scoped>

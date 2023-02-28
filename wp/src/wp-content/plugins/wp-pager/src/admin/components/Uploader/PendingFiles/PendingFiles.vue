@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import PendingFile from '@admin/components/PendingFiles/PendingFile.vue'
-import Controls from '@admin/components/PendingFiles/Controls.vue'
+import PendingFile from '@admin/components/Uploader/PendingFiles/PendingFile.vue'
+import Controls from '@admin/components/Uploader/PendingFiles/Controls.vue'
 
 const store = useStore()
 const files = computed<File[]>(() => store.getters['pendingFiles/files'])

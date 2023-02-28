@@ -937,6 +937,11 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
+"@headlessui/vue@^1.7.11":
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.11.tgz#e8d9d09be8c30bb9808ebd75038ce9bcb4bfd00e"
+  integrity sha512-VsNqx9Lc1ftOyIazBF9EX5BS4WYwwaFX+1jBWXQakeH1o4xnoZKlBSlvEgmAnFLO9GDVmn7kKVOWfFgQn2aRZA==
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz#e5d2e450306a9491e3bd77e323e38d7aff315996"
