@@ -11,9 +11,9 @@ abstract class Json
     /**
      * @throws JsonException
      */
-    public static function decode(string $input)
+    public static function decode(string $input): null|array|object
     {
-        return json_decode($input, true, 512, JSON_THROW_ON_ERROR);
+        return json_decode($input, true, 512, JSON_THROW_ON_ERROR) ?? null;
     }
 
     /**

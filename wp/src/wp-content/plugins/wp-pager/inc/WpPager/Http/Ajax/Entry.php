@@ -6,17 +6,18 @@ namespace WpPager\Http\Ajax;
 
 use Throwable;
 use JsonException;
-use WpPager\Exceptions\MissingRequestParameter;
 use WpPager\Http\Request;
-use WpPager\Dto\Requests\AddFilesRequest;
-use WpPager\Dto\Requests\DeleteFileRequest;
-use WpPager\Dto\Requests\SetFilesRequest;
-use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
-use WpPager\Http\Ajax\Handlers\GetFilesHandler;
 use WpPager\Http\Ajax\Handlers\Handler;
+use WpPager\Dto\Requests\AddFilesRequest;
+use WpPager\Dto\Requests\SetFilesRequest;
+use WpPager\Dto\Requests\DeleteFileRequest;
+use WpPager\Exceptions\MissingRequestParameter;
 use WpPager\Http\Ajax\Handlers\AddFilesHandler;
-use WpPager\Http\Ajax\Handlers\DeleteAllFilesHandler;
+use WpPager\Http\Ajax\Handlers\GetFilesHandler;
 use WpPager\Http\Ajax\Handlers\SetFilesHandler;
+use WpPager\Http\Ajax\Handlers\DeleteFileHandler;
+use WpPager\Http\Ajax\Handlers\GetSettingsHandler;
+use WpPager\Http\Ajax\Handlers\DeleteAllFilesHandler;
 
 class Entry
 {
@@ -36,9 +37,10 @@ class Entry
     public function getHandlers(): array
     {
         return [
-            'pager_get_files' => function (): Handler {
-                return new GetFilesHandler();
-            },
+            'pager_get_files' => fn (): Handler => new GetFilesHandler(),
+            'pager_delete_all_files' => fn (): Handler => new DeleteAllFilesHandler(),
+            'pager_get_settings' => fn (): Handler => new GetSettingsHandler(),
+
             'pager_delete_file' => function (): Handler {
                 $request = new DeleteFileRequest($this->request->int('id'));
                 return new DeleteFileHandler($request);
@@ -46,9 +48,6 @@ class Entry
             'pager_add_files' => function (): Handler {
                 $request = new AddFilesRequest($this->request->files());
                 return new AddFilesHandler($request);
-            },
-            'pager_delete_all_files' => function (): Handler {
-                return new DeleteAllFilesHandler();
             },
             'pager_set_files' => function (): Handler {
                 $request = new SetFilesRequest($this->request->get('files'));
