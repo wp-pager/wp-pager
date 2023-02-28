@@ -88,11 +88,11 @@ async function handleLeftDirection(): Promise<void> {
         align-items: center
         justify-content: center
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
-        transition: background-color 200ms ease, opacity 200ms ease
+        transition: transform .1s ease
         z-index: 10
 
         &:hover
-            background-color: #f5f5f5
+            transform: scale(1.2)
 
         &.pager-right-button
             right: 17px

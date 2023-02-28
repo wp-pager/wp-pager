@@ -87,6 +87,7 @@ function handleTouchend(e: TouchEvent): void {
     .pager-album-image
         user-select: none
         position: relative
+        cursor: zoom-in
 
         &:hover [data-v-bnqp3]
             opacity: 1
