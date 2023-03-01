@@ -9,6 +9,7 @@ type Props = {
 type Emits = {
     (e: 'hovered'): void
     (e: 'unhovered'): void
+    (e: 'clicked'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -21,6 +22,7 @@ const props = defineProps<Props>()
             @mouseover="emit('hovered')"
             @mouseleave="emit('unhovered')"
             @focus="emit('hovered')"
+            @click="emit('clicked')"
             type="button"
         >
             <component :is="props.icon" />
@@ -30,8 +32,8 @@ const props = defineProps<Props>()
 
 <style lang="sass" scoped>
 button
-    width: 22px
-    height: 22px
+    width: 20px
+    height: 20px
     background: none
     border: none
     padding: 0

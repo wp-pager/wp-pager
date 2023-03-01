@@ -12,6 +12,12 @@ const store = useStore()
 const { playSound } = useSound()
 const soundIsOn = computed<boolean>(() => store.getters['settings/soundIsOn'])
 
+document.body.addEventListener('keydown', e => {
+    if (e.key === 'm') {
+        soundIsOn.value ? muteSound() : unmuteSound()
+    }
+})
+
 async function muteSound(): Promise<void> {
     playSound('switch')
     localStorage.setItem(storage.key.albumSoundIsOn, storage.value.off)
@@ -19,7 +25,6 @@ async function muteSound(): Promise<void> {
 }
 
 async function unmuteSound(): Promise<void> {
-    console.log('unmuteSound')
     localStorage.setItem(storage.key.albumSoundIsOn, storage.value.on)
     await store.dispatch('settings/unmuteSound')
     playSound('switch')
@@ -30,13 +35,13 @@ async function unmuteSound(): Promise<void> {
     <FooterButton
         v-if="soundIsOn"
         @clicked="muteSound"
-        tip="Mute the sound"
+        tip="Mute the sound (m)"
         :icon="SoundOnIcon"
     />
 
     <FooterButton
         v-else
-        tip="Unmute the sound"
+        tip="Unmute the sound (m)"
         @clicked="unmuteSound"
         :icon="SoundOffIcon"
     />

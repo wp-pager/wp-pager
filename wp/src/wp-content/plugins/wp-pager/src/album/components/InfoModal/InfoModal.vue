@@ -14,10 +14,10 @@ const emit = defineEmits<Emits>()
         <h2>Keyboard shortcuts</h2>
 
         <ul>
-            <li><kbd>►</kbd> <span>go to the next page</span></li>
-            <li><kbd>◄</kbd> <span>go to the previous page</span></li>
-            <li><kbd>s</kbd> <span>toggle the sound</span></li>
-            <li><kbd>d</kbd> <span>download the current page</span></li>
+            <li><kbd>►</kbd> <span>go to the next image</span></li>
+            <li><kbd>◄</kbd> <span>go to the previous image</span></li>
+            <li><kbd>m</kbd> <span>mute/unmute the sound</span></li>
+            <li><kbd>d</kbd> <span>download the current image</span></li>
         </ul>
 
         <button

@@ -12,7 +12,8 @@ export default () => {
 
         const sound = new Audio(`${pager.rootUrl}/assets/sounds/${fileName}.mp3`)
         sound.volume = 0.5
-        sound.play()
+
+        sound.play().catch(e => console.error(e))
     }
 
     return {
