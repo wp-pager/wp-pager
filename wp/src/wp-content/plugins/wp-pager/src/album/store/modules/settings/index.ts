@@ -3,6 +3,7 @@ import type SettingsState from './SettingsState'
 import type RootState from '@album/store/RootState'
 import type { ServerResponse, Settings } from '@shared/types'
 import axios from 'axios'
+import { storage } from '@shared/appConfig'
 
 const settings: Module<SettingsState, RootState> = {
     namespaced: true,
@@ -12,7 +13,7 @@ const settings: Module<SettingsState, RootState> = {
     },
 
     getters: {
-        settings: (state): Settings | null => state.settings,
+        settings: (s): Settings | null => s.settings,
     },
 
     mutations: {
@@ -31,6 +32,20 @@ const settings: Module<SettingsState, RootState> = {
     actions: {
         fetchSettings({ commit }): void {
             commit('FETCH_SETTINGS')
+        },
+
+        muteSound({ state}): void {
+            if (!state.settings)
+                return
+
+            state.settings.albumSound = false
+        },
+
+        unmuteSound({ state}): void {
+            if (!state.settings)
+                return
+
+            state.settings.albumSound = true
         },
     },
 }

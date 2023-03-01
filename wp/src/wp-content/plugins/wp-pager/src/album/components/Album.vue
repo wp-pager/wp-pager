@@ -52,7 +52,6 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
     const height = image.offsetHeight
 
     if (height > 0) {
-        console.log(height)
         currHeight.value = height
     }
 }
