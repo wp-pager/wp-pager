@@ -43,4 +43,6 @@ const { content } = defineProps<Props>()
         padding: 1.5px 12px
         color: white
         font-size: .9rem
+        line-height: 1.4
+        min-width: 100px
 </style>

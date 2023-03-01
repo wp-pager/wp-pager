@@ -78,7 +78,6 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                 <section
                     v-for="file in files"
                     :key="file.page"
-                    @click="handleZoom"
                 >
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
@@ -101,6 +100,7 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
     overflow: hidden
     padding: 7px
     position: relative
+    z-index: 100
 
     .pager-album-image
         user-select: none

@@ -2,13 +2,13 @@
 import SoundToggle from '@album/components/Footer/SoundToggle.vue'
 import DownloadFile from '@album/components/Footer/DownloadFile.vue'
 import Copyright from '@album/components/Footer/Copyright.vue'
-import InfoModal from '@album/components/Footer/InfoModal.vue'
+import InfoModalTrigger from '@album/components/Footer/InfoModalTrigger.vue'
 </script>
 
 <template>
     <div data-v-go094ik>
         <div class="pager-buttons">
-            <InfoModal />
+            <InfoModalTrigger />
             <SoundToggle />
             <DownloadFile />
         </div>
@@ -25,6 +25,7 @@ import InfoModal from '@album/components/Footer/InfoModal.vue'
     padding: 10px 10px
     background-color: white
     border-radius: 0 0 8px 8px
+    overflow: visible
 
     .pager-buttons
         display: flex
