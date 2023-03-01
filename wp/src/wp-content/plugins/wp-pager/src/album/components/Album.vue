@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import type { ImageFile, SwipeDirection } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed, onMounted, ref } from 'vue'
+import isTouchDevice from 'is-touch-device'
+import { debounce } from 'lodash'
+import { computed, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
 import Numbers from '@album/components/Navigation/Numbers.vue'
 import Arrows from '@album/components/Navigation/Arrows.vue'
-import isTouchDevice from 'is-touch-device'
-import { debounce } from 'lodash'
 import SwipeLeftTransition from '@shared/components/Transitions/SwipeLeftTransition.vue'
 import SwipeRightTransition from '@shared/components/Transitions/SwipeRightTransition.vue'
+import Footer from '@album/components/Footer/Footer.vue'
 
 const store = useStore()
 const loading = computed<boolean>(() => store.getters['files/loading'])
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
+const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
+const currHeight = ref<number>(0)
 
 const debouncedTouchendHandler = debounce(handleTouchend, 100, {
     leading: true,
     trailing: false,
 })
-
-const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 
 function setTouchStart(e: TouchEvent): void {
     if (!e.changedTouches)
@@ -45,6 +46,16 @@ function handleTouchend(e: TouchEvent): void {
         store.dispatch('files/nextPage')
     }
 }
+
+function setCurrentHeight(e: Event, file: ImageFile): void {
+    const image = e.target as HTMLImageElement
+    const height = image.offsetHeight
+
+    if (height > 0) {
+        console.log(height)
+        currHeight.value = height
+    }
+}
 </script>
 
 <template>
@@ -61,6 +72,7 @@ function handleTouchend(e: TouchEvent): void {
                 @touchmove="setTouchEnd"
                 @touchend="debouncedTouchendHandler"
                 class="pager-album-image"
+                :style="currHeight > 0 ? { height: currHeight + 'px' } : {}"
             >
                 <Arrows v-if="!isTouchDevice()" />
 
@@ -71,14 +83,17 @@ function handleTouchend(e: TouchEvent): void {
                 >
                     <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
-                            v-show="file.visible"
+                            v-if="file.visible"
                             :src="file.url"
                             :alt="file.name"
+                            @load="setCurrentHeight($event, file)"
                         />
                     </component>
                 </section>
             </div>
         </div>
+
+        <Footer />
     </div>
 </template>
 
