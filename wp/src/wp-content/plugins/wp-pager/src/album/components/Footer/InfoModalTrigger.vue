@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import useSound from '@album/composables/useSound'
 import { ref } from 'vue'
+import useClickOutside from '@album/composables/useClickOutside'
+import usePressEscape from '@album/composables/usePressEscape'
 import InfoModal from '@album/components/InfoModal/InfoModal.vue'
 import InfoIcon from '@shared/components/Icons/InfoIcon.vue'
 import FooterButton from '@album/components/Footer/FooterButton.vue'
-import useClickOutside from '@album/composables/useClickOutside'
+import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
 const { playSound } = useSound()
 const visible = ref<boolean>(false)
 const modalEl = ref<HTMLElement | null>(null)
 
-useClickOutside(modalEl, () => visible.value = false)
+useClickOutside(modalEl, closeModal)
+usePressEscape(closeModal)
 
-function toggleModalTo(state: boolean): void {
-    visible.value = state
-    playSound('switch')
+function openModal(): void {
+    visible.value = true
+    playSound('popup')
+}
+
+function closeModal(): void {
+    if (visible.value === false)
+        return
+
+    visible.value = false
+    playSound('popup')
 }
 </script>
 
@@ -23,12 +34,14 @@ function toggleModalTo(state: boolean): void {
         <FooterButton
             tip="Learn keyboard shortcuts"
             :icon="InfoIcon"
-            @clicked="toggleModalTo(!visible)"
+            @clicked="visible ? closeModal() : openModal()"
         />
 
-        <InfoModal
-            v-if="visible"
-            @closed="toggleModalTo(false)"
-        />
+        <AppearTransition>
+            <InfoModal
+                v-if="visible"
+                @closed="closeModal"
+            />
+        </AppearTransition>
     </div>
 </template>

@@ -3,8 +3,9 @@ import { onMounted, onBeforeUnmount } from 'vue'
 
 export default (el: Ref<HTMLElement | null>, callback: () => void) => {
     function listener(e: MouseEvent) {
-        if (!el.value || e.target === el.value || e.composedPath().includes(el.value))
+        if (!el.value || e.target === el.value || e.composedPath().includes(el.value)) {
             return
+        }
 
         callback()
     }
