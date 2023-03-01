@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import SoundToggle from '@album/components/Footer/SoundToggle.vue'
+import Copyright from '@album/components/Footer/Copyright.vue'
 </script>
 
 <template>
     <div data-v-go094ik>
-        <div>
-            <SoundToggle />
-        </div>
-
-        <div>
-            //
-        </div>
+        <SoundToggle />
+        <Copyright />
     </div>
 </template>
 
@@ -19,7 +15,7 @@ import SoundToggle from '@album/components/Footer/SoundToggle.vue'
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 5px 10px
+    padding: 10px 10px
     background-color: white
     border-radius: 0 0 8px 8px
 </style>
