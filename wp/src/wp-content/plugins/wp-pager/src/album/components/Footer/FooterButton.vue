@@ -7,7 +7,8 @@ type Props = {
 }
 
 type Emits = {
-    (e: 'clicked'): void
+    (e: 'hovered'): void
+    (e: 'unhovered'): void
 }
 
 const emit = defineEmits<Emits>()
@@ -16,7 +17,12 @@ const props = defineProps<Props>()
 
 <template>
     <Tip :content="props.tip">
-        <button @click="emit('clicked')" type="button">
+        <button
+            @mouseover="emit('hovered')"
+            @mouseleave="emit('unhovered')"
+            @focus="emit('hovered')"
+            type="button"
+        >
             <component :is="props.icon" />
         </button>
     </Tip>

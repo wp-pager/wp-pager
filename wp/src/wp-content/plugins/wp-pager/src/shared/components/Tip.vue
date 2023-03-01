@@ -5,12 +5,14 @@ interface Props {
     content: string
 }
 
-const { content } = defineProps<Props>()
+const props = defineProps<Props>()
 </script>
 
 <template>
-    <div class="pager-tip">
-        <Popper hover :content="content" class="pager-tip__popper">
+    <slot v-if="props.content === ''" />
+
+    <div v-else class="pager-tip">
+        <Popper hover :content="props.content" class="pager-tip__popper">
             <slot />
 
             <template #content>

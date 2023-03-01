@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+import isTouchDevice from 'is-touch-device'
 
 type Emits = {
     (e: 'closed'): void
@@ -20,7 +20,12 @@ const emit = defineEmits<Emits>()
             <li><kbd>d</kbd> <span>download the current page</span></li>
         </ul>
 
-        <button @click="emit('closed')" type="button" class="pager-close">
+        <button
+            v-if="isTouchDevice()"
+            @click="emit('closed')"
+            type="button"
+            class="pager-close"
+        >
             <CloseIcon class="pager-icon" />
         </button>
     </div>
@@ -30,9 +35,9 @@ const emit = defineEmits<Emits>()
 [data-v-amp206]
     position: absolute
     background-color: white
-    padding: 1.5rem
+    padding: 1rem
     bottom: calc(100% + 5px)
-    width: 340px
+    width: 280px
     border-radius: 9px
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2)
     z-index: 12
@@ -72,10 +77,12 @@ const emit = defineEmits<Emits>()
             kbd
                 display: inline-block
                 padding: .3rem .5rem
+                min-width: 17px
+                text-align: center
                 line-height: 1
                 color: #444
                 vertical-align: middle
-                background-color: #e3e6e8
+                background-color: #f9f9f9
                 border-radius: 3px
                 border: 1px solid #c6cbd1
                 box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25)
@@ -86,4 +93,5 @@ const emit = defineEmits<Emits>()
             span
                 margin-left: 6px
                 color: #555
+                font-size: .9rem
 </style>

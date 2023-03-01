@@ -17,7 +17,6 @@ usePressEscape(closeModal)
 
 function openModal(): void {
     visible.value = true
-    playSound('popup')
 }
 
 function closeModal(): void {
@@ -25,23 +24,20 @@ function closeModal(): void {
         return
 
     visible.value = false
-    playSound('popup')
 }
 </script>
 
 <template>
     <div ref="modalEl" :style="{ position: 'relative', display: 'flex' }">
         <FooterButton
-            tip="Learn keyboard shortcuts"
+            tip=""
             :icon="InfoIcon"
-            @clicked="visible ? closeModal() : openModal()"
+            @hovered="openModal"
+            @unhovered="closeModal"
         />
 
         <AppearTransition>
-            <InfoModal
-                v-if="visible"
-                @closed="closeModal"
-            />
+            <InfoModal v-if="visible" @closed="closeModal" />
         </AppearTransition>
     </div>
 </template>
