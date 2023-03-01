@@ -6,6 +6,7 @@ import { storage } from '@shared/appConfig'
 import useSound from '@album/composables/useSound'
 import SoundOnIcon from '@shared/components/Icons/SoundOnIcon.vue'
 import SoundOffIcon from '@shared/components/Icons/SoundOffIcon.vue'
+import Tip from '@shared/components/Tip.vue'
 
 const store = useStore()
 const { playSound } = useSound()
@@ -29,10 +30,12 @@ function toggleSound(): void {
 
 <template>
     <div v-if="settings" data-v-8eos3>
-        <button @click="toggleSound" type="button">
-            <SoundOnIcon v-if="settings.albumSound" class="pager-icon" />
-            <SoundOffIcon v-else class="pager-icon" />
-        </button>
+        <Tip :content="settings!.albumSound ? 'Mute the sound' : 'Unmute the sound'">
+            <button @click="toggleSound" type="button">
+                <SoundOnIcon v-if="settings!.albumSound" class="pager-icon" />
+                <SoundOffIcon v-else class="pager-icon" />
+            </button>
+        </Tip>
     </div>
 </template>
 
@@ -49,6 +52,13 @@ function toggleSound(): void {
         padding: 0
         cursor: pointer
         outline: none
+        transition: transform .1s ease-in-out, opacity .1s ease-in-out
+        perspective: 1000px
+        opacity: .7
+
+        &:hover
+            transform: scale(1.2)
+            opacity: 1
 
         .pager-icon
             width: 100%

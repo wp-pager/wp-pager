@@ -19,7 +19,7 @@ import SoundToggle from '@album/components/Footer/SoundToggle.vue'
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 4px 10px
+    padding: 5px 10px
     background-color: white
     border-radius: 0 0 8px 8px
 </style>
