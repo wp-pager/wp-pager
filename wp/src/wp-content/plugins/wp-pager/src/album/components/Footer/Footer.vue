@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import SoundToggle from '@album/components/Footer/SoundToggle.vue'
+import DownloadFile from '@album/components/Footer/DownloadFile.vue'
 import Copyright from '@album/components/Footer/Copyright.vue'
 </script>
 
 <template>
     <div data-v-go094ik>
-        <SoundToggle />
+        <div class="pager-buttons">
+            <SoundToggle />
+            <DownloadFile />
+        </div>
+
         <Copyright />
     </div>
 </template>
@@ -18,4 +23,9 @@ import Copyright from '@album/components/Footer/Copyright.vue'
     padding: 10px 10px
     background-color: white
     border-radius: 0 0 8px 8px
+
+    .pager-buttons
+        display: flex
+        align-items: center
+        gap: 13px
 </style>

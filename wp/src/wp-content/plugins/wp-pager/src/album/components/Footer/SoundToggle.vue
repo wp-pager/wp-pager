@@ -6,7 +6,7 @@ import { storage } from '@shared/appConfig'
 import useSound from '@album/composables/useSound'
 import SoundOnIcon from '@shared/components/Icons/SoundOnIcon.vue'
 import SoundOffIcon from '@shared/components/Icons/SoundOffIcon.vue'
-import Tip from '@shared/components/Tip.vue'
+import FooterButton from '@album/components/Footer/FooterButton.vue'
 
 const store = useStore()
 const { playSound } = useSound()
@@ -27,39 +27,17 @@ async function unmuteSound(): Promise<void> {
 </script>
 
 <template>
-    <div data-v-8eos3>
-        <Tip :content="soundIsOn ? 'Mute the sound' : 'Unmute the sound'">
-            <button v-if="soundIsOn" @click="muteSound" type="button">
-                <SoundOnIcon class="pager-icon" />
-            </button>
-            <button v-else @click="unmuteSound" type="button">
-                <SoundOffIcon class="pager-icon" />
-            </button>
-        </Tip>
-    </div>
+    <FooterButton
+        v-if="soundIsOn"
+        @clicked="muteSound"
+        tip="Mute the sound"
+        :icon="SoundOnIcon"
+    />
+
+    <FooterButton
+        v-else
+        tip="Unmute the sound"
+        @clicked="unmuteSound"
+        :icon="SoundOffIcon"
+    />
 </template>
-
-<style lang="sass" scoped>
-[data-v-8eos3]
-    display: flex
-    align-items: center
-
-    button
-        width: 22px
-        height: 22px
-        background: none
-        border: none
-        padding: 0
-        cursor: pointer
-        outline: none
-        transition: transform .1s ease-in-out, opacity .1s ease-in-out
-        perspective: 1000px
-        opacity: .7
-
-        &:hover
-            transform: scale(1.2)
-            opacity: 1
-
-        .pager-icon
-            width: 100%
-</style>
