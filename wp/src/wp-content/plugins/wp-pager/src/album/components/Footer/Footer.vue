@@ -2,11 +2,13 @@
 import SoundToggle from '@album/components/Footer/SoundToggle.vue'
 import DownloadFile from '@album/components/Footer/DownloadFile.vue'
 import Copyright from '@album/components/Footer/Copyright.vue'
+import InfoModal from '@album/components/Footer/InfoModal.vue'
 </script>
 
 <template>
     <div data-v-go094ik>
         <div class="pager-buttons">
+            <InfoModal />
             <SoundToggle />
             <DownloadFile />
         </div>

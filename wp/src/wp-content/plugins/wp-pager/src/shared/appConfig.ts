@@ -1,5 +1,5 @@
 export const events = {
-    fetchFiles: 'Z3V7Izk9MKxCzV6Ti3CL',
+    showInfoModal: 'Z3V7Izk9MKxCzV6Ti3CL',
 }
 
 export const storage = {
