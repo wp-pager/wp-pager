@@ -10,30 +10,30 @@ import Tip from '@shared/components/Tip.vue'
 
 const store = useStore()
 const { playSound } = useSound()
-const settings = computed<Settings | null>(() => store.getters['settings/settings'])
+const soundIsOn = computed<boolean>(() => store.getters['settings/soundIsOn'])
 
-function toggleSound(): void {
-    if (!settings.value)
-        return
-
+async function muteSound(): Promise<void> {
     playSound('switch')
+    localStorage.setItem(storage.key.albumSoundIsOn, storage.value.off)
+    await store.dispatch('settings/muteSound')
+}
 
-    if (settings.value.albumSound) {
-        localStorage.setItem(storage.key.albumSoundIsOn, storage.value.off)
-        store.dispatch('settings/muteSound')
-    } else {
-        localStorage.setItem(storage.key.albumSoundIsOn, storage.value.on)
-        store.dispatch('settings/unmuteSound')
-    }
+async function unmuteSound(): Promise<void> {
+    console.log('unmuteSound')
+    localStorage.setItem(storage.key.albumSoundIsOn, storage.value.on)
+    await store.dispatch('settings/unmuteSound')
+    playSound('switch')
 }
 </script>
 
 <template>
-    <div v-if="settings" data-v-8eos3>
-        <Tip :content="settings!.albumSound ? 'Mute the sound' : 'Unmute the sound'">
-            <button @click="toggleSound" type="button">
-                <SoundOnIcon v-if="settings!.albumSound" class="pager-icon" />
-                <SoundOffIcon v-else class="pager-icon" />
+    <div data-v-8eos3>
+        <Tip :content="soundIsOn ? 'Mute the sound' : 'Unmute the sound'">
+            <button v-if="soundIsOn" @click="muteSound" type="button">
+                <SoundOnIcon class="pager-icon" />
+            </button>
+            <button v-else @click="unmuteSound" type="button">
+                <SoundOffIcon class="pager-icon" />
             </button>
         </Tip>
     </div>

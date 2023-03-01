@@ -4,12 +4,11 @@ import { useStore } from 'vuex'
 
 export default () => {
     const store = useStore()
-    const settings = computed<Settings | null>(() => store.getters['settings/settings'])
+    const soundIsOn = computed<boolean>(() => store.getters['settings/soundIsOn'])
 
     const playSound = (fileName: string): void => {
-        if (!settings.value || !settings.value.albumSound) {
+        if (!soundIsOn.value)
             return
-        }
 
         const sound = new Audio(`${pager.rootUrl}/assets/sounds/${fileName}.mp3`)
         sound.volume = 0.5

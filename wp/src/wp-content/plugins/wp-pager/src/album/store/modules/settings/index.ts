@@ -5,15 +5,24 @@ import type { ServerResponse, Settings } from '@shared/types'
 import axios from 'axios'
 import { storage } from '@shared/appConfig'
 
+const storedSoundIsOn = localStorage.getItem(storage.key.albumSoundIsOn)
+
 const settings: Module<SettingsState, RootState> = {
     namespaced: true,
 
     state: {
         settings: null,
+        soundIsOn: storedSoundIsOn ? storedSoundIsOn === storage.value.on : null,
     },
 
     getters: {
         settings: (s): Settings | null => s.settings,
+        soundIsOn: (s): boolean => {
+            if (!s.settings)
+                return false
+
+            return s.soundIsOn !== null ? s.soundIsOn : s.settings.albumSound
+        },
     },
 
     mutations: {
@@ -34,18 +43,12 @@ const settings: Module<SettingsState, RootState> = {
             commit('FETCH_SETTINGS')
         },
 
-        muteSound({ state}): void {
-            if (!state.settings)
-                return
-
-            state.settings.albumSound = false
+        muteSound({ state }): void {
+            state.soundIsOn = false
         },
 
-        unmuteSound({ state}): void {
-            if (!state.settings)
-                return
-
-            state.settings.albumSound = true
+        unmuteSound({ state }): void {
+            state.soundIsOn = true
         },
     },
 }
