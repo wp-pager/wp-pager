@@ -67,7 +67,7 @@ function changeTab(tab: number): void {
         width: fit-content
         padding: 5px
         border-radius: 7px
-        background-color: white
+        background-color: rgba(255, 255, 255, .5)
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1)
 
         .pager-tab
