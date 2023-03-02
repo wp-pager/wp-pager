@@ -30,3 +30,10 @@ export type Settings = {
 }
 
 export type SwipeDirection = 'left' | 'right'
+
+export type ShowToastParams = {
+    text: string
+    success?: boolean
+    url?: string
+    duration?: number
+}

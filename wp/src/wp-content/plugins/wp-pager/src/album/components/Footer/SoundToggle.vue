@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Settings } from '@shared/types'
 import { useStore } from 'vuex'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { storage } from '@shared/appConfig'
+import showToast from '@shared/modules/showToast'
 import useSound from '@album/composables/useSound'
 import SoundOnIcon from '@shared/components/Icons/SoundOnIcon.vue'
 import SoundOffIcon from '@shared/components/Icons/SoundOffIcon.vue'
@@ -22,12 +22,14 @@ async function muteSound(): Promise<void> {
     playSound('switch')
     localStorage.setItem(storage.key.albumSoundIsOn, storage.value.off)
     await store.dispatch('settings/muteSound')
+    showToast({ text: 'Sound is muted' })
 }
 
 async function unmuteSound(): Promise<void> {
     localStorage.setItem(storage.key.albumSoundIsOn, storage.value.on)
     await store.dispatch('settings/unmuteSound')
     playSound('switch')
+    showToast({ text: 'Sound is unmuted' })
 }
 </script>
 

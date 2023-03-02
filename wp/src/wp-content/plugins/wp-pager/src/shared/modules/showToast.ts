@@ -1,11 +1,5 @@
+import type { ShowToastParams } from '@shared/types'
 import toast from 'toastify-js'
-
-type ShowToastParams = {
-    text: string
-    success?: boolean
-    url?: string
-    duration?: number
-}
 
 export default (params: ShowToastParams) => {
     if (typeof params.success === 'undefined')
@@ -19,13 +13,13 @@ export default (params: ShowToastParams) => {
         destination: params.url || 'javascript:',
         gravity: 'bottom',
         position: 'right',
-        backgroundColor: 'white',
         close: true,
         avatar: params.success ? successIcon : errorIcon,
         duration: params.duration || 2000,
         style: {
             display: 'flex',
             justifyContent: 'space-between',
+            background: 'white',
             alignItems: 'center',
             gap: '10px',
             borderRadius: '8px',
