@@ -30,8 +30,9 @@ export default (params: ShowToastParams) => {
             gap: '10px',
             borderRadius: '8px',
             color: '#777',
-            padding: '15px',
+            padding: '20px 15px',
             boxShadow: '0 0 17px rgba(0, 0, 0, .3)',
+            fontSize: '1rem',
         },
     }
 

@@ -5,6 +5,8 @@ import type { ImageFile } from '@shared/types'
 import type { ServerResponse } from '@shared/types'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 import { events } from '@shared/appConfig'
+import showToast from '@shared/modules/showToast'
+import handleError from '@shared/modules/handleError'
 import axios from 'axios'
 
 const files: Module<FilesState, RootState> = {
@@ -31,7 +33,7 @@ const files: Module<FilesState, RootState> = {
 
             axios.get<ServerResponse<ImageFile[]>>(pager.ajaxUrl, { params })
                 .then(resp => state.files = resp.data.data)
-                .catch(e => console.error(e))
+                .catch(handleError)
                 .finally(() => state.loading = false)
         },
 
@@ -45,7 +47,8 @@ const files: Module<FilesState, RootState> = {
             formData.append('files', JSON.stringify(files))
 
             axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
-                .catch(err => console.error(err))
+                .then(() => showToast({ text: 'New images order is saved' }))
+                .catch(handleError)
         },
 
         DELETE_FILE(state, page: number): void {
@@ -61,8 +64,11 @@ const files: Module<FilesState, RootState> = {
             formData.append('nonce', pager.nonce)
 
             axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData)
-                .then(resp => state.files = resp.data.data)
-                .catch(err => console.error(err))
+                .then(resp => {
+                    state.files = resp.data.data
+                    showToast({ text: 'Image deleted successfully' })
+                })
+                .catch(handleError)
                 .finally(() => state.loading = false)
         },
 
@@ -84,8 +90,9 @@ const files: Module<FilesState, RootState> = {
                 const resp = await axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData, params)
                 state.files = resp.data.data
                 dispatchEvent(events.filesUploaded)
-            } catch (err) {
-                console.error(err)
+                showToast({ text: 'Images uploaded successfully' })
+            } catch (e) {
+                handleError(e)
             }
 
             state.loading = false
@@ -102,8 +109,11 @@ const files: Module<FilesState, RootState> = {
             formData.append('nonce', pager.nonce)
 
             axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
-                .then(resp => state.files = [])
-                .catch(err => console.error(err))
+                .then(resp => {
+                    state.files = []
+                    showToast({ text: 'All the images deleted successfully' })
+                })
+                .catch(handleError)
                 .finally(() => state.loading = false)
         },
     },
