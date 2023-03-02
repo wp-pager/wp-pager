@@ -3,7 +3,7 @@ import type { ImageFile } from '@shared/types'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import useFileDownloader from '@album/composables/useFileDownloader'
-import axios from 'axios'
+import showToast from '@shared/modules/showToast'
 import useSound from '@album/composables/useSound'
 import DownloadIcon from '@shared/components/Icons/DownloadIcon.vue'
 import FooterButton from '@album/components/Footer/FooterButton.vue'
@@ -14,7 +14,7 @@ const { downloadFile } = useFileDownloader()
 
 document.body.addEventListener('keydown', e => {
     if (e.key === 'd') {
-        downloadFileHandler()
+        downloadImageHandler()
     }
 })
 
@@ -24,14 +24,16 @@ const currFile = computed<ImageFile | null>(() => {
     return file || null
 })
 
-async function downloadFileHandler(): Promise<void> {
+async function downloadImageHandler(): Promise<void> {
     if (!currFile.value) {
         return
     }
 
     const success = await downloadFile(currFile.value.url)
+    const text = success ? 'Image downloaded' : 'Error downloading image'
 
     playSound(success ? 'success' : 'error')
+    showToast({ text, success })
 }
 </script>
 
@@ -39,6 +41,6 @@ async function downloadFileHandler(): Promise<void> {
     <FooterButton
         tip="Download current image (d)"
         :icon="DownloadIcon"
-        @clicked="downloadFileHandler"
+        @clicked="downloadImageHandler"
     />
 </template>

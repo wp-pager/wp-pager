@@ -15,7 +15,7 @@ export default (params: ShowToastParams) => {
         position: 'right',
         close: true,
         avatar: params.success ? successIcon : errorIcon,
-        duration: params.duration || 2000,
+        duration: params.duration || 3000,
         style: {
             display: 'flex',
             justifyContent: 'space-between',
