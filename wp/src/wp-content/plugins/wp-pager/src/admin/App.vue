@@ -59,7 +59,7 @@ function changeTab(tab: number): void {
     .pager-tabs
         width: fit-content
         padding: 5px
-        border-radius: 50px
+        border-radius: 7px
         background-color: white
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1)
 
@@ -76,13 +76,10 @@ function changeTab(tab: number): void {
             margin-right: 5px
             text-transform: uppercase
             border-right: 1px solid #e2e8f0
-
-            &:first-child
-                border-radius: 50px 7px 7px 50px
+            border-radius: 7px
 
             &:last-child
                 margin-right: 0
-                border-radius: 7px 50px 50px 7px
                 border-right: none
 
             &:hover
