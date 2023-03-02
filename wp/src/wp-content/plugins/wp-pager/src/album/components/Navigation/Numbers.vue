@@ -42,13 +42,14 @@ async function pageChosenHandler(pageNum: number) {
 <style lang="sass" scoped>
 [data-v-qpxh391]
     display: flex
+    box-sizing: content-box !important
     gap: 6px
     justify-content: space-evenly
     align-items: flex-end
     border-radius: 5px
     background-color: white
     padding: 5px 5px 15px 5px
-    height: 33px
+    height: 35px
 
     b
         width: 100%
