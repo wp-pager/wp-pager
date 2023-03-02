@@ -2,6 +2,8 @@ import type { Module } from 'vuex'
 import type SettingsState from './SettingsState'
 import type RootState from '@admin/store/RootState'
 import type { ServerResponse, Settings } from '@shared/types'
+import showToast from '@shared/modules/showToast'
+import handleError from '@shared/modules/handleError'
 import axios from 'axios'
 
 const settings: Module<SettingsState, RootState> = {
@@ -29,7 +31,7 @@ const settings: Module<SettingsState, RootState> = {
 
             axios.get<ServerResponse<Settings | null>>(pager.ajaxUrl, { params })
                 .then(resp => state.settings = resp.data.data)
-                .catch(e => console.error(e))
+                .catch(handleError)
                 .finally(() => state.loading = false)
         },
 
@@ -42,8 +44,11 @@ const settings: Module<SettingsState, RootState> = {
             params.append('settings', JSON.stringify(settings))
 
             axios.post<ServerResponse<Settings | null>>(pager.ajaxUrl, params)
-                .then(resp => state.settings = resp.data.data)
-                .catch(e => console.error(e))
+                .then(resp => {
+                    state.settings = resp.data.data
+                    showToast({ text: 'Settings updated successfully' })
+                })
+                .catch(handleError)
                 .finally(() => state.loading = false)
         }
     },
