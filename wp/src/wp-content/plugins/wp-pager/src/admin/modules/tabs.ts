@@ -6,7 +6,7 @@ import { AdminTab } from '@shared/types'
 const tabs: AdminTab[] = [
     {
         index: 0,
-        slug: 'uploaded',
+        slug: 'files',
         title: 'Uploaded files',
         component: UploadedFiles,
     },

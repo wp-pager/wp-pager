@@ -2,7 +2,9 @@ import type { Module } from 'vuex'
 import type FilesState from './FilesState'
 import type RootState from '@admin/store/RootState'
 import type { ImageFile } from '@shared/types'
-import { ServerResponse } from '@shared/types'
+import type { ServerResponse } from '@shared/types'
+import dispatchEvent from '@shared/modules/dispatchEvent'
+import { events } from '@shared/appConfig'
 import axios from 'axios'
 
 const files: Module<FilesState, RootState> = {
@@ -81,6 +83,7 @@ const files: Module<FilesState, RootState> = {
             try {
                 const resp = await axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData, params)
                 state.files = resp.data.data
+                dispatchEvent(events.filesUploaded)
             } catch (err) {
                 console.error(err)
             }

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import tabs from '@admin/modules/tabs'
+import listenEvent from '@shared/modules/listenEvent'
+import { events } from '@shared/appConfig'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { computed } from '@vue/reactivity'
@@ -11,6 +13,11 @@ const selectedTab = computed<number>(() => store.getters['settings/selectedTab']
 onMounted((() => {
     store.dispatch('settings/fetchSettings')
     store.dispatch('files/fetchFiles')
+
+    listenEvent(events.filesUploaded, () => {
+        const tab = tabs.find(t => t.slug === 'files')
+        changeTab(tab ? tab.index : 0)
+    })
 }))
 
 function changeTab(tab: number): void {
