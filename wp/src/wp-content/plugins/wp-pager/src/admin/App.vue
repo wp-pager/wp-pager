@@ -3,18 +3,24 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import tabs from '@admin/modules/tabs'
 import { onMounted } from 'vue'
 import { useStore } from 'vuex'
+import { computed } from '@vue/reactivity'
 
 const store = useStore()
+const selectedTab = computed<number>(() => store.getters['settings/selectedTab'])
 
 onMounted((() => {
     store.dispatch('settings/fetchSettings')
     store.dispatch('files/fetchFiles')
 }))
+
+function changeTab(tab: number): void {
+    store.dispatch('settings/setSelectedTab', tab)
+}
 </script>
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup>
+        <TabGroup :selectedIndex="selectedTab" @change="changeTab">
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"
@@ -29,7 +35,7 @@ onMounted((() => {
             </TabList>
             <TabPanels>
                 <TabPanel v-for="tab in tabs" :key="tab.title">
-                    <component :is="tab.component" />
+                    <Component :is="tab.component" />
                 </TabPanel>
             </TabPanels>
         </TabGroup>

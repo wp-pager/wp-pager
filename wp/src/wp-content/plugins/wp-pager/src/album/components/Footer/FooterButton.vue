@@ -25,7 +25,7 @@ const props = defineProps<Props>()
             @click="emit('clicked')"
             type="button"
         >
-            <component :is="props.icon" />
+            <Component :is="props.icon" />
         </button>
     </Tip>
 </template>

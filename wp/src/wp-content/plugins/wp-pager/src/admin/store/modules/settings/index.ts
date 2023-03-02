@@ -10,10 +10,12 @@ const settings: Module<SettingsState, RootState> = {
     state: {
         settings: null,
         loading: false,
+        selectedTab: 0,
     },
 
     getters: {
-        settings: (state): Settings | null => state.settings,
+        settings: (s): Settings | null => s.settings,
+        selectedTab: (s): number => s.selectedTab,
     },
 
     mutations: {
@@ -53,6 +55,10 @@ const settings: Module<SettingsState, RootState> = {
 
         updateSettings({ commit }, settings: Settings): void {
             commit('UPDATE_SETTINGS', settings)
+        },
+
+        setSelectedTab({ state }, tab: number): void {
+            state.selectedTab = tab
         },
     },
 }

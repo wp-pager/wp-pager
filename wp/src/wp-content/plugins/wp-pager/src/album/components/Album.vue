@@ -79,14 +79,14 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                     v-for="file in files"
                     :key="file.page"
                 >
-                    <component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
+                    <Component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
                         <img
                             v-if="file.visible"
                             :src="file.url"
                             :alt="file.name"
                             @load="setCurrentHeight($event, file)"
                         />
-                    </component>
+                    </Component>
                 </section>
             </div>
         </div>

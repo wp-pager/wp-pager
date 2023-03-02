@@ -4,6 +4,13 @@ export type ServerResponse<T> = {
     data: T
 }
 
+export type AdminTab = {
+    index: number
+    slug: string
+    title: string
+    component: object
+}
+
 export type ImageFile = {
     page: number
     path: string
