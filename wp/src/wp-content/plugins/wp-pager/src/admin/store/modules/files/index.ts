@@ -99,9 +99,6 @@ const files: Module<FilesState, RootState> = {
         },
 
         DELETE_ALL_FILES(state): void {
-            if (!confirm('Are you sure you want to delete all files?'))
-                return
-
             state.loading = true
 
             const formData = new FormData()

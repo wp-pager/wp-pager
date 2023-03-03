@@ -2,6 +2,7 @@
 import type { ImageFile } from '@shared/types'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import confirmModal from '@shared/modules/confirmModal'
 import Btn from '@admin/components/Btn.vue'
 import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 
@@ -9,9 +10,18 @@ const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const loading = computed<boolean>(() => store.getters['files/loading'])
 
-function deleteAllFiles(): void {
-    if (loading.value || files.value.length === 0)
+async function deleteAllFiles(): Promise<void> {
+    if (loading.value || files.value.length === 0) {
         return
+    }
+
+    const isConfirmed = await confirmModal({
+        text: 'Are you sure you want to delete all files?',
+    })
+
+    if (!isConfirmed) {
+        return
+    }
 
     store.dispatch('files/deleteAllFiles')
 }
