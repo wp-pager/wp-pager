@@ -31,7 +31,7 @@ error_reporting(E_ERROR | E_PARSE);
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
 
-$update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/', __FILE__, 'wp-pager');
+$update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/wp-pager', __FILE__, 'wp-pager');
 $update_checker->setAuthentication('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');
 $update_checker->setBranch('main');
 
