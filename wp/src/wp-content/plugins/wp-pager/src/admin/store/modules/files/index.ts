@@ -52,9 +52,6 @@ const files: Module<FilesState, RootState> = {
         },
 
         DELETE_FILE(state, page: number): void {
-            if (!confirm('Are you sure you want to delete this file?'))
-                return
-
             state.loading = true
 
             const formData = new FormData()
@@ -73,9 +70,6 @@ const files: Module<FilesState, RootState> = {
         },
 
         async ADD_FILES(state, files: File[]): Promise<void> {
-            if (!confirm('Are you sure you want to upload all files?'))
-                return
-
             state.loading = true
 
             const formData = new FormData()

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { ImageFile } from '@shared/types'
+import { useStore } from 'vuex'
+import confirmModal from '@shared/modules/confirmModal'
 import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
-import { useStore } from 'vuex'
 
 type Props = {
     file: ImageFile
@@ -11,8 +12,14 @@ type Props = {
 const props = defineProps<Props>()
 const store = useStore()
 
-function deleteFile(): void {
-    store.dispatch('files/deleteFile', props.file.page)
+async function deleteFile(): Promise<void> {
+    const isConfirmed = await confirmModal({
+        text: 'Are you sure you want to delete this file?',
+    })
+
+    if (isConfirmed) {
+        store.dispatch('files/deleteFile', props.file.page)
+    }
 }
 </script>
 

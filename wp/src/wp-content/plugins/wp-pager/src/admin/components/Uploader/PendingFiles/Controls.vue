@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import confirmModal from '@shared/modules/confirmModal'
 import Btn from '@admin/components/Btn.vue'
 import UploadIcon from '@shared/components/Icons/UploadIcon.vue'
 import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
@@ -9,9 +10,17 @@ const store = useStore()
 
 const files = computed<File[]>(() => store.getters['pendingFiles/files'])
 
-function uploadAll(): void {
+async function uploadAll(): Promise<void> {
     if (files.value.length === 0)
         return
+
+    const isConfirmed = await confirmModal({
+        text: 'Are you sure you want to upload all files?',
+    })
+
+    if (!isConfirmed) {
+        return
+    }
 
     store.dispatch('files/addFiles', files.value)
     store.dispatch('pendingFiles/clearFiles')
