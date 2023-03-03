@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "WpPager\\": "inc/WpPager"
-        }
+        },
+        "files": [
+            "inc/functions.php"
+        ]
     },
     "authors": [
         {
