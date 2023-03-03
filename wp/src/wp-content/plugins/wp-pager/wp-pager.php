@@ -7,7 +7,7 @@ Plugin Name: WP Pager
 Author: Serhii Cho
 Author URI: https://serhii.io/
 Description: Pager is an open-source and free WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
-Version: 1.0.0
+Version: 1.0
 License: no
 License URI: https://serhii.io/
 Text Domain: pager
@@ -15,6 +15,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 */
 
 use WpPager\Hook;
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
 define('PAGER_VERSION', '1.0.0');
@@ -28,5 +29,10 @@ define('PAGER_FILES_DIR_URL', PAGER_URL . 'storage/files');
 error_reporting(E_ERROR | E_PARSE);
 
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
+
+$update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/', __FILE__, 'wp-pager');
+$update_checker->setAuthentication('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');
+$update_checker->setBranch('main');
 
 (new Hook())->init();
