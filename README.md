@@ -1,6 +1,6 @@
 # WP Pager plugin for WordPress
 
-Pager is an open-source and free WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
+WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
 
 The main purpose of this plugin is to give users a filling of a real restaurant menu where they can turn pages and see the whole menu.
 
