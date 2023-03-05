@@ -2,9 +2,7 @@
 node_modules
 assets/*
 vendor
-
 storage/*
-!storage/.gitkeep
-
 storage/files/*
-!storage/files/.gitkeep
+
+!.gitkeep
