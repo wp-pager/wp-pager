@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WpPager;
 
 use JsonException;
+use RuntimeException;
 use WpPager\Dto\ImageFile;
 
 class File
@@ -86,6 +87,9 @@ class File
         $result = $this->getFiles();
         $latest_page = $this->getLatestFilePage($result);
 
+        $this->createDirIfNotExists(PAGER_PATH . 'storage');
+        $this->createDirIfNotExists(PAGER_FILES_DIR);
+
         foreach ($files as $key => $file) {
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
@@ -147,5 +151,12 @@ class File
         }
 
         return array_values($files);
+    }
+
+    private function createDirIfNotExists(string $dir): void
+    {
+        if (!file_exists($dir) && !mkdir($dir, 0777, true) && !is_dir($dir)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $dir));
+        }
     }
 }
