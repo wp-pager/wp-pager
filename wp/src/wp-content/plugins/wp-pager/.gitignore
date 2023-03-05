@@ -1,7 +1,10 @@
 .idea
 node_modules
 assets/*
-storage/*
 vendor
 
-!.gitkeep
+storage/*
+!storage/.gitkeep
+
+storage/files/*
+!storage/files/.gitkeep
