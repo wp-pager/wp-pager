@@ -87,7 +87,6 @@ class File
         $result = $this->getFiles();
         $latest_page = $this->getLatestFilePage($result);
 
-        $this->createDirIfNotExists(PAGER_PATH . 'storage');
         $this->createDirIfNotExists(PAGER_FILES_DIR);
 
         foreach ($files as $key => $file) {
