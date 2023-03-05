@@ -29,7 +29,7 @@ function updateAlbumSound(newValue: boolean): void {
                 id="pager-album-sound"
                 :defaultValue="settings!.albumSound || false"
             >
-                Play sound when changing pages
+                Enable album sound effects
             </Checkbox>
         </div>
     </div>
