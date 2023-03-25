@@ -1,7 +1,7 @@
 import type { Module } from 'vuex'
 import type SettingsState from './SettingsState'
 import type RootState from '@admin/store/RootState'
-import type { ServerResponse, Settings } from '@shared/types'
+import type { ServerResponse, Settings, Setting } from '@shared/types'
 import showToast from '@shared/modules/showToast'
 import handleError from '@shared/modules/handleError'
 import axios from 'axios'
@@ -60,6 +60,11 @@ const settings: Module<SettingsState, RootState> = {
 
         updateSettings({ commit }, settings: Settings): void {
             commit('UPDATE_SETTINGS', settings)
+        },
+
+        async updateSettingValue({ commit, state }, newValue: Setting): Promise<void> {
+            const newSettings = { ...state.settings, ...newValue }
+            commit('UPDATE_SETTINGS', newSettings)
         },
 
         setSelectedTab({ state }, tab: number): void {

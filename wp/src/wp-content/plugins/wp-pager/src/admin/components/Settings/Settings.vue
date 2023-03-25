@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Settings } from '@shared/types'
 import Checkbox from '@admin/components/Settings/Checkbox.vue'
+import InputField from '@admin/components/Settings/InputField.vue'
 import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
 
@@ -8,11 +9,11 @@ const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
 
 function updateAlbumSound(newValue: boolean): void {
-    if (!settings.value)
-        return
+    store.dispatch('settings/updateSettingValue', { albumSound: newValue })
+}
 
-    const newSettings = { ...settings.value, albumSound: newValue }
-    store.dispatch('settings/updateSettings', newSettings)
+function updateAlbumMaxWidth(newValue: number): void {
+    store.dispatch('settings/updateSettingValue', { albumMaxWidth: newValue })
 }
 </script>
 
@@ -31,6 +32,16 @@ function updateAlbumSound(newValue: boolean): void {
             >
                 Enable album sound effects
             </Checkbox>
+
+            <InputField
+                id="album-max-width"
+                :defaultValue="settings!.albumMaxWidth || '1000'"
+                type="text"
+                :inputWidth="120"
+                @changed="updateAlbumMaxWidth"
+            >
+                Album max width
+            </InputField>
         </div>
     </div>
 </template>

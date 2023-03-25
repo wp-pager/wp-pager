@@ -4,13 +4,13 @@
 
 <template>
     <div data-v-nma29>
-        Powered by <a href="" target="_blank">WP Pager</a>
+        Created by <a href="https://serhii.io/about-me" target="_blank">{S} SERHII</a>
     </div>
 </template>
 
 <style lang="sass" scoped>
 [data-v-nma29]
-    font-size: .7rem
+    font-size: .6rem
     color: #acacac
 
     a

@@ -27,6 +27,11 @@ export type Config = {
 
 export type Settings = {
     albumSound: boolean
+    albumMaxWidth: number
+}
+
+export type Setting = {
+    [key in keyof Settings]: Settings[key]
 }
 
 export type SwipeDirection = 'left' | 'right'
