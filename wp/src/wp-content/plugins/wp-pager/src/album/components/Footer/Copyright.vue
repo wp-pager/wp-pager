@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <div data-v-nma29>
         Created by <a href="https://serhii.io/about-me" target="_blank">{S} SERHII</a>
