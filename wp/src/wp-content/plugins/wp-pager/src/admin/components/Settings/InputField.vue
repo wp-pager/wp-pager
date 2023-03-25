@@ -31,6 +31,8 @@ const value = ref<string>(props.defaultValue)
             :type="props.type"
             :style="{ width: props.inputWidth + 'px' }"
         >
+
+        <slot name="after" />
     </div>
 </template>
 

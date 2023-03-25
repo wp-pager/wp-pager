@@ -24,6 +24,8 @@ function updateAlbumMaxWidth(newValue: number): void {
             Settings and configurations for your Pager plugin.
         </p>
 
+        <hr />
+
         <div v-if="settings" class="pager-form-inputs">
             <Checkbox
                 @changed="updateAlbumSound"
@@ -41,6 +43,10 @@ function updateAlbumMaxWidth(newValue: number): void {
                 @changed="updateAlbumMaxWidth"
             >
                 Album max width
+
+                <template #after>
+                    pixels
+                </template>
             </InputField>
         </div>
     </div>
@@ -51,5 +57,6 @@ function updateAlbumMaxWidth(newValue: number): void {
     .pager-form-inputs
         display: flex
         flex-direction: column
-        gap: 1.2rem
+        gap: 1.5rem
+        padding-top: 15px
 </style>
