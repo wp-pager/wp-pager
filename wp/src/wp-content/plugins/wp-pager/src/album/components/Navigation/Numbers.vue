@@ -44,7 +44,7 @@ async function pageChosenHandler(pageNum: number) {
     display: flex
     flex-wrap: wrap
     box-sizing: content-box !important
-    gap: 2px 10px
+    gap: 3px 10px
     justify-content: center
     align-items: flex-end
     border-radius: 5px
@@ -56,6 +56,7 @@ async function pageChosenHandler(pageNum: number) {
         text-align: center
         cursor: pointer
         min-width: 30px
+        font-weight: normal
 
         &:hover
             .pager-line
@@ -65,16 +66,16 @@ async function pageChosenHandler(pageNum: number) {
                 color: #456813
 
         .pager-number
-            color: #d5d5d5
+            color: #c5c5c5
             transition: all .1s ease-in-out
             user-select: none
             padding: 0 5px
 
         .pager-line
             width: 100%
-            height: 5px
+            height: 4px
             display: block
-            background-color: #d5d5d5
+            background-color: #c5c5c5
             border-radius: 2px
             transition: height .1s ease-in-out
 
