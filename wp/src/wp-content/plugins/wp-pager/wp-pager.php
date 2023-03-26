@@ -17,7 +17,7 @@ Tags: menu, album, images, files, gallery, restaurant, food, food menu, restaura
 use WpPager\Hook;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
-define('PAGER_VERSION', '0.1');
+define('PAGER_VERSION', '0.2');
 define('PAGER_PATH', plugin_dir_path(__FILE__));
 define('PAGER_URL', plugin_dir_url(__FILE__));
 define('PAGER_FILES_URL', PAGER_PATH . 'storage/files.json');
