@@ -2,13 +2,45 @@
 
 <?php
 
-//passthru('yarn build');
-//passthru('composer install --no-dev');
+function getPluginVersion(): float {
+    $plugin_file = file_get_contents('wp-pager.php');
+    preg_match('/Version: (.*)/', $plugin_file, $matches);
+    return (float) $matches[1];
+}
 
+function getLatestPluginVersion(): float {
+    $files = glob('versions/*.zip');
+
+    if (empty($files)) {
+        return 0;
+    }
+
+    $last_file = end($files);
+
+    $result = str_replace(['versions/wp-pager-', '.zip'], '', $last_file);
+
+    return (float) $result;
+}
+
+$latest_version = getLatestPluginVersion();
+$version = getPluginVersion();
+
+if ($latest_version >= $version) {
+    echo "Latest version is {$latest_version}, current version is {$version}.\n";
+    echo 'Change version in wp-pager.php and try again.';
+    exit;
+}
+
+// Prepare build
+passthru('yarn build');
+passthru('composer install --no-dev');
+
+// Remove not necessary files
 passthru('rm -r storage/files');
 passthru('rm files.json');
 passthru('rm settings.json');
 
+// Create directory for zip
 passthru('mkdir wp-pager');
 
 $copy_dirs = [
@@ -22,7 +54,6 @@ foreach ($copy_dirs as $dir) {
     passthru("cp -r {$dir} wp-pager");
 }
 
-
 $copy_files = [
     'index.php',
     'wp-pager.php',
@@ -32,7 +63,8 @@ foreach ($copy_files as $file) {
     passthru("cp {$file} wp-pager");
 }
 
-passthru('zip -r versions/wp-pager.zip wp-pager');
+// Create zip file with plugin in versions directory
+passthru("zip -r versions/wp-pager-{$version}.zip wp-pager");
+
+// Remove build directory
 passthru('rm -r wp-pager');
-
-
