@@ -38,17 +38,13 @@ const albumStyles = computed(() => {
 })
 
 function setTouchStart(e: TouchEvent): void {
-    if (!e.changedTouches)
-        return
-
-    store.dispatch('swipe/setTouchStart', e.changedTouches[0].clientX)
+    if (e.changedTouches)
+        store.dispatch('swipe/setTouchStart', e.changedTouches[0].clientX)
 }
 
 function setTouchEnd(e: TouchEvent): void {
-    if (!e.changedTouches)
-        return
-
-    store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
+    if (e.changedTouches)
+        store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
 }
 
 function handleTouchend(e: TouchEvent): void {

@@ -1,12 +1,12 @@
 <template>
     <div data-v-nma29>
-        Created by <a href="https://serhii.io/about-me" target="_blank">{S} SERHII</a>
+        Powered by <a href="https://serhiicho.github.io/wp-pager-landing" target="_blank">WP Pager</a>
     </div>
 </template>
 
 <style lang="sass" scoped>
 [data-v-nma29]
-    font-size: .6rem
+    font-size: .7rem
     color: #acacac
 
     a
