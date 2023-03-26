@@ -32,14 +32,12 @@ if ($latest_version >= $version) {
 }
 
 // Prepare build
-//passthru('yarn build');
-//passthru('composer install --no-dev');
+passthru('yarn build');
+passthru('composer install --no-dev');
 
 // Remove not necessary files
 passthru('rm -r storage/files');
-passthru('rm files.json');
-passthru('rm settings.json');
-passthru('rm -r versions/wp-pager.zip');
+passthru('rm versions/wp-pager.zip');
 
 // Create directory for zip
 passthru('mkdir wp-pager');
@@ -64,9 +62,15 @@ foreach ($copy_files as $file) {
     passthru("cp {$file} wp-pager");
 }
 
+// Empty files in storage
+passthru('echo "{}" > wp-pager/storage/settings.json');
+passthru('echo "[]" > wp-pager/storage/files.json');
+
 // Create zip file with plugin in versions directory
 passthru("zip -r versions/wp-pager-{$version}.zip wp-pager");
 passthru("zip -r versions/wp-pager.zip wp-pager");
 
 // Remove build directory
 passthru('rm -r wp-pager');
+
+passthru('composer install');
