@@ -4,5 +4,6 @@ assets/*
 vendor
 storage/*
 storage/files/*
+versions/*
 
 !.gitkeep

@@ -1,0 +1,38 @@
+#! /opt/homebrew/bin/php
+
+<?php
+
+//passthru('yarn build');
+//passthru('composer install --no-dev');
+
+passthru('rm -r storage/files');
+passthru('rm files.json');
+passthru('rm settings.json');
+
+passthru('mkdir wp-pager');
+
+$copy_dirs = [
+    'assets',
+    'inc',
+    'storage',
+    'vendor',
+];
+
+foreach ($copy_dirs as $dir) {
+    passthru("cp -r {$dir} wp-pager");
+}
+
+
+$copy_files = [
+    'index.php',
+    'wp-pager.php',
+];
+
+foreach ($copy_files as $file) {
+    passthru("cp {$file} wp-pager");
+}
+
+passthru('zip -r versions/wp-pager.zip wp-pager');
+passthru('rm -r wp-pager');
+
+
