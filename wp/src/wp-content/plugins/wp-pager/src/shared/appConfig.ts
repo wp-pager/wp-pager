@@ -1,8 +1,4 @@
 export const storage = {
-    key: {
-        albumSoundIsOn: 'jyA6S3UhAA',
-    },
-
     value: {
         on: 'on',
         off: 'off'

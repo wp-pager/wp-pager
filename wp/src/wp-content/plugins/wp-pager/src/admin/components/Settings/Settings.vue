@@ -8,10 +8,6 @@ import { useStore } from 'vuex'
 const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
 
-function updateAlbumSound(newValue: boolean): void {
-    store.dispatch('settings/updateSettingValue', { albumSound: newValue })
-}
-
 function updateAlbumMaxWidth(newValue: number): void {
     store.dispatch('settings/updateSettingValue', { albumMaxWidth: newValue })
 }
@@ -27,14 +23,6 @@ function updateAlbumMaxWidth(newValue: number): void {
         <hr />
 
         <div v-if="settings" class="pager-form-inputs">
-            <Checkbox
-                @changed="updateAlbumSound"
-                id="pager-album-sound"
-                :defaultValue="settings!.albumSound || false"
-            >
-                Enable album sound effects
-            </Checkbox>
-
             <InputField
                 id="album-max-width"
                 :defaultValue="settings!.albumMaxWidth || '1000'"

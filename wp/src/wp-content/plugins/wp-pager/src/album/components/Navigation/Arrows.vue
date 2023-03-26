@@ -4,12 +4,10 @@ import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
 import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
 import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
-import useSound from '@album/composables/useSound'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const currPageNum = computed<number>(() => store.getters['files/currPageNum'])
-const { playSound } = useSound()
 
 onMounted(() => {
     window.addEventListener('keydown', async e => {
@@ -30,7 +28,6 @@ function prevPage(): void {
 }
 
 async function handleRightDirection(): Promise<void> {
-    playSound('page-prev')
     await store.dispatch('swipe/setTouchStart', 1)
     await store.dispatch('swipe/setTouchEnd', 0)
     await store.dispatch('files/nextPage')
@@ -38,7 +35,6 @@ async function handleRightDirection(): Promise<void> {
 }
 
 async function handleLeftDirection(): Promise<void> {
-    playSound('page-next')
     await store.dispatch('swipe/setTouchStart', 0)
     await store.dispatch('swipe/setTouchEnd', 1)
     await store.dispatch('files/prevPage')

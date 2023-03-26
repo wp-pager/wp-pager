@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import useSound from '@album/composables/useSound'
 import { ref } from 'vue'
 import useClickOutside from '@album/composables/useClickOutside'
 import usePressEscape from '@album/composables/usePressEscape'
@@ -8,7 +7,6 @@ import InfoIcon from '@shared/components/Icons/InfoIcon.vue'
 import FooterButton from '@album/components/Footer/FooterButton.vue'
 import AppearTransition from '@shared/components/Transitions/AppearTransition.vue'
 
-const { playSound } = useSound()
 const visible = ref<boolean>(false)
 const modalEl = ref<HTMLElement | null>(null)
 

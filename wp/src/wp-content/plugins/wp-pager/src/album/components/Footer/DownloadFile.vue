@@ -4,12 +4,10 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import useFileDownloader from '@album/composables/useFileDownloader'
 import showToast from '@shared/modules/showToast'
-import useSound from '@album/composables/useSound'
 import DownloadIcon from '@shared/components/Icons/DownloadIcon.vue'
 import FooterButton from '@album/components/Footer/FooterButton.vue'
 
 const store = useStore()
-const { playSound } = useSound()
 const { downloadFile } = useFileDownloader()
 
 document.body.addEventListener('keydown', e => {
@@ -32,7 +30,6 @@ async function downloadImageHandler(): Promise<void> {
     const success = await downloadFile(currFile.value.url)
     const text = success ? 'Image downloaded' : 'Error downloading image'
 
-    playSound(success ? 'success' : 'error')
     showToast({ text, success })
 }
 </script>

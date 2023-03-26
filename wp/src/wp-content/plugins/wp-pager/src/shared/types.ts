@@ -27,7 +27,6 @@ export type Config = {
 }
 
 export type Settings = {
-    albumSound: boolean
     albumMaxWidth: number
 }
 
