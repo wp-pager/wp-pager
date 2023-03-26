@@ -14,11 +14,11 @@ async function uploadAll(): Promise<void> {
     if (files.value.length === 0)
         return
 
-    const isConfirmed = await confirmModal({
+    const answer = await confirmModal({
         text: 'Are you sure you want to upload all files?',
     })
 
-    if (!isConfirmed) {
+    if (!answer.isConfirmed) {
         return
     }
 

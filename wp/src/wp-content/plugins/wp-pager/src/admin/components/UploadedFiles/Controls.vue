@@ -15,11 +15,11 @@ async function deleteAllFiles(): Promise<void> {
         return
     }
 
-    const isConfirmed = await confirmModal({
+    const answer = await confirmModal({
         text: 'Are you sure you want to delete all files?',
     })
 
-    if (!isConfirmed) {
+    if (!answer.isConfirmed) {
         return
     }
 

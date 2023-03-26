@@ -1,8 +1,8 @@
 import type { SweetAlertOptions } from 'sweetalert2'
 import Swal from 'sweetalert2'
 
-export default async <T = any>(options?: SweetAlertOptions<T>): Promise<boolean> => {
-    const answer = await Swal.fire({
+export default async <T = any>(options?: SweetAlertOptions<T>) => {
+    return await Swal.fire({
         title: 'Are you sure?',
         showConfirmButton: true,
         showCancelButton: true,
@@ -14,6 +14,4 @@ export default async <T = any>(options?: SweetAlertOptions<T>): Promise<boolean>
         cancelButtonColor: '#9a4949',
         ...options,
     })
-
-    return answer.isConfirmed
 }

@@ -15,11 +15,11 @@ const props = defineProps<Props>()
 const store = useStore()
 
 async function deleteFile(): Promise<void> {
-    const isConfirmed = await confirmModal({
+    const answer = await confirmModal({
         text: 'Are you sure you want to delete this file?',
     })
 
-    if (isConfirmed) {
+    if (answer.isConfirmed) {
         store.dispatch('files/deleteFile', props.file.page)
     }
 }
@@ -33,8 +33,8 @@ async function deleteFile(): Promise<void> {
             </a>
         </Tip>
 
-        <Tip content="Rename the image">
-            <button @click="deleteFile" type="button">
+        <Tip content="Give image a name">
+            <button @click="giveImageName" type="button">
                 <EditIcon class="pager-icon" />
             </button>
         </Tip>
