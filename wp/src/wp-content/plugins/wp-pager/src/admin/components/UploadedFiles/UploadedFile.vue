@@ -16,6 +16,12 @@ const props = defineProps<Props>()
             :name="props.file.name"
             :url="props.file.url"
         >
+            <template #top>
+                <div v-if="props.file.title" class="image-title">
+                    {{ props.file.title }}
+                </div>
+            </template>
+
             <FileControls :file="props.file" />
         </ImageCard>
     </div>
@@ -24,4 +30,10 @@ const props = defineProps<Props>()
 <style lang="sass" scoped>
 [data-v-qlo935msqp9]
     cursor: move
+
+    .image-title
+        margin-bottom: 5px
+        font-weight: bold
+        text-align: center
+        font-size: 1.1em
 </style>

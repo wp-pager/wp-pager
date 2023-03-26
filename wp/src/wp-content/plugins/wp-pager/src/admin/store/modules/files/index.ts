@@ -115,8 +115,9 @@ const files: Module<FilesState, RootState> = {
             formData.append('title', params.title)
             formData.append('page', params.page.toString())
 
-            axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
+            axios.post<ServerResponse<ImageFile[]>>(pager.ajaxUrl, formData)
                 .then(resp => {
+                    state.files = resp.data.data
                     showToast({ text: 'Image title is set successfuly' })
                 })
                 .catch(handleError)

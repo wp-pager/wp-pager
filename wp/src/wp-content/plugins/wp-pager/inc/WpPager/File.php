@@ -80,7 +80,7 @@ class File
                 continue;
             }
 
-            $file->title = $title;
+            $file->title = $title === '' ? null : $title;
         }
 
         $this->saveFiles($files);

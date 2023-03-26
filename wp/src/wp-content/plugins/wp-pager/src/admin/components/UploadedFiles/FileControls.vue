@@ -31,7 +31,7 @@ async function giveImageTitle(): Promise<void> {
         input: 'text',
     })
 
-    if (!answer.isConfirmed || !answer.value) {
+    if (!answer.isConfirmed || answer.value === null) {
         return
     }
 

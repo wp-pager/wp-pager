@@ -10,6 +10,8 @@ const props = defineProps<Props>()
 <template>
     <div data-v-01klabn74la>
         <div class="pager-card">
+            <slot name="top" />
+
             <img
                 :src="props.url"
                 :alt="props.name"
