@@ -68,6 +68,28 @@ class File
 
     /**
      * @throws JsonException
+     *
+     * @return ImageFile[]
+     */
+    public function giveImageTitle(int $page, string $title): array
+    {
+        $files = $this->getFiles();
+
+        foreach ($files as $file) {
+            if ($file->page !== $page) {
+                continue;
+            }
+
+            $file->title = $title;
+        }
+
+        $this->saveFiles($files);
+
+        return $files;
+    }
+
+    /**
+     * @throws JsonException
      */
     public function deleteAll(): void
     {

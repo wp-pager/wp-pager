@@ -6,7 +6,9 @@ namespace WpPager\Http\Ajax;
 
 use Throwable;
 use JsonException;
+use WpPager\Dto\Requests\GiveImageNameRequest;
 use WpPager\Dto\Requests\UpdateSettingsRequest;
+use WpPager\Http\Ajax\Handlers\Files\GiveImageNameHandler;
 use WpPager\Http\Ajax\Handlers\Settings\UpdateSettingsHandler;
 use WpPager\Http\Request;
 use WpPager\Http\Ajax\Handlers\Handler;
@@ -58,6 +60,14 @@ class Entry
             'pager_update_settings' => function (): Handler {
                 $request = new UpdateSettingsRequest($this->request->get('settings'));
                 return new UpdateSettingsHandler($request);
+            },
+            'pager_give_image_title' => function (): Handler {
+                $request = new GiveImageNameRequest(
+                    $this->request->get('title'),
+                    $this->request->int('page'),
+                );
+
+                return new GiveImageNameHandler($request);
             },
         ];
     }

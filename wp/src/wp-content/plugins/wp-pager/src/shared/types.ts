@@ -43,3 +43,8 @@ export type ShowToastParams = {
     url?: string
     duration?: number
 }
+
+export type GiveImageNameParams = {
+    title: string
+    page: number
+}

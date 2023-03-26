@@ -23,6 +23,23 @@ async function deleteFile(): Promise<void> {
         store.dispatch('files/deleteFile', props.file.page)
     }
 }
+
+async function giveImageTitle(): Promise<void> {
+    const answer = await confirmModal({
+        title: 'Give image a title',
+        text: 'How do you want to name this image?',
+        input: 'text',
+    })
+
+    if (!answer.isConfirmed || !answer.value) {
+        return
+    }
+
+    store.dispatch('files/giveImageTitle', {
+        title: answer.value,
+        page: props.file.page,
+    })
+}
 </script>
 
 <template>
@@ -34,7 +51,7 @@ async function deleteFile(): Promise<void> {
         </Tip>
 
         <Tip content="Give image a name">
-            <button @click="giveImageName" type="button">
+            <button @click="giveImageTitle" type="button">
                 <EditIcon class="pager-icon" />
             </button>
         </Tip>

@@ -1,8 +1,7 @@
 import type { Module } from 'vuex'
 import type FilesState from './FilesState'
 import type RootState from '@admin/store/RootState'
-import type { ImageFile } from '@shared/types'
-import type { ServerResponse } from '@shared/types'
+import type { ImageFile, GiveImageNameParams, ServerResponse } from '@shared/types'
 import dispatchEvent from '@shared/modules/dispatchEvent'
 import { events } from '@shared/appConfig'
 import showToast from '@shared/modules/showToast'
@@ -107,6 +106,21 @@ const files: Module<FilesState, RootState> = {
                 .catch(handleError)
                 .finally(() => state.loading = false)
         },
+
+        GIVE_IMAGE_TITLE(state, params: GiveImageNameParams): void {
+            const formData = new FormData()
+
+            formData.append('action', 'pager_give_image_title')
+            formData.append('nonce', pager.nonce)
+            formData.append('title', params.title)
+            formData.append('page', params.page.toString())
+
+            axios.post<ServerResponse<null>>(pager.ajaxUrl, formData)
+                .then(resp => {
+                    showToast({ text: 'Image title is set successfuly' })
+                })
+                .catch(handleError)
+        },
     },
 
     actions: {
@@ -124,6 +138,10 @@ const files: Module<FilesState, RootState> = {
 
         addFiles({ commit }, files: File[]): void {
             commit('ADD_FILES', files)
+        },
+
+        giveImageTitle({ commit }, params: GiveImageNameParams): void {
+            commit('GIVE_IMAGE_TITLE', params)
         },
 
         deleteAllFiles({ commit }): void {
