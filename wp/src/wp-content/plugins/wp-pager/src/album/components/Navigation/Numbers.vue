@@ -44,7 +44,7 @@ async function pageChosenHandler(pageNum: number) {
     display: flex
     flex-wrap: wrap
     box-sizing: content-box !important
-    gap: 6px
+    gap: 2px 10px
     justify-content: center
     align-items: flex-end
     border-radius: 5px
@@ -55,6 +55,7 @@ async function pageChosenHandler(pageNum: number) {
         width: auto
         text-align: center
         cursor: pointer
+        min-width: 30px
 
         &:hover
             .pager-line

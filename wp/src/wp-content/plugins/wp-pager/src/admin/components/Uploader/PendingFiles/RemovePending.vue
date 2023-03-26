@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
 import { useStore } from 'vuex'
+import CloseIcon from '@shared/components/Icons/CloseIcon.vue'
+import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     file: File
@@ -17,7 +18,9 @@ function removeFile() {
 
 <template>
     <button type="button" @click="removeFile">
-        <CloseIcon class="pager-icon" />
+        <Tip content="Remove image from uploading">
+            <CloseIcon class="pager-icon" />
+        </Tip>
     </button>
 </template>
 

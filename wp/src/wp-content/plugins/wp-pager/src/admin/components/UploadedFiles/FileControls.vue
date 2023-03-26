@@ -4,6 +4,8 @@ import { useStore } from 'vuex'
 import confirmModal from '@shared/modules/confirmModal'
 import DeleteIcon from '@shared/components/Icons/DeleteIcon.vue'
 import EyeIcon from '@shared/components/Icons/EyeIcon.vue'
+import EditIcon from '@shared/components/Icons/EditIcon.vue'
+import Tip from '@shared/components/Tip.vue'
 
 type Props = {
     file: ImageFile
@@ -25,13 +27,23 @@ async function deleteFile(): Promise<void> {
 
 <template>
     <div data-v-mklq4p19ma>
-        <a :href="props.file.url" target="_blank" type="button">
-            <EyeIcon class="pager-icon" />
-        </a>
+        <Tip content="Preview the image">
+            <a :href="props.file.url" target="_blank" type="button">
+                <EyeIcon class="pager-icon" />
+            </a>
+        </Tip>
 
-        <button @click="deleteFile" type="button">
-            <DeleteIcon class="pager-icon" />
-        </button>
+        <Tip content="Rename the image">
+            <button @click="deleteFile" type="button">
+                <EditIcon class="pager-icon" />
+            </button>
+        </Tip>
+
+        <Tip content="Delete the image">
+            <button @click="deleteFile" type="button">
+                <DeleteIcon class="pager-icon" />
+            </button>
+        </Tip>
     </div>
 </template>
 
