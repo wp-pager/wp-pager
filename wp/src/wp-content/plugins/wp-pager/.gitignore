@@ -4,6 +4,7 @@ assets/*
 vendor
 storage/*
 storage/files/*
-versions/*
+versions/*.zip
+!versions/wp-pager.zip
 
 !.gitkeep
