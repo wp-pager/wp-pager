@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 type Emits = {
-    (e: 'changed', value: boolean): void
+    (e: 'changed', value: string): void
 }
 
 type Props = {
