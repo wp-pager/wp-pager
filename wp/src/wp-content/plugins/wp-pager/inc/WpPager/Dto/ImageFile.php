@@ -12,6 +12,7 @@ class ImageFile
         public string $url,
         public string $path,
         public bool $visible,
+        public ?string $title = null,
     ) {
     }
 }

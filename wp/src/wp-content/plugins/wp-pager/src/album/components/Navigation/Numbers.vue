@@ -33,7 +33,7 @@ async function pageChosenHandler(pageNum: number) {
             :class="{ 'active': file.visible }"
             @click="pageChosenHandler(file.page)"
         >
-            <span class="pager-number">{{ file.page }}</span>
+            <span class="pager-number">{{ file.title ? file.title : file.page }}</span>
             <div class="pager-line"></div>
         </b>
     </div>
@@ -42,28 +42,32 @@ async function pageChosenHandler(pageNum: number) {
 <style lang="sass" scoped>
 [data-v-qpxh391]
     display: flex
+    flex-wrap: wrap
     box-sizing: content-box !important
     gap: 6px
-    justify-content: space-evenly
+    justify-content: center
     align-items: flex-end
     border-radius: 5px
     background-color: white
     padding: 5px 5px 15px 5px
-    height: 35px
 
     b
-        width: 100%
+        width: auto
         text-align: center
         cursor: pointer
 
         &:hover
             .pager-line
-                height: 10px
+                background-color: #456813
+
+            .pager-number
+                color: #456813
 
         .pager-number
             color: #d5d5d5
             transition: all .1s ease-in-out
             user-select: none
+            padding: 0 5px
 
         .pager-line
             width: 100%

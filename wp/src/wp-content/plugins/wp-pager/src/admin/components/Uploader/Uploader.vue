@@ -4,7 +4,7 @@ import { useStore } from 'vuex'
 import DropIcon from '@shared/components/Icons/DropIcon.vue'
 import PendingFiles from '@admin/components/Uploader/PendingFiles/PendingFiles.vue'
 
-const drag = ref(false)
+const drag = ref<boolean>(false)
 const store = useStore()
 
 function dropImage(e: DragEvent): void {

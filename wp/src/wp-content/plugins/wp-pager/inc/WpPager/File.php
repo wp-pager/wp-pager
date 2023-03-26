@@ -23,7 +23,13 @@ class File
         }
 
         /**
-         * @var array<int, array{page: int, name: string, url: string, path: string}>|null $files
+         * @var null|array<int, array{
+         *     page: int,
+         *     name: string,
+         *     title: string | null,
+         *     url: string,
+         *     path: string,
+         * }> $files
          */
         $files = Json::decode($content);
 
@@ -31,9 +37,7 @@ class File
             return [];
         }
 
-        $result = array_map(function (array $file) {
-            return new ImageFile($file['page'], $file['name'], $file['url'], $file['path'], $file['visible']);
-        }, $files);
+        $result = array_map(fn (array $file) => new ImageFile(...$file), $files);
 
         usort($result, function (ImageFile $a, ImageFile $b) {
             return $a->page <=> $b->page;
@@ -77,7 +81,13 @@ class File
     }
 
     /**
-     * @param ImageFile[] $files
+     * @param array<int, array{
+     *     name: string,
+     *     type: string,
+     *     tmp_name: string,
+     *     error: int,
+     *     size: int
+     * }> $files
      *
      * @return ImageFile[]
      * @throws JsonException

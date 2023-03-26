@@ -16,6 +16,7 @@ export type ImageFile = {
     path: string
     url: string
     name: string
+    title: string | null
     visible: boolean
 }
 
