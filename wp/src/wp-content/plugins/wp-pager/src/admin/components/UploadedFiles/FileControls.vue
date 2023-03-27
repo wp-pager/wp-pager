@@ -29,6 +29,7 @@ async function giveImageTitle(): Promise<void> {
         title: 'Give image a title',
         text: 'How do you want to name this image?',
         input: 'text',
+        inputValue: props.file.title || '',
     })
 
     if (!answer.isConfirmed || answer.value === null) {
