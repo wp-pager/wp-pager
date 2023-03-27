@@ -1,2 +1,2 @@
-plugin-update-checker linguist-vendored
-vendor linguist-vendored
+plugin-update-checker/* linguist-vendored
+vendor/* linguist-vendored
