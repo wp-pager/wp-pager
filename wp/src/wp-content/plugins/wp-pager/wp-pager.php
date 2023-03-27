@@ -21,7 +21,10 @@ use WpPager\Hook;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
 define('PAGER_PATH', plugin_dir_path(__FILE__));
+define('PAGER_UPLOADS_PATH', wp_upload_dir()['basedir'] . '/wp-pager/');
+define('PAGER_FILES_PATH', PAGER_UPLOADS_PATH . 'files/');
 define('PAGER_URL', plugin_dir_url(__FILE__));
+define('PAGER_FILES_URL', content_url('uploads/wp-pager/files/'));
 
 error_reporting(E_ERROR | E_PARSE);
 

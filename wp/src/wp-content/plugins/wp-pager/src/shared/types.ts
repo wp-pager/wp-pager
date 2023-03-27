@@ -28,6 +28,7 @@ export type Config = {
 
 export type Settings = {
     albumMaxWidth: number
+    files: ImageFile[]
 }
 
 export type Setting = {

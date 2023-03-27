@@ -5,41 +5,21 @@ declare(strict_types=1);
 namespace WpPager;
 
 use JsonException;
-use RuntimeException;
 use WpPager\Dto\ImageFile;
 
 class File
 {
     /**
      * @return ImageFile[]
-     * @throws JsonException
      */
     public function getFiles(): array
     {
-        $content = file_get_contents(PAGER_FILES_URL);
+        $storage = new OptionsStorage();
+        $options = $storage->get();
 
-        if (!$content) {
-            return [];
-        }
+        $result = $options->files;
 
-        /**
-         * @var null|array<int, array{
-         *     page: int,
-         *     name: string,
-         *     title: string | null,
-         *     url: string,
-         *     path: string,
-         * }> $files
-         */
-        $files = Json::decode($content);
-
-        if (!$files) {
-            return [];
-        }
-
-        $result = array_map(fn (array $file) => new ImageFile(...$file), $files);
-
-        usort($result, function (ImageFile $a, ImageFile $b) {
+        usort($result, static function (ImageFile $a, ImageFile $b) {
             return $a->page <=> $b->page;
         });
 
@@ -48,7 +28,6 @@ class File
 
     /**
      * @return ImageFile[]
-     * @throws JsonException
      */
     public function deleteFile(int $page): array
     {
@@ -121,11 +100,11 @@ class File
         $latest_page = $this->getLatestFilePage($saved_files);
         $modified_files = 0;
 
-        Dir::create(PAGER_STORAGE_PATH);
-        Dir::create(PAGER_FILES_DIR);
+        Dir::create(PAGER_UPLOADS_PATH);
+        Dir::create(PAGER_FILES_PATH);
 
         foreach ($files as $key => $file) {
-            $path = PAGER_FILES_DIR . '/' . $file['name'];
+            $path = PAGER_FILES_PATH . $file['name'];
 
             move_uploaded_file($file['tmp_name'], $path);
 
@@ -136,7 +115,7 @@ class File
             $saved_files[] = new ImageFile(
                 page: $latest_page++,
                 name: $file['name'],
-                url: PAGER_FILES_DIR_URL . '/' . $file['name'],
+                url: PAGER_FILES_URL . $file['name'],
                 path: $path,
                 visible: $key === 0,
             );
@@ -154,14 +133,13 @@ class File
     /**
      * @param ImageFile[] $files
      * @return ImageFile[]
-     * @throws JsonException
      */
     public function saveFiles(array $files): array
     {
         $files = $this->resetPageNumbers($files);
 
-        $json = Json::encode($files);
-        file_put_contents(PAGER_FILES_URL, $json);
+        $storage = new OptionsStorage();
+        $storage->saveFiles($files);
 
         return $files;
     }

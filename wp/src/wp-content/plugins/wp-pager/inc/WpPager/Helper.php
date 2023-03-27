@@ -11,7 +11,8 @@ abstract class Helper
     public static function fileVersion(string $file): int
     {
         try {
-            return filemtime(get_template_directory() . "/$file") ?? 0;
+            $time = filemtime(PAGER_PATH . $file);
+            return is_int($time) ? $time : 0;
         } catch (Exception) {
             return 0;
         }
