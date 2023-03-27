@@ -27,7 +27,6 @@ const settings = computed<Settings | null>(() => store.getters['settings/setting
     justify-content: space-between
     align-items: center
     padding: 10px 10px
-    background-color: white
     border-radius: 0 0 8px 8px
     overflow: visible
     margin-left: auto

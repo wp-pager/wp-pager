@@ -44,8 +44,8 @@ async function pageChosenHandler(pageNum: number) {
     justify-content: center
     align-items: flex-end
     border-radius: 5px
-    background-color: white
-    padding: 5px 5px 15px 5px
+    padding: 7px
+    margin-bottom: 5px
 
     b
         width: auto

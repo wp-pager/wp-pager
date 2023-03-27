@@ -42,6 +42,7 @@ button
     transition: transform .1s ease-in-out, opacity .1s ease-in-out
     perspective: 1000px
     opacity: .7
+    color: inherit
 
     &:hover
         transform: scale(1.2)
