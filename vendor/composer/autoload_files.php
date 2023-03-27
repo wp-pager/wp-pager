@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     '667aeda72477189d0494fecd327c3641' => $vendorDir . '/symfony/var-dumper/Resources/functions/dump.php',
+    '5ff2501974ebd86c0be698ddfca6451e' => $vendorDir . '/yahnis-elsts/plugin-update-checker/load-v5p0.php',
     '3c1171ed55467b6377ca288852cab70b' => $baseDir . '/inc/functions.php',
 );

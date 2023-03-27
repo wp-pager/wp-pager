@@ -1,5 +1,4 @@
 <?php
-
 namespace YahnisElsts\PluginUpdateChecker\v5p0\Vcs;
 
 use Parsedown;
@@ -12,31 +11,6 @@ if ( !class_exists(Api::class, false) ):
 		const STRATEGY_LATEST_TAG = 'latest_tag';
 		const STRATEGY_STABLE_TAG = 'stable_tag';
 		const STRATEGY_BRANCH = 'branch';
-
-		/**
-		 * Consider all releases regardless of their version number or prerelease/upcoming
-		 * release status.
-		 */
-		const RELEASE_FILTER_ALL = 3;
-
-		/**
-		 * Exclude releases that have the "prerelease" or "upcoming release" flag.
-		 *
-		 * This does *not* look for prerelease keywords like "beta" in the version number.
-		 * It only uses the data provided by the API. For example, on GitHub, you can
-		 * manually mark a release as a prerelease.
-		 */
-		const RELEASE_FILTER_SKIP_PRERELEASE = 1;
-
-		/**
-		 * If there are no release assets or none of them match the configured filter,
-		 * fall back to the automatically generated source code archive.
-		 */
-		const PREFER_RELEASE_ASSETS = 1;
-		/**
-		 * Skip releases that don't have any matching release assets.
-		 */
-		const REQUIRE_RELEASE_ASSETS = 2;
 
 		protected $tagNameProperty = 'name';
 		protected $slug = '';

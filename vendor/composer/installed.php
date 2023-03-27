@@ -3,7 +3,7 @@
         'name' => 'serhii/wp-pager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f3ff766a9c3315255a9fc1a8d6b3542a756215fa',
+        'reference' => 'd41287534ecd0e44c38d0a8c3b334ac6771f38b4',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'serhii/wp-pager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f3ff766a9c3315255a9fc1a8d6b3542a756215fa',
+            'reference' => 'd41287534ecd0e44c38d0a8c3b334ac6771f38b4',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -45,6 +45,15 @@
             'install_path' => __DIR__ . '/../symfony/var-dumper',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'yahnis-elsts/plugin-update-checker' => array(
+            'pretty_version' => 'v5.0',
+            'version' => '5.0.0.0',
+            'reference' => '81be284da76f12c8751b477b2a0fa44364d26f84',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../yahnis-elsts/plugin-update-checker',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
     ),
 );

@@ -9,6 +9,7 @@ class ComposerStaticInita5d40776ed6d1971a2d646b73372d4da
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '5ff2501974ebd86c0be698ddfca6451e' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p0.php',
         '3c1171ed55467b6377ca288852cab70b' => __DIR__ . '/../..' . '/inc/functions.php',
     );
 

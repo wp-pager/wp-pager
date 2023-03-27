@@ -28,5 +28,8 @@
     "require-dev": {
         "symfony/var-dumper": "^6.2.7",
         "laravel/pint": "^1.7"
+    },
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "^5.0"
     }
 }

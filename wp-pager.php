@@ -30,9 +30,8 @@ define('PAGER_FILES_URL', content_url('uploads/wp-pager/files/'));
 error_reporting(E_ERROR | E_PARSE);
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
 
-$update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/', __FILE__, 'wp-pager');
+$update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/wp-pager', __FILE__, 'wp-pager');
 $update_checker->setAuthentication('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');
 $update_checker->setBranch('main');
 
