@@ -1,9 +1,0 @@
-.idea
-node_modules
-assets/*
-vendor
-storage
-versions/*.zip
-!versions/wp-pager.zip
-
-!.gitkeep

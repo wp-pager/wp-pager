@@ -1,8 +1,9 @@
-db/storage
-wp/src/*
-wp/src/wp-content/*
-wp/src/wp-content/plugins/*
+.idea
+node_modules
+assets/*
+vendor
+storage
+versions/*.zip
+!versions/wp-pager.zip
 
-!wp/src/wp-content/
-!wp/src/wp-content/plugins/
-!wp/src/wp-content/plugins/wp-pager/
+!.gitkeep
