@@ -5,11 +5,11 @@ declare(strict_types=1);
 /*
 Plugin Name: WP Pager
 Author: Serhii Cho
-Author URI: https://serhii.io/
+Author URI: https://serhii.io/about-me
 Description: WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
 Version: 0.1
-License: no
-License URI: https://serhii.io/
+License: MIT
+License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Text Domain: pager
 Tags: menu, album, images, files, gallery, restaurant, food, food menu, restaurant menu, restaurant menu plugin, restaurant menu wordpress, restaurant menu wordpress plugin, restaurant menu wordpress plugin free, restaurant menu wordpress
 */
