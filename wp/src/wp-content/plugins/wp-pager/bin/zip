@@ -2,13 +2,13 @@
 
 <?php
 
-function getPluginVersion(): float {
+function getPluginVersion(): string {
     $plugin_file = file_get_contents('wp-pager.php');
     preg_match('/Version: (.*)/', $plugin_file, $matches);
-    return (float) $matches[1];
+    return $matches[1];
 }
 
-function getLatestPluginVersion(): float {
+function getLatestPluginVersion(): string {
     $files = glob('versions/wp-pager-*.zip');
 
     if (empty($files)) {
@@ -17,9 +17,7 @@ function getLatestPluginVersion(): float {
 
     $last_file = end($files);
 
-    $result = str_replace(['versions/wp-pager-', '.zip'], '', $last_file);
-
-    return (float) $result;
+    return str_replace(['versions/wp-pager-', '.zip'], '', $last_file);
 }
 
 $latest_version = getLatestPluginVersion();
