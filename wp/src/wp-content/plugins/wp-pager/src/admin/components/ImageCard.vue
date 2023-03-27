@@ -12,10 +12,7 @@ const props = defineProps<Props>()
         <div class="pager-card">
             <slot name="top" />
 
-            <img
-                :src="props.url"
-                :alt="props.name"
-            />
+            <img :src="props.url" :alt="props.name" />
 
             <slot />
         </div>

@@ -116,15 +116,23 @@ class File
      */
     public function addFiles(array $files): array
     {
-        $result = $this->getFiles();
-        $latest_page = $this->getLatestFilePage($result);
+        $saved_files = $this->getFiles();
+        $saved_file_names = array_column($saved_files, 'name');
+        $latest_page = $this->getLatestFilePage($saved_files);
+        $modified_files = 0;
 
-        $this->createDirIfNotExists(PAGER_FILES_DIR);
+        $this->createDirIfNotExists();
 
         foreach ($files as $key => $file) {
             $path = PAGER_FILES_DIR . '/' . $file['name'];
 
-            $result[] = new ImageFile(
+            move_uploaded_file($file['tmp_name'], $path);
+
+            if (in_array($file['name'], $saved_file_names, true)) {
+                continue;
+            }
+
+            $saved_files[] = new ImageFile(
                 page: $latest_page++,
                 name: $file['name'],
                 url: PAGER_FILES_DIR_URL . '/' . $file['name'],
@@ -132,10 +140,14 @@ class File
                 visible: $key === 0,
             );
 
-            move_uploaded_file($file['tmp_name'], $path);
+            $modified_files++;
         }
 
-        return $this->saveFiles($result);
+        if ($modified_files === 0) {
+            return $saved_files;
+        }
+
+        return $this->saveFiles($saved_files);
     }
 
     /**
@@ -184,8 +196,10 @@ class File
         return array_values($files);
     }
 
-    private function createDirIfNotExists(string $dir): void
+    private function createDirIfNotExists(): void
     {
+        $dir = PAGER_FILES_DIR;
+
         if (!file_exists($dir) && !mkdir($dir, 0777, true) && !is_dir($dir)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $dir));
         }
