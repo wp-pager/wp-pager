@@ -42,7 +42,6 @@ passthru('mkdir wp-pager');
 $copy_dirs = [
     'assets',
     'inc',
-    'storage',
     'vendor',
 ];
 
@@ -58,8 +57,6 @@ $copy_files = [
 foreach ($copy_files as $file) {
     passthru("cp {$file} wp-pager");
 }
-
-passthru('rm -r wp-pager/storage');
 
 // Create zip file with plugin in versions directory
 passthru("zip -r versions/wp-pager-{$version}.zip wp-pager");

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WpPager;
 
 use JsonException;
+use WpPager\Exceptions\MissingRequestParameter;
 use WpPager\Http\Ajax\Entry;
 
 class Hook
@@ -32,12 +33,18 @@ class Hook
         }
 
         add_action('wp_enqueue_scripts', function () {
-            wp_register_script('pager-album', PAGER_URL . 'assets/album.js', [], PAGER_VERSION, true);
+            $file = PAGER_URL . 'assets/album.js';
+            $version = Helper::fileVersion($file);
+
+            wp_register_script('pager-album', $file, [], $version, true);
             registerJavaScriptGlobalVariables('pager-album');
         });
 
         add_action('admin_enqueue_scripts', function () {
-            wp_register_script('pager-admin', PAGER_URL . 'assets/admin.js', [], PAGER_VERSION, true);
+            $file = PAGER_URL . 'assets/admin.js';
+            $version = Helper::fileVersion($file);
+
+            wp_register_script('pager-admin', $file, [], $version, true);
             registerJavaScriptGlobalVariables('pager-admin');
         });
     }
@@ -72,6 +79,7 @@ class Hook
 
     /**
      * @throws JsonException
+     * @throws MissingRequestParameter
      */
     private function exposeJsonApi(): void
     {
