@@ -28,8 +28,5 @@
     "require-dev": {
         "symfony/var-dumper": "^6.2.7",
         "laravel/pint": "^1.7"
-    },
-    "scripts": {
-        "zip": "./bin/zip"
     }
 }
