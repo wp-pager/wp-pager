@@ -59,10 +59,7 @@ foreach ($copy_files as $file) {
     passthru("cp {$file} wp-pager");
 }
 
-// Remove cache from storage
-passthru('rm wp-pager/storage/settings.json');
-passthru('rm wp-pager/storage/files.json');
-passthru('rm -r wp-pager/storage/files');
+passthru('rm -r wp-pager/storage');
 
 // Create zip file with plugin in versions directory
 passthru("zip -r versions/wp-pager-{$version}.zip wp-pager");

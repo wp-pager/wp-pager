@@ -2,8 +2,7 @@
 node_modules
 assets/*
 vendor
-storage/*
-storage/files/*
+storage
 versions/*.zip
 !versions/wp-pager.zip
 

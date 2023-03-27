@@ -1,7 +1,7 @@
 {
     "name": "wp-pager",
     "version": "1.0.0",
-    "description": "WordPress plugin that allows you to easily integrate restaurant menu on your website",
+    "description": "WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu.",
     "main": "main.js",
     "author": "serhiicho@protonmail.com",
     "license": "MIT",
