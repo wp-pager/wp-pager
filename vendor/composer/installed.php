@@ -3,7 +3,7 @@
         'name' => 'serhii/wp-pager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '911a8631ce7263bfcfd6c72646b91ad8f8f6721a',
+        'reference' => 'a5cf3686ad6e748c928379e653d4954a51f56b62',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'serhii/wp-pager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '911a8631ce7263bfcfd6c72646b91ad8f8f6721a',
+            'reference' => 'a5cf3686ad6e748c928379e653d4954a51f56b62',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
