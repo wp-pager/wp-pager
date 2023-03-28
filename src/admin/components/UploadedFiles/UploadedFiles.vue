@@ -18,7 +18,7 @@ const files = computed<ImageFile[]>({
 
 <template>
     <div data-v-kosbj3f>
-        <h2 class="pager-title">Uploaded Files</h2>
+        <h2 class="pager-title">📂 Uploaded Files</h2>
 
         <p class="pager-intro">
             These are the files that have been uploaded to the server. You can drag and drop them to change the order.
