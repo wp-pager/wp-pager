@@ -37,3 +37,4 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 
 = 0.7 =
 * Removed 7px padding around the album
+* Fixed tiny errors bug for album arrows
