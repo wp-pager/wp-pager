@@ -1,12 +1,12 @@
 === Plugin Name ===
 Stable tag: 0.3
+Requires at least: 6.0
+Tested up to: 6.1.1
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
 Requires PHP: 8.1
-Requires at least: 8.0
 License: MIT
 License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Donate link: https://www.buymeacoffee.com/serhiicho
-Tested up to: 8.0
 
 WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu
 
