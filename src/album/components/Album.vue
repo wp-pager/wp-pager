@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { ImageFile, Settings, SwipeDirection } from '@shared/types'
 import { useStore } from 'vuex'
-import isTouchDevice from 'is-touch-device'
 import { debounce } from 'lodash'
 import { computed, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
@@ -17,11 +16,6 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 const currHeight = ref<number>(0)
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
-
-const debouncedTouchendHandler = debounce(handleTouchend, 100, {
-    leading: true,
-    trailing: false,
-})
 
 const albumStyles = computed(() => {
     let styles: Record<string, string> = {}
@@ -45,17 +39,6 @@ function setTouchStart(e: TouchEvent): void {
 function setTouchEnd(e: TouchEvent): void {
     if (e.changedTouches)
         store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
-}
-
-function handleTouchend(e: TouchEvent): void {
-    if (!e.changedTouches)
-        return
-
-    if (swipeDirection.value === 'right') {
-        store.dispatch('files/prevPage')
-    } else if (swipeDirection.value === 'left') {
-        store.dispatch('files/nextPage')
-    }
 }
 
 function setCurrentHeight(e: Event, file: ImageFile): void {
@@ -84,7 +67,7 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                 class="pager-album-image"
                 :style="albumStyles"
             >
-                <Arrows v-if="!isTouchDevice()" />
+                <Arrows />
 
                 <section
                     v-for="file in files"
