@@ -107,4 +107,14 @@ async function handleLeftDirection(): Promise<void> {
             width: 38px
             height: 38px
             background-color: rgba(255, 255, 255, 0.7)
+
+            .pager-icon
+                width: 22px !important
+                height: 22px !important
+
+            &.pager-right-button
+                right: 0
+
+            &.pager-left-button
+                left: 0
 </style>
