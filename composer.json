@@ -31,5 +31,11 @@
     },
     "require": {
         "yahnis-elsts/plugin-update-checker": "^5.0"
+    },
+    "scripts": {
+        "build": [
+            "composer install --no-dev --optimize-autoloader",
+            "yarn prod"
+        ]
     }
 }
