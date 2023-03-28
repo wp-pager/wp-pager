@@ -75,8 +75,9 @@ async function handleLeftDirection(): Promise<void> {
         position: absolute
         top: 50%
         margin-top: -25px
-        background-color: white
+        background-color: rgba(255, 255, 255, 0.8)
         border: 1px solid #eaeaea
+        color: black
         border-radius: 50%
         width: 50px
         height: 50px
@@ -99,4 +100,15 @@ async function handleLeftDirection(): Promise<void> {
         .pager-icon
             width: 27px
             height: 27px
+
+@media screen and (max-width: 768px)
+    [data-v-bnqp3]
+        button
+            width: 38px
+            height: 38px
+            background-color: rgba(255, 255, 255, 0.7)
+
+            .pager-icon
+                width: 20px
+                height: 20px
 </style>
