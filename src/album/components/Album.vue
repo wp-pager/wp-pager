@@ -92,7 +92,6 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
 <style lang="sass" scoped>
 [data-v-hw0krsr3]
     overflow: hidden
-    padding: 7px
     position: relative
     z-index: 100
 
