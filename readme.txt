@@ -1,5 +1,5 @@
 === Plugin Name ===
-Stable tag: 0.5
+Stable tag: 0.6
 Requires at least: 6.0
 Tested up to: 6.1.1
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -31,5 +31,6 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 
 == Changelog ==
 
-= 0.4 =
-* Added automatic updates of the plugin
+= 0.6 =
+* Optimized plugin
+* Fixed album page switching on mobile screen
