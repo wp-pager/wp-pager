@@ -1,17 +1,26 @@
 <script setup lang="ts">
+import type { Settings } from '@shared/types'
 import DownloadFile from '@album/components/Footer/DownloadFile.vue'
 import Copyright from '@album/components/Footer/Copyright.vue'
 import InfoModalTrigger from '@album/components/Footer/InfoModalTrigger.vue'
-import { Settings } from '@shared/types'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
+const styles = computed(() => {
+    if (settings.value) {
+        return {
+            maxWidth: settings.value.albumMaxWidth + 'px',
+        }
+    }
+
+    return {}
+})
 </script>
 
 <template>
-    <div data-v-go094ik :style="settings && settings.albumMaxWidth ? { maxWidth: settings.albumMaxWidth + 'px' } : {}">
+    <div data-v-go094ik :style="styles">
         <div class="pager-buttons">
             <InfoModalTrigger />
             <DownloadFile />
