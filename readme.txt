@@ -1,5 +1,5 @@
 === Plugin Name ===
-Stable tag: 0.4
+Stable tag: 0.5
 Requires at least: 6.0
 Tested up to: 6.1.1
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
