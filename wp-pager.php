@@ -8,13 +8,10 @@ Author: Serhii Cho
 Author URI: https://serhii.io/about-me
 Description: WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu.
 Version: 0.3.0
-Tested up to: 8.0
-Requires PHP: 8.1
-Donate link: https://www.buymeacoffee.com/serhiicho
 License: MIT
 License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Text Domain: pager
-Tags: menu, album, images, files, gallery, restaurant, food, food menu, restaurant menu, restaurant menu plugin, restaurant menu wordpress, restaurant menu wordpress plugin, restaurant menu wordpress plugin free, restaurant menu wordpress
+Tags: menu, album, images, files, gallery, restaurant, food, food menu
 */
 
 use WpPager\Hook;
@@ -32,7 +29,6 @@ error_reporting(E_ERROR | E_PARSE);
 require __DIR__ . '/vendor/autoload.php';
 
 $update_checker = PucFactory::buildUpdateChecker('https://github.com/SerhiiCho/wp-pager', __FILE__, 'wp-pager');
-$update_checker->setAuthentication('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');
 $update_checker->setBranch('main');
 
 (new Hook())->init();
