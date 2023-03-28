@@ -7,7 +7,7 @@ Plugin Name: WP Pager
 Author: Serhii Cho
 Author URI: https://serhii.io/about-me
 Description: WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu.
-Version: 0.4
+Version: 0.3
 License: MIT
 License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Text Domain: pager
