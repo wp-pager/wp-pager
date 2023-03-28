@@ -1,8 +1,8 @@
 const mix = require('laravel-mix')
 const path = require('path')
 
-mix.ts('src/admin/main.ts', 'assets/admin.js').vue({ version: 3 })
-    .ts('src/album/main.ts', 'assets/album.js').vue({ version: 3 })
+mix.ts('src/admin/main.ts', 'assets/js/admin.js').vue({ version: 3 })
+    .ts('src/album/main.ts', 'assets/js/album.js').vue({ version: 3 })
     .sourceMaps()
     .disableNotifications()
 

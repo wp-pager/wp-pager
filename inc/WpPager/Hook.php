@@ -33,7 +33,7 @@ class Hook
         }
 
         add_action('wp_enqueue_scripts', function () {
-            $file = PAGER_URL . 'assets/album.js';
+            $file = PAGER_URL . 'assets/js/album.js';
             $version = Helper::fileVersion('assets/album.js');
 
             wp_register_script('pager-album', $file, [], $version, true);
@@ -41,7 +41,7 @@ class Hook
         });
 
         add_action('admin_enqueue_scripts', function () {
-            $file = PAGER_URL . 'assets/admin.js';
+            $file = PAGER_URL . 'assets/js/admin.js';
             $version = Helper::fileVersion('assets/admin.js');
 
             wp_register_script('pager-admin', $file, [], $version, true);
