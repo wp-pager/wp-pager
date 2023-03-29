@@ -25,6 +25,8 @@ const props = defineProps<Props>()
 </template>
 
 <style lang="sass" scoped>
+$active: #6da816
+
 .pager-tab-number
     border-radius: 2px
     border: none
@@ -35,10 +37,11 @@ const props = defineProps<Props>()
     color: white
     margin-left: 2px
     cursor: pointer
+    transition: background-color .1s ease-in-out
 
     &:hover
-        background-color: #999
+        background-color: $active
 
     &.pager-active
-        background-color: #6da816
+        background-color: $active
 </style>

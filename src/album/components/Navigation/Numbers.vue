@@ -3,6 +3,8 @@ import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 import NestedNumber from '@album/components/Navigation/NestedNumber.vue'
+import Number from '@album/components/Navigation/Number.vue'
+import Line from '@album/components/Navigation/Line.vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -72,11 +74,11 @@ async function pageChosenHandler(pageNum: number) {
                 v-if="group.files.length === 1"
                 @click="pageChosenHandler(group.files[0].page)"
             >
-                <span class="pager-number">{{ group.title }}</span>
-                <div class="pager-line"></div>
+                <Number>{{ group.title }}</Number>
+                <Line />
             </div>
             <div v-else>
-                <span class="pager-number">{{ group.title }}
+                <Number>{{ group.title }}
                     <NestedNumber
                         v-for="(file, index) in group.files"
                         :key="file.page"
@@ -84,14 +86,16 @@ async function pageChosenHandler(pageNum: number) {
                         :number="index + 1"
                         @clicked="pageChosenHandler(file.page)"
                     />
-                </span>
-                <div class="pager-line"></div>
+                </Number>
+                <Line />
             </div>
         </b>
     </div>
 </template>
 
 <style lang="sass" scoped>
+$active: #6da816
+
 [data-v-qpxh391]
     display: flex
     flex-wrap: wrap
@@ -109,34 +113,13 @@ async function pageChosenHandler(pageNum: number) {
         min-width: 30px
         font-weight: normal
 
-        &.pager-with-hover
-            &:hover
-                cursor: pointer
-
-                .pager-line
-                    background-color: #456813
-
-                .pager-number
-                    color: #456813
-
-        .pager-number
-            color: #c5c5c5
-            transition: all .1s ease-in-out
-            user-select: none
-            padding: 0 5px
-
-        .pager-line
-            width: 100%
-            height: 4px
-            display: block
-            background-color: #c5c5c5
-            border-radius: 2px
-            transition: height .1s ease-in-out
-
+        &.pager-with-hover:hover,
         &.pager-active
+            cursor: pointer
+
             .pager-line
-                background-color: #6da816
+                background-color: $active
 
             .pager-number
-                color: #6da816
+                color: $active
 </style>
