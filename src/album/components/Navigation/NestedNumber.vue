@@ -38,6 +38,8 @@ $active: #6da816
     margin-left: 2px
     cursor: pointer
     transition: background-color .1s ease-in-out
+    font-family: arial
+    line-height: 1.2
 
     &:hover
         background-color: $active
