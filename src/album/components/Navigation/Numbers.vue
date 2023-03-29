@@ -7,6 +7,42 @@ const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const prevPageNum = computed<number>(() => store.getters['files/prevPageNum'])
 
+type GroupedFile = {
+    title: string | number
+    visible: boolean
+    files: ImageFile[]
+}
+
+const groupedFiles = computed<GroupedFile[]>(() => {
+    if (!files.value) {
+        return []
+    }
+
+    const result: GroupedFile[] = files.value.reduce((groups: GroupedFile[], file) => {
+        const matchedGroup = groups.find((group) => group.title === file.title || group.title === file.page)
+
+        if (!matchedGroup) {
+            const newGroup = {
+                title: file.title || file.page,
+                visible: false,
+                files: [file]
+            }
+
+            groups.push(newGroup)
+
+            return groups
+        }
+
+        matchedGroup.files.push(file)
+
+        return groups
+    }, [])
+
+    result[0].visible = true
+
+    return result
+})
+
 async function pageChosenHandler(pageNum: number) {
     if (pageNum > prevPageNum.value) {
         await store.dispatch('swipe/setTouchStart', 1)
@@ -24,13 +60,36 @@ async function pageChosenHandler(pageNum: number) {
 <template>
     <div data-v-qpxh391>
         <b
-            v-for="file in files"
-            :key="file.page"
-            :class="{ 'active': file.visible }"
-            @click="pageChosenHandler(file.page)"
+            v-for="(group, i) in groupedFiles"
+            :key="i"
+            :class="{
+                'pager-active': group.files.some(f => f.visible),
+                'pager-with-hover': group.files.length === 1
+            }"
         >
-            <span class="pager-number">{{ file.title ? file.title : file.page }}</span>
-            <div class="pager-line"></div>
+            <div
+                v-if="group.files.length === 1"
+                @click="pageChosenHandler(group.files[0].page)"
+            >
+                <span class="pager-number">{{ group.title }}</span>
+                <div class="pager-line"></div>
+            </div>
+            <div v-else>
+                <span class="pager-number">{{ group.title }}
+                    <button
+                        v-for="(file, index) in group.files"
+                        :key="file.page"
+                        class="pager-tab-number"
+                        @click="pageChosenHandler(file.page)"
+                        :class="{
+                            'pager-active': file.visible
+                        }"
+                    >
+                        {{ ++index }}
+                    </button>
+                </span>
+                <div class="pager-line"></div>
+            </div>
         </b>
     </div>
 </template>
@@ -47,19 +106,38 @@ async function pageChosenHandler(pageNum: number) {
     padding: 7px
     margin-bottom: 5px
 
+    .pager-tab-number
+        border-radius: 2px
+        border: none
+        padding: 1px
+        min-width: 20px
+        display: inline-block
+        background-color: #c5c5c5
+        color: white
+        margin-left: 2px
+        cursor: pointer
+
+        &:hover
+            background-color: #999
+
+        &.pager-active
+            background-color: #6da816
+
     b
         width: auto
         text-align: center
-        cursor: pointer
         min-width: 30px
         font-weight: normal
 
-        &:hover
-            .pager-line
-                background-color: #456813
+        &.pager-with-hover
+            &:hover
+                cursor: pointer
 
-            .pager-number
-                color: #456813
+                .pager-line
+                    background-color: #456813
+
+                .pager-number
+                    color: #456813
 
         .pager-number
             color: #c5c5c5
@@ -75,7 +153,7 @@ async function pageChosenHandler(pageNum: number) {
             border-radius: 2px
             transition: height .1s ease-in-out
 
-        &.active
+        &.pager-active
             .pager-line
                 background-color: #6da816
 
