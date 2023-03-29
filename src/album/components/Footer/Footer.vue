@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import type { Settings } from '@shared/types'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import isTouchDevice from 'is-touch-device'
 import DownloadFile from '@album/components/Footer/DownloadFile.vue'
 import Copyright from '@album/components/Footer/Copyright.vue'
 import InfoModalTrigger from '@album/components/Footer/InfoModalTrigger.vue'
-import { computed } from 'vue'
-import { useStore } from 'vuex'
 
 const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
@@ -21,10 +22,11 @@ const styles = computed(() => {
 
 <template>
     <div data-v-go094ik :style="styles">
-        <div class="pager-buttons">
+        <div v-if="!isTouchDevice()" class="pager-buttons">
             <InfoModalTrigger />
             <DownloadFile />
         </div>
+        <div v-else></div>
 
         <Copyright />
     </div>

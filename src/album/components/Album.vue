@@ -63,7 +63,6 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
             <div
                 @touchstart="setTouchStart"
                 @touchmove="setTouchEnd"
-                @touchend="debouncedTouchendHandler"
                 class="pager-album-image"
                 :style="albumStyles"
             >
@@ -93,6 +92,7 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
 [data-v-hw0krsr3]
     overflow: hidden
     position: relative
+    padding: 0 10px
     z-index: 100
 
     .pager-album-image
@@ -113,4 +113,13 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                 border-radius: 5px
                 pointer-events: none
                 box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
+
+@media screen and (max-width: 768px)
+    [data-v-hw0krsr3]
+        padding: 0 1px
+
+        .pager-album-image
+            section
+                img
+                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .3)
 </style>
