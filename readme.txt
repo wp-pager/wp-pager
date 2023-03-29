@@ -47,3 +47,4 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 
 = 0.10 =
 * Fixed styles on album tab groups
+* Added hiding info button in Album footer when is mobile device
