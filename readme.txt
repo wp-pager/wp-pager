@@ -1,5 +1,5 @@
 === Plugin Name ===
-Stable tag: 0.9
+Stable tag: 0.10
 Requires at least: 6.0
 Tested up to: 6.1.1
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -44,3 +44,6 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 
 = 0.9 =
 * Added tab groups feature. It simplifies tabs in album by grouping tabs with identical names into one tab.
+
+= 0.10 =
+* Fixed styles on album tab groups
