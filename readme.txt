@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== WP Pager ===
 Stable tag: 0.10
 Requires at least: 6.0
 Tested up to: 6.1.1
@@ -12,7 +12,9 @@ WP Pager is a WordPress plugin for displaying images in a form of a restaurant m
 
 == Description ==
 
-WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu
+WP Pager is a WordPress plugin that allows you to display images in an album or gallery format. It is a simple and easy to use plugin that allows you to create a galleries of images.
+
+It's easy to upload images to your Wordpress site, but it's not easy to display them in a gallery or album format. This is where WP Pager comes in. It allows you to create a gallery of images in a few minutes.
 
 == Frequently Asked Questions ==
 
@@ -28,6 +30,11 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 
 1. WP Pager plugin images preview
 2. WP Pager album visible by users
+
+== Upgrade Notice ==
+
+= 0.10 =
+The latest and greatest version that has grouped tabs and fixed bugs.
 
 == Changelog ==
 
