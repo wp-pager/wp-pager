@@ -86,7 +86,7 @@ async function handleLeftDirection(): Promise<void> {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
         transition: transform .1s ease
         z-index: 10
-        opacity: .7
+        opacity: .6
         padding: 10px
 
         &.pager-right-button
