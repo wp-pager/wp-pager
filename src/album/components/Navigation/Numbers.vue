@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Settings, ImageFile } from '@shared/types'
+import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import NestedNumber from '@album/components/Navigation/NestedNumber.vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -76,17 +77,13 @@ async function pageChosenHandler(pageNum: number) {
             </div>
             <div v-else>
                 <span class="pager-number">{{ group.title }}
-                    <button
+                    <NestedNumber
                         v-for="(file, index) in group.files"
                         :key="file.page"
-                        class="pager-tab-number"
-                        @click="pageChosenHandler(file.page)"
-                        :class="{
-                            'pager-active': file.visible
-                        }"
-                    >
-                        {{ ++index }}
-                    </button>
+                        :file="file"
+                        :number="index + 1"
+                        @clicked="pageChosenHandler(file.page)"
+                    />
                 </span>
                 <div class="pager-line"></div>
             </div>
@@ -105,23 +102,6 @@ async function pageChosenHandler(pageNum: number) {
     border-radius: 5px
     padding: 7px
     margin-bottom: 5px
-
-    .pager-tab-number
-        border-radius: 2px
-        border: none
-        padding: 1px
-        min-width: 20px
-        display: inline-block
-        background-color: #c5c5c5
-        color: white
-        margin-left: 2px
-        cursor: pointer
-
-        &:hover
-            background-color: #999
-
-        &.pager-active
-            background-color: #6da816
 
     b
         width: auto
