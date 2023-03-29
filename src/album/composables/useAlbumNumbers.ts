@@ -18,8 +18,8 @@ export default () => {
             return []
         }
 
-        const result: GroupedFile[] = files.value.reduce((groups: GroupedFile[], file) => {
-            const matchedGroup = groups.find((group) => group.title === file.title || group.title === file.page)
+        const result: GroupedFile[] = files.value.reduce((groups: GroupedFile[], file: ImageFile) => {
+            const matchedGroup = groups.find(g => g.title === file.title || g.title === file.page)
 
             if (!matchedGroup) {
                 const newGroup = {
@@ -38,7 +38,9 @@ export default () => {
             return groups
         }, [])
 
-        result[0].visible = true
+        if (result.length > 0) {
+            result[0].visible = true
+        }
 
         return result
     })
