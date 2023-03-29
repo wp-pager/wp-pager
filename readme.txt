@@ -32,19 +32,20 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 == Changelog ==
 
 = 0.6 =
-* Optimized plugin
-* Fixed album page switching on mobile screen
+* 🎨 Optimized plugin
+* 🐛 Fixed album page switching on mobile screen
 
 = 0.7 =
-* Removed 7px padding around the album
-* Fixed tiny errors bug for album arrows
+* 🔥 Removed 7px padding around the album
+* 🐛 Fixed tiny errors bug for album arrows
 
 = 0.8 =
-* Fixed tiny errors bug for album arrows
+* 🐛 Fixed tiny errors bug for album arrows
 
 = 0.9 =
-* Added tab groups feature. It simplifies tabs in album by grouping tabs with identical names into one tab.
+* ✨ Added tab groups feature. It simplifies tabs in album by grouping tabs with identical names into one tab.
 
 = 0.10 =
-* Fixed styles on album tab groups
-* Added hiding info button in Album footer when is mobile device
+* 🐛 Fixed styles on album tab groups
+* ✨ Added hiding info button in Album footer when is mobile device
+* 🐛 Fixed bug
