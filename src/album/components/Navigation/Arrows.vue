@@ -2,8 +2,6 @@
 import type { ImageFile } from '@shared/types'
 import { useStore } from 'vuex'
 import { computed, onMounted } from 'vue'
-import ArrowRightIcon from '@shared/components/Icons/ArrowRightIcon.vue'
-import ArrowLeftIcon from '@shared/components/Icons/ArrowLeftIcon.vue'
 
 const store = useStore()
 const files = computed<ImageFile[]>(() => store.getters['files/files'])
@@ -51,6 +49,7 @@ async function handleLeftDirection(): Promise<void> {
             class="pager-left-button"
         >
             <ArrowLeftIcon class="pager-icon" />
+            <img src="/wp-content/plugins/wp-pager/assets/img/chevron.webp" alt="arrow-left" />
         </button>
 
         <button
@@ -59,7 +58,7 @@ async function handleLeftDirection(): Promise<void> {
             type="button"
             class="pager-right-button"
         >
-            <ArrowRightIcon class="pager-icon" />
+            <img src="/wp-content/plugins/wp-pager/assets/img/chevron.webp" alt="arrow-right" />
         </button>
     </div>
 </template>
@@ -75,7 +74,7 @@ async function handleLeftDirection(): Promise<void> {
         position: absolute
         top: 50%
         margin-top: -25px
-        background-color: rgba(255, 255, 255, 0.8)
+        background-color: white
         border: 1px solid #eaeaea
         color: black
         border-radius: 50%
@@ -87,34 +86,35 @@ async function handleLeftDirection(): Promise<void> {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
         transition: transform .1s ease
         z-index: 10
-
-        &:hover
-            transform: scale(1.2)
+        opacity: .6
+        padding: 10px
 
         &.pager-right-button
             right: 17px
 
+            &:hover
+                transform: scale(1.2)
+
         &.pager-left-button
             left: 17px
+            transform: rotate(180deg)
 
-        .pager-icon
-            width: 1.7em
-            height: 1.7em
+            &:hover
+                transform: scale(1.2) rotate(180deg)
+
+        img
+            width: 100%
 
 @media screen and (max-width: 768px)
     [data-v-bnqp3]
         button
             width: 38px
             height: 38px
-            background-color: rgba(255, 255, 255, 0.7)
-
-            .pager-icon
-                width: 22px !important
-                height: 22px !important
+            padding: 8px
 
             &.pager-right-button
-                right: 0
+                right: 3px
 
             &.pager-left-button
-                left: 0
+                left: 3px
 </style>

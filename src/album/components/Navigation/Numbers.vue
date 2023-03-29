@@ -51,7 +51,7 @@ $active: #6da816
     justify-content: center
     align-items: flex-end
     border-radius: 5px
-    padding: 7px
+    padding: 7px 0
     margin-bottom: 5px
 
     b
