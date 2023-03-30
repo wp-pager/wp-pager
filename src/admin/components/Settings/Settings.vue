@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Settings } from '@shared/types'
-import Checkbox from '@admin/components/Settings/Checkbox.vue'
 import InputField from '@admin/components/Settings/InputField.vue'
 import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
@@ -25,7 +24,7 @@ function updateAlbumMaxWidth(newValue: string): void {
         <div v-if="settings" class="pager-form-inputs">
             <InputField
                 id="album-max-width"
-                :defaultValue="settings && settings.albumMaxWidth ? settings.albumMaxWidth.toString() : '1000'"
+                :defaultValue="settings?.albumMaxWidth ? settings?.albumMaxWidth.toString() : '1000'"
                 type="text"
                 :inputWidth="120"
                 @changed="updateAlbumMaxWidth"
