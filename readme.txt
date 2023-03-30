@@ -1,5 +1,5 @@
 === WP Pager ===
-Stable tag: 0.10
+Stable tag: 0.11
 Requires at least: 6.0
 Tested up to: 6.1.1
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -56,3 +56,7 @@ The latest and greatest version that has grouped tabs and fixed bugs.
 * 🐛 Fixed styles on album tab groups
 * ✨ Added hiding info button in Album footer when is mobile device
 * 🐛 Fixed bug
+
+= 0.11 =
+
+* 🐛 Fixed bug with setting the album's width in settings
