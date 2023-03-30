@@ -1,7 +1,7 @@
 === WP Pager ===
-Stable tag: 0.11
+Stable tag: 0.12
 Requires at least: 6.0
-Tested up to: 6.1.1
+Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
 Requires PHP: 8.1
 License: MIT
@@ -18,11 +18,11 @@ It's easy to upload images to your Wordpress site, but it's not easy to display 
 
 == Frequently Asked Questions ==
 
-= Is this plugin fully free? =
+= ❓ Is this plugin fully free? =
 
 Yes, this plugin is fully free and open source. You can use it for free and modify it as you want.
 
-= Can I request a feature? =
+= ❓ Can I request a feature? =
 
 Yes, you can request a feature by creating an issue on [GitHub](https://github.com/SerhiiCho/wp-pager) and we will try to implement it.
 
@@ -60,3 +60,9 @@ The latest and greatest version that has grouped tabs and fixed bugs.
 = 0.11 =
 
 * 🐛 Fixed bug with setting the album's width in settings
+
+= 0.12 =
+
+* 🐛 Fixed bug with plugin screenshots are not showing up when updating plugin to a new version
+* ✨ Now you can change to a grouped tab's nested tab by clicking on the parent
+* 🐛 Fixed bug when resizing the browser window the album's height is not changing

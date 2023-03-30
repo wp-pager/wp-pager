@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NestedNumber from '@album/components/Navigation/NestedNumber.vue'
-import Number from '@album/components/Navigation/Number.vue'
+import NestedTab from '@album/components/Navigation/NestedTab.vue'
+import Tab from '@album/components/Navigation/Tab.vue'
 import Line from '@album/components/Navigation/Line.vue'
 import useAlbumNumbers from '@album/composables/useAlbumNumbers'
 
@@ -12,28 +12,32 @@ const { groupedFiles, pageChosenHandler } = useAlbumNumbers()
         <b
             v-for="(group, i) in groupedFiles"
             :key="i"
-            :class="{
-                'pager-active': group.files.some(f => f.visible),
-                'pager-with-hover': group.files.length === 1
-            }"
+            :class="{ 'pager-active': group.files.some(f => f.visible) }"
         >
             <div
                 v-if="group.files.length === 1"
                 @click="pageChosenHandler(group.files[0].page)"
             >
-                <Number>{{ group.title }}</Number>
+                <Tab>{{ group.title }}</Tab>
                 <Line />
             </div>
             <div v-else>
-                <Number>{{ group.title }}
-                    <NestedNumber
+                <Tab>
+                    <span
+                        @click="pageChosenHandler(group.files[0].page)"
+                        class="pager-nested-tab-title"
+                    >
+                        {{ group.title }}
+                    </span>
+
+                    <NestedTab
                         v-for="(file, index) in group.files"
                         :key="file.page"
                         :file="file"
                         :number="index + 1"
                         @clicked="pageChosenHandler(file.page)"
                     />
-                </Number>
+                </Tab>
                 <Line />
             </div>
         </b>
@@ -60,7 +64,10 @@ $active: #6da816
         min-width: 30px
         font-weight: normal
 
-        &.pager-with-hover:hover,
+        .pager-nested-tab-title
+            margin-right: 4px
+
+        &:hover,
         &.pager-active
             cursor: pointer
 

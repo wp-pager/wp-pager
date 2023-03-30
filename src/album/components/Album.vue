@@ -4,7 +4,7 @@ import { useStore } from 'vuex'
 import { debounce } from 'lodash'
 import { computed, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
-import Numbers from '@album/components/Navigation/Numbers.vue'
+import Tabs from '@album/components/Navigation/Tabs.vue'
 import Arrows from '@album/components/Navigation/Arrows.vue'
 import SwipeLeftTransition from '@shared/components/Transitions/SwipeLeftTransition.vue'
 import SwipeRightTransition from '@shared/components/Transitions/SwipeRightTransition.vue'
@@ -16,6 +16,16 @@ const files = computed<ImageFile[]>(() => store.getters['files/files'])
 const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direction'])
 const currHeight = ref<number>(0)
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
+
+addEventListener('resize', () => updateAlbumHeight())
+
+const updateAlbumHeight = debounce(() => {
+    const img = document.getElementById('pager-album-image') as HTMLImageElement
+
+    if (img) {
+        setCurrentHeight(img)
+    }
+}, 500)
 
 const albumStyles = computed(() => {
     let styles: Record<string, string> = {}
@@ -41,8 +51,7 @@ function setTouchEnd(e: TouchEvent): void {
         store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
 }
 
-function setCurrentHeight(e: Event, file: ImageFile): void {
-    const image = e.target as HTMLImageElement
+function setCurrentHeight(image: HTMLImageElement): void {
     const height = image.offsetHeight
 
     if (height > 0) {
@@ -58,7 +67,7 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
         </div>
 
         <div v-else-if="files.length > 0">
-            <Numbers />
+            <Tabs />
 
             <div
                 @touchstart="setTouchStart"
@@ -77,7 +86,8 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                             v-if="file.visible"
                             :src="file.url"
                             :alt="file.name"
-                            @load="setCurrentHeight($event, file)"
+                            @load="e => setCurrentHeight(e.target as HTMLImageElement)"
+                            id="pager-album-image"
                         />
                     </Component>
                 </section>

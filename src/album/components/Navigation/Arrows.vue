@@ -48,7 +48,6 @@ async function handleLeftDirection(): Promise<void> {
             type="button"
             class="pager-left-button"
         >
-            <ArrowLeftIcon class="pager-icon" />
             <img src="/wp-content/plugins/wp-pager/assets/img/chevron.webp" alt="arrow-left" />
         </button>
 
