@@ -4,7 +4,7 @@ import { useStore } from 'vuex'
 import { debounce } from 'lodash'
 import { computed, ref } from 'vue'
 import Spinner from '@shared/components/Spinner.vue'
-import Numbers from '@album/components/Navigation/Numbers.vue'
+import Tabs from '@album/components/Navigation/Tabs.vue'
 import Arrows from '@album/components/Navigation/Arrows.vue'
 import SwipeLeftTransition from '@shared/components/Transitions/SwipeLeftTransition.vue'
 import SwipeRightTransition from '@shared/components/Transitions/SwipeRightTransition.vue'
@@ -67,7 +67,7 @@ function setCurrentHeight(image: HTMLImageElement): void {
         </div>
 
         <div v-else-if="files.length > 0">
-            <Numbers />
+            <Tabs />
 
             <div
                 @touchstart="setTouchStart"

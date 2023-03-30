@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import NestedNumber from '@album/components/Navigation/NestedNumber.vue'
-import Number from '@album/components/Navigation/Number.vue'
+import NestedTab from '@album/components/Navigation/NestedTab.vue'
+import Tab from '@album/components/Navigation/Tab.vue'
 import Line from '@album/components/Navigation/Line.vue'
 import useAlbumNumbers from '@album/composables/useAlbumNumbers'
 
@@ -21,19 +21,19 @@ const { groupedFiles, pageChosenHandler } = useAlbumNumbers()
                 v-if="group.files.length === 1"
                 @click="pageChosenHandler(group.files[0].page)"
             >
-                <Number>{{ group.title }}</Number>
+                <Tab>{{ group.title }}</Tab>
                 <Line />
             </div>
             <div v-else>
-                <Number>{{ group.title }}
-                    <NestedNumber
+                <Tab>{{ group.title }}
+                    <NestedTab
                         v-for="(file, index) in group.files"
                         :key="file.page"
                         :file="file"
                         :number="index + 1"
                         @clicked="pageChosenHandler(file.page)"
                     />
-                </Number>
+                </Tab>
                 <Line />
             </div>
         </b>
