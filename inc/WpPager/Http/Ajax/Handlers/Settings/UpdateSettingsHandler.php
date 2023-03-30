@@ -6,6 +6,7 @@ namespace WpPager\Http\Ajax\Handlers\Settings;
 
 use JsonException;
 use WpPager\Dto\ImageFile;
+use WpPager\Dto\Option;
 use WpPager\Dto\Requests\UpdateSettingsRequest;
 use WpPager\Json;
 use WpPager\OptionsStorage;
@@ -23,26 +24,23 @@ class UpdateSettingsHandler extends Handler
     public function handle(): string
     {
         $storage = new OptionsStorage();
+        $options = $storage->get();
 
         if ($this->request->settings_json === '') {
-            return $this->success($storage->get());
+            return $this->success($options);
         }
 
         /** @var null|array{
-         *     page: int,
-         *     name: string,
-         *     title: string | null,
-         *     url: string,
-         *     path: string
-         * } $input
-         */
+         *     albumMaxWidth: int,
+         * } $input */
         $input = Json::decode($this->request->settings_json);
 
         if (empty($input) || !is_array($input)) {
             return $this->success($storage->get());
         }
 
-        $storage->addFile(new ImageFile(...$input));
+        $options->albumMaxWidth = $input['albumMaxWidth'] ?? $options->albumMaxWidth;
+        $storage->save($options);
 
         return $this->success($input);
     }
