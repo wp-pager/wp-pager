@@ -17,6 +17,16 @@ const swipeDirection = computed<SwipeDirection>(() => store.getters['swipe/direc
 const currHeight = ref<number>(0)
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
 
+addEventListener('resize', () => updateAlbumHeight())
+
+const updateAlbumHeight = debounce(() => {
+    const img = document.getElementById('pager-album-image') as HTMLImageElement
+
+    if (img) {
+        setCurrentHeight(img)
+    }
+}, 500)
+
 const albumStyles = computed(() => {
     let styles: Record<string, string> = {}
 
@@ -41,8 +51,7 @@ function setTouchEnd(e: TouchEvent): void {
         store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
 }
 
-function setCurrentHeight(e: Event, file: ImageFile): void {
-    const image = e.target as HTMLImageElement
+function setCurrentHeight(image: HTMLImageElement): void {
     const height = image.offsetHeight
 
     if (height > 0) {
@@ -77,7 +86,8 @@ function setCurrentHeight(e: Event, file: ImageFile): void {
                             v-if="file.visible"
                             :src="file.url"
                             :alt="file.name"
-                            @load="setCurrentHeight($event, file)"
+                            @load="e => setCurrentHeight(e.target as HTMLImageElement)"
+                            id="pager-album-image"
                         />
                     </Component>
                 </section>
