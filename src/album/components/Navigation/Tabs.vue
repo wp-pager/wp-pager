@@ -12,10 +12,7 @@ const { groupedFiles, pageChosenHandler } = useAlbumNumbers()
         <b
             v-for="(group, i) in groupedFiles"
             :key="i"
-            :class="{
-                'pager-active': group.files.some(f => f.visible),
-                'pager-with-hover': group.files.length === 1
-            }"
+            :class="{ 'pager-active': group.files.some(f => f.visible) }"
         >
             <div
                 v-if="group.files.length === 1"
@@ -25,7 +22,14 @@ const { groupedFiles, pageChosenHandler } = useAlbumNumbers()
                 <Line />
             </div>
             <div v-else>
-                <Tab>{{ group.title }}
+                <Tab>
+                    <span
+                        @click="pageChosenHandler(group.files[0].page)"
+                        class="pager-nested-tab-title"
+                    >
+                        {{ group.title }}
+                    </span>
+
                     <NestedTab
                         v-for="(file, index) in group.files"
                         :key="file.page"
@@ -60,7 +64,10 @@ $active: #6da816
         min-width: 30px
         font-weight: normal
 
-        &.pager-with-hover:hover,
+        .pager-nested-tab-title
+            margin-right: 4px
+
+        &:hover,
         &.pager-active
             cursor: pointer
 
