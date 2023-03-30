@@ -1,8 +1,8 @@
 # WP Pager plugin for WordPress
 
-WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu. The main advantage of such plugin is that you can turn pages of the menu by swiping on mobile and desktop devices.
+ Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.
 
-The main purpose of this plugin is to give users a filling of a real restaurant menu where they can turn pages and see the whole menu.
+While uploading images to your WordPress site may be simple, presenting them in a captivating gallery or album format can be challenging. That's why WP Pager was developed to offer an intuitive solution for creating visually impressive galleries of images.
 
 > I'm keeping the project with PSR-12 code style, so please, make sure that you are using the same code style. For convenience, there is a Laravel Pint formatter that formats your code automatically. You can read more about Laravel Pint [here](https://laravel.com/docs/pint)
 

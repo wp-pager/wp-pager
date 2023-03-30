@@ -1,7 +1,7 @@
 {
     "name": "wp-pager",
     "version": "1.0.0",
-    "description": "WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu.",
+    "description": " Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.",
     "main": "main.js",
     "author": "serhiicho@protonmail.com",
     "license": "MIT",
