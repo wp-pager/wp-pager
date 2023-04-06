@@ -26,13 +26,12 @@ const { title, image } = defineProps<Props>()
 <style lang="sass" scoped>
 [data-v-v9pqnch4]
     h3
-        font-size: 1.5em
+        font-size: 1.6em
 
     :deep(p)
-        font-size: 1.2em
+        font-size: 1.3em
 
     .pager-info-image
         width: auto
         height: 70px
-        margin: 10px 0
 </style>
