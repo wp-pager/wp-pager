@@ -66,3 +66,7 @@ The latest and greatest version that has grouped tabs and fixed bugs.
 * 🐛 Fixed bug with plugin screenshots are not showing up when updating plugin to a new version
 * ✨ Now you can change to a grouped tab's nested tab by clicking on the parent
 * 🐛 Fixed bug when resizing the browser window the album's height is not changing
+
+= 0.13 =
+
+* 🎨 Refactoring and making code more readable
