@@ -1,5 +1,5 @@
 === WP Pager ===
-Stable tag: 0.14
+Stable tag: 0.15
 Requires at least: 6.0
 Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -71,3 +71,5 @@ The latest and greatest version that has grouped tabs and fixed bugs.
 
 * ✨ Added shortcode [wp_pager_album] for displaying album on any page or post
 * ✨ Added more information to the "Info" tab in admin menu
+
+= 0.15 =
