@@ -1,5 +1,5 @@
 === WP Pager ===
-Stable tag: 0.12
+Stable tag: 0.13
 Requires at least: 6.0
 Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
