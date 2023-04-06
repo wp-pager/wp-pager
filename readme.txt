@@ -32,12 +32,15 @@ The full list of questions and answers you can find on the [Official webiste](ht
 
 == Changelog ==
 
+= 0.15 =
+* 📇 Changed the plugin description and the order of changes in the changelog
+
 = 0.14 =
 * ✨ Added shortcode [wp_pager_album] for displaying album on any page or post
 * ✨ Added more information to the "Info" tab in admin menu
 
 = 0.13 =
-* 🎨 Refactoring and making code more readable
+* 🔨 Refactoring and making code more readable
 * ✨ Added "Info" tab to admin panel
 
 = 0.12 =
