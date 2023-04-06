@@ -1,17 +1,8 @@
 <script setup lang="ts">
-import type { Settings } from '@shared/types'
-import { computed } from '@vue/reactivity'
-import { useStore } from 'vuex'
-import InputField from '@admin/components/Settings/InputField.vue'
 import PageTitle from '@admin/components/PageTitle.vue'
 import PageIntro from '@admin/components/PageIntro.vue'
-
-const store = useStore()
-const settings = computed<Settings | null>(() => store.getters['settings/settings'])
-
-function updateAlbumMaxWidth(newValue: string): void {
-    store.dispatch('settings/updateSettingValue', { albumMaxWidth: Number(newValue) })
-}
+import GroupedTabsSection from '@admin/components/Info/Sections/GroupedTabsSection.vue'
+import AboutSection from '@admin/components/Info/Sections/AboutSection.vue'
 </script>
 
 <template>
@@ -23,8 +14,9 @@ function updateAlbumMaxWidth(newValue: string): void {
 
         <hr />
 
-        <div>
-            here
+        <div class="pager-tab-content">
+            <AboutSection />
+            <GroupedTabsSection />
         </div>
     </div>
 </template>

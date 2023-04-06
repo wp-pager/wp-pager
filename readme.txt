@@ -26,11 +26,6 @@ Yes, this plugin is fully free and open source. You can use it for free and modi
 
 Yes, you can request a feature by creating an issue on [GitHub](https://github.com/SerhiiCho/wp-pager) and we will try to implement it.
 
-== Screenshots ==
-
-1. WP Pager plugin images preview
-2. WP Pager album visible by users
-
 == Upgrade Notice ==
 
 = 0.10 =
