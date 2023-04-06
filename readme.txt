@@ -70,3 +70,4 @@ The latest and greatest version that has grouped tabs and fixed bugs.
 = 0.13 =
 
 * 🎨 Refactoring and making code more readable
+* ✨ Added information page to admin panel. Now you can lean about how to use it.

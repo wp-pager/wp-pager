@@ -6,7 +6,7 @@ export type ServerResponse<T> = {
 
 export type AdminTab = {
     index: number
-    slug: 'files' | 'uploader' | 'settings'
+    slug: 'files' | 'uploader' | 'settings' | 'info'
     title: string
     component: object
 }

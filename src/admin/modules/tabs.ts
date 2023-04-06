@@ -1,7 +1,8 @@
+import { AdminTab } from '@shared/types'
 import Uploader from '@admin/components/Uploader/Uploader.vue'
 import UploadedFiles from '@admin/components/UploadedFiles/UploadedFiles.vue'
 import Settings from '@admin/components/Settings/Settings.vue'
-import { AdminTab } from '@shared/types'
+import Info from '@admin/components/Info/Info.vue'
 
 const tabs: AdminTab[] = [
     {
@@ -21,6 +22,12 @@ const tabs: AdminTab[] = [
         slug: 'settings',
         title: 'Settings',
         component: Settings,
+    },
+    {
+        index: 3,
+        slug: 'info',
+        title: 'Info',
+        component: Info,
     },
 ]
 
