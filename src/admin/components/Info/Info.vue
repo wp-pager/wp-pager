@@ -3,6 +3,7 @@ import PageTitle from '@admin/components/PageTitle.vue'
 import PageIntro from '@admin/components/PageIntro.vue'
 import GroupedTabsSection from '@admin/components/Info/Sections/GroupedTabsSection.vue'
 import AboutSection from '@admin/components/Info/Sections/AboutSection.vue'
+import AskedQuestionsSections from '@admin/components/Info/Sections/AskedQuestionsSection.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import AboutSection from '@admin/components/Info/Sections/AboutSection.vue'
 
         <div class="pager-tab-content">
             <AboutSection />
+            <AskedQuestionsSections />
             <GroupedTabsSection />
         </div>
     </div>

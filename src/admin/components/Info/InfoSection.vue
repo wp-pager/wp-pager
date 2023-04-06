@@ -14,6 +14,7 @@ const { title, image } = defineProps<Props>()
         <img
             v-if="image"
             :src="image"
+            :alt="title"
             class="pager-info-image"
         />
 
@@ -32,6 +33,6 @@ const { title, image } = defineProps<Props>()
 
     .pager-info-image
         width: auto
-        heght: 100px
+        height: 70px
         margin: 10px 0
 </style>
