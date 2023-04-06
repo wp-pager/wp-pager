@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import DropIcon from '@shared/components/Icons/DropIcon.vue'
 import PendingFiles from '@admin/components/Uploader/PendingFiles/PendingFiles.vue'
+import PageTitle from '@admin/components/PageTitle.vue'
+import PageIntro from '@admin/components/PageIntro.vue'
 
 const drag = ref<boolean>(false)
 const store = useStore()
@@ -29,10 +31,10 @@ function chooseImages(e: Event): void {
 
 <template>
     <div data-v-plsy94b>
-        <h2 class="pager-title">Upload new files</h2>
-        <p class="pager-intro">
+        <PageTitle>⬆️ Upload new files</PageTitle>
+        <PageIntro>
             Drop your files into the dropping area or click it to choose files from your device.
-        </p>
+        </PageIntro>
 
         <input
             @change="chooseImages"

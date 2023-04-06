@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { Settings } from '@shared/types'
-import InputField from '@admin/components/Settings/InputField.vue'
 import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
+import InputField from '@admin/components/Settings/InputField.vue'
+import PageTitle from '@admin/components/PageTitle.vue'
+import PageIntro from '@admin/components/PageIntro.vue'
 
 const store = useStore()
 const settings = computed<Settings | null>(() => store.getters['settings/settings'])
@@ -14,10 +16,10 @@ function updateAlbumMaxWidth(newValue: string): void {
 
 <template>
     <div data-v-weyt2y78i>
-        <h2 class="pager-title">Settings</h2>
-        <p class="pager-intro">
+        <PageTitle>⚙️ Settings</PageTitle>
+        <PageIntro>
             Settings and configurations for your Pager plugin.
-        </p>
+        </PageIntro>
 
         <hr />
 

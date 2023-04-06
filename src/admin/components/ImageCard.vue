@@ -41,12 +41,4 @@ const props = defineProps<Props>()
             max-height: 100%
             border-radius: 6px
             box-shadow: 2px 2px 7px rgba(0, 0, 0, .1)
-
-    .pager-title
-        margin: 3px 0 0 0
-        font-size: .75rem
-        color: #999
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
 </style>

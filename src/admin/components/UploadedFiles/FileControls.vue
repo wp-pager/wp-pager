@@ -27,7 +27,7 @@ async function deleteFile(): Promise<void> {
 async function giveImageTitle(): Promise<void> {
     const answer = await confirmModal({
         title: 'Give image a title',
-        text: 'How do you want to name this image?',
+        text: 'What title do you want to give to this image?',
         input: 'text',
         inputValue: props.file.title || '',
     })
@@ -51,7 +51,7 @@ async function giveImageTitle(): Promise<void> {
             </a>
         </Tip>
 
-        <Tip content="Give image a name">
+        <Tip content="Give image a title">
             <button @click="giveImageTitle" type="button">
                 <EditIcon class="pager-icon" />
             </button>

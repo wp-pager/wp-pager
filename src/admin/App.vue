@@ -50,28 +50,23 @@ function changeTab(tab: number): void {
 </template>
 
 <style lang="sass" scoped>
-:deep(.pager-title)
-    font-size: 2rem
-    font-weight: 400
-    margin-bottom: 1.2rem
-
-:deep(.pager-intro)
-    font-size: 1.1rem
-    margin-bottom: 1.2rem
-
 [data-v-qvrskl39s]
     padding: 20px 20px 0 0
     max-width: 1300px
 
     .pager-tabs
-        width: fit-content
+        width: 100%
+        max-width: 800px
+        display: grid
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))
+        gap: 10px
         padding: 5px
         border-radius: 7px
         background-color: rgba(255, 255, 255, .5)
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1)
 
         .pager-tab
-            min-width: 200px
+            width: 100%
             padding: 8px 5px
             border: none
             background: none

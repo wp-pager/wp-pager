@@ -2,10 +2,12 @@
 import type { ImageFile } from '@shared/types'
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import { VueDraggableNext } from 'vue-draggable-next'
 import UploadedFile from '@admin/components/UploadedFiles/UploadedFile.vue'
 import FetchingFilesSpinner from '@admin/components/UploadedFiles/FetchingFilesSpinner.vue'
 import Controls from '@admin/components/UploadedFiles/Controls.vue'
-import { VueDraggableNext } from 'vue-draggable-next'
+import PageTitle from '@admin/components/PageTitle.vue'
+import PageIntro from '@admin/components/PageIntro.vue'
 
 const store = useStore()
 const loading = computed<boolean>(() => store.getters['files/loading'])
@@ -18,11 +20,11 @@ const files = computed<ImageFile[]>({
 
 <template>
     <div data-v-kosbj3f>
-        <h2 class="pager-title">📂 Uploaded Files</h2>
+        <PageTitle>📂 Uploaded Files</PageTitle>
 
-        <p class="pager-intro">
+        <PageIntro>
             These are the files that have been uploaded to the server. You can drag and drop them to change the order.
-        </p>
+        </PageIntro>
 
         <Controls />
 
