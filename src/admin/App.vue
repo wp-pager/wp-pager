@@ -27,7 +27,7 @@ function changeTab(tab: number): void {
 
 <template>
     <div data-v-qvrskl39s>
-        <TabGroup :selectedIndex="3" @change="changeTab">
+        <TabGroup :selectedIndex="selectedTab" @change="changeTab">
             <TabList class="pager-tabs">
                 <Tab
                     v-for="tab in tabs"
