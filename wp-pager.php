@@ -18,6 +18,7 @@ use WpPager\Hook;
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
+define('PAGER_MAIN_FILE_PATH', __FILE__);
 define('PAGER_PATH', plugin_dir_path(__FILE__));
 define('PAGER_UPLOADS_PATH', wp_upload_dir()['basedir'] . '/wp-pager/');
 define('PAGER_FILES_PATH', PAGER_UPLOADS_PATH . 'files/');

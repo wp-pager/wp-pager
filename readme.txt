@@ -34,6 +34,7 @@ The full list of questions and answers you can find on the [Official webiste](ht
 
 = 0.15 =
 * 📇 Changed the plugin description and the order of changes in the changelog
+* 🐛 Fixed bug where you could not see the right and left arrows in albums
 
 = 0.14 =
 * ✨ Added shortcode [wp_pager_album] for displaying album on any page or post
