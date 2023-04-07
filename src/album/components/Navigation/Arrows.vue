@@ -48,7 +48,7 @@ async function handleLeftDirection(): Promise<void> {
             type="button"
             class="pager-left-button"
         >
-            <img src="/wp-content/plugins/wp-pager/assets/img/chevron.webp" alt="arrow-left" />
+            <img :src="$pager.rootUrl + 'assets/img/chevron.webp'" alt="arrow-left" />
         </button>
 
         <button
@@ -57,7 +57,7 @@ async function handleLeftDirection(): Promise<void> {
             type="button"
             class="pager-right-button"
         >
-            <img src="/wp-content/plugins/wp-pager/assets/img/chevron.webp" alt="arrow-right" />
+            <img :src="$pager.rootUrl + 'assets/img/chevron.webp'" alt="arrow-right" />
         </button>
     </div>
 </template>

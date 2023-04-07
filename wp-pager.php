@@ -6,8 +6,8 @@ declare(strict_types=1);
 Plugin Name: WP Pager
 Author: Serhii Cho
 Author URI: https://serhii.io/about-me
-Description: WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu.
-Version: 0.14
+Description: Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.
+Version: 0.15
 License: MIT
 License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Text Domain: pager
@@ -18,6 +18,7 @@ use WpPager\Hook;
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 defined('ABSPATH') || exit('ABSPATH is not defined');
+define('PAGER_MAIN_FILE_PATH', __FILE__);
 define('PAGER_PATH', plugin_dir_path(__FILE__));
 define('PAGER_UPLOADS_PATH', wp_upload_dir()['basedir'] . '/wp-pager/');
 define('PAGER_FILES_PATH', PAGER_UPLOADS_PATH . 'files/');
