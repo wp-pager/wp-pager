@@ -32,6 +32,9 @@ The full list of questions and answers you can find on the [Official webiste](ht
 
 == Changelog ==
 
+= 0.16 =
+* 🐛 Fixed bug with sorting of albums not working
+
 = 0.15 =
 * 📇 Changed the plugin description and the order of changes in the changelog
 * 🐛 Fixed bug where you could not see the right and left arrows in albums

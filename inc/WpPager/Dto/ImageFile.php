@@ -15,4 +15,16 @@ class ImageFile
         public ?string $title = null,
     ) {
     }
+
+    public static function fromArray(array $arr): self
+    {
+        return new self(
+            page: $arr['page'],
+            name: $arr['name'],
+            url: $arr['url'],
+            path: $arr['path'],
+            visible: $arr['visible'],
+            title: $arr['title'] ?? null,
+        );
+    }
 }
