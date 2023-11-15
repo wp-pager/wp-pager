@@ -7,7 +7,7 @@ Plugin Name: WP Pager
 Author: Serhii Cho
 Author URI: https://serhii.io/about-me
 Description: Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.
-Version: 0.15
+Version: 0.16
 License: MIT
 License URI: https://github.com/SerhiiCho/wp-pager/blob/main/LICENCE
 Text Domain: pager
