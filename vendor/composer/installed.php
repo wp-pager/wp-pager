@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'serhii/wp-pager',
-        'pretty_version' => '0.14.x-dev',
-        'version' => '0.14.9999999.9999999-dev',
-        'reference' => '13745d95ffde0fc7c504b7b2f7c47995806f0584',
+        'pretty_version' => '0.16.x-dev',
+        'version' => '0.16.9999999.9999999-dev',
+        'reference' => 'a3085f1a33b44ef745df7aca5e5448a81804f096',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'serhii/wp-pager' => array(
-            'pretty_version' => '0.14.x-dev',
-            'version' => '0.14.9999999.9999999-dev',
-            'reference' => '13745d95ffde0fc7c504b7b2f7c47995806f0584',
+            'pretty_version' => '0.16.x-dev',
+            'version' => '0.16.9999999.9999999-dev',
+            'reference' => 'a3085f1a33b44ef745df7aca5e5448a81804f096',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
