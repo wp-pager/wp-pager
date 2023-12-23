@@ -70,3 +70,5 @@ promtUserForConfirmation($oldVersion, $newVersion);
 
 changeVersionInMainPluginFile($newVersion);
 changeVersionInReadmeFile($newVersion);
+
+echo "Version changed from {$oldVersion} to {$newVersion}\n";
