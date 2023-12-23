@@ -2,7 +2,7 @@
 <?php
 declare(strict_types=1);
 
-function getVersionArgument(): float
+function getNewVersionArgument(): float
 {
     global $argv;
 
@@ -24,6 +24,17 @@ function changeVersionInMainPluginFile(float $newVersion): void
     file_put_contents($file, $content);
 }
 
+function getOldVersionFromMainPluginFile(): float
+{
+    $file = __DIR__ . '/../wp-pager.php';
+
+    $content = file_get_contents($file);
+
+    preg_match('/Version: ([0-9\.]+)/', $content, $matches);
+
+    return (float) $matches[1];
+}
+
 function changeVersionInReadmeFile(float $newVersion): void
 {
     $file = __DIR__ . '/../readme.txt';
@@ -35,7 +46,27 @@ function changeVersionInReadmeFile(float $newVersion): void
     file_put_contents($file, $content);
 }
 
-$newVersion = getVersionArgument();
+function promtUserForConfirmation(float $oldVersion, float $newVersion): void
+{
+    if ($newVersion <= $oldVersion) {
+        throw new RuntimeException('New version must be greater than old version');
+    }
+
+    echo "Are you sure you want to change version from {$oldVersion} to {$newVersion}? [yes/no]\n";
+
+    $handle = fopen ("php://stdin","r");
+    $line = fgets($handle);
+
+    if (trim($line) != 'yes'){
+        echo "ABORTING!\n";
+        exit;
+    }
+}
+
+$newVersion = getNewVersionArgument();
+$oldVersion = getOldVersionFromMainPluginFile();
+
+promtUserForConfirmation($oldVersion, $newVersion);
 
 changeVersionInMainPluginFile($newVersion);
 changeVersionInReadmeFile($newVersion);
