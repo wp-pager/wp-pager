@@ -32,6 +32,9 @@ The full list of questions and answers you can find on the [Official website](ht
 
 == Changelog ==
 
+= 0.2 =
+* Technical update. Added new script for easier deployment
+
 = 0.16 =
 * 🐛 Fixed bug with sorting of albums not working
 
