@@ -1,5 +1,5 @@
 === WP Pager ===
-Stable tag: 0.17
+Stable tag: 0.2
 Requires at least: 6.0
 Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -31,6 +31,9 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 The full list of questions and answers you can find on the [Official website](https://wp-pager.github.io/#frequently-asked-questions).
 
 == Changelog ==
+
+= 0.2 =
+* Technical update. Added new script for easier deployment
 
 = 0.16 =
 * 🐛 Fixed bug with sorting of albums not working
