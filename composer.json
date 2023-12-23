@@ -37,6 +37,7 @@
         "build": [
             "composer install --no-dev --optimize-autoloader",
             "yarn prod"
-        ]
+        ],
+        "version": "./bin/version $VERSION"
     }
 }
