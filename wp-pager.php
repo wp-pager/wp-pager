@@ -9,7 +9,7 @@ Author URI: https://serhii.io/about-me
 Description: Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.
 Version: 0.20
 License: MIT
-License URI: https://github.com/wp-pager/wp-pager/blob/main/LICENCE
+License URI: https://github.com/wp-pager/wp-pager/blob/master/LICENCE
 Text Domain: pager
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
 */
@@ -30,6 +30,6 @@ error_reporting(E_ERROR | E_PARSE);
 require_once __DIR__ . '/vendor/autoload.php';
 
 $update_checker = PucFactory::buildUpdateChecker('https://github.com/wp-pager/wp-pager', __FILE__, 'wp-pager');
-$update_checker->setBranch('main');
+$update_checker->setBranch('master');
 
 (new Hook())->init();

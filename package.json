@@ -5,7 +5,7 @@
     "main": "main.js",
     "author": "serhiicho@protonmail.com",
     "license": "MIT",
-    "licenseUrl": "https://github.com/wp-pager/wp-pager/blob/main/LICENCE",
+    "licenseUrl": "https://github.com/wp-pager/wp-pager/blob/master/LICENCE",
     "keywords": [
         "wordpress",
         "plugin"
