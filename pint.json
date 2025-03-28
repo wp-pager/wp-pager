@@ -14,7 +14,9 @@
         "combine_consecutive_issets": true,
         "combine_consecutive_unsets": true,
         "no_multiline_whitespace_around_double_arrow": true,
-        "fully_qualified_strict_types": true,
+        "fully_qualified_strict_types": {
+            "import_symbols": true
+        },
         "method_chaining_indentation": true,
         "php_unit_method_casing": {
             "case": "camel_case"

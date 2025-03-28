@@ -27,7 +27,7 @@ define('PAGER_FILES_URL', content_url('uploads/wp-pager/files/'));
 
 error_reporting(E_ERROR | E_PARSE);
 
-require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 $update_checker = PucFactory::buildUpdateChecker('https://github.com/wp-pager/wp-pager', __FILE__, 'wp-pager');
 $update_checker->setBranch('main');

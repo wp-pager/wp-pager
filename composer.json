@@ -31,7 +31,7 @@
     },
     "require": {
         "php": "^8.1",
-        "yahnis-elsts/plugin-update-checker": "^5.0"
+        "yahnis-elsts/plugin-update-checker": "^5.4"
     },
     "scripts": {
         "build": [
