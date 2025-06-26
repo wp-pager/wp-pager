@@ -1,0 +1,4 @@
+{
+    "intelephense.environment.includePaths": ["wp/src/"],
+    "intelephense.environment.phpVersion": "8.1.0"
+}

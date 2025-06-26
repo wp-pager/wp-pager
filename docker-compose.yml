@@ -1,7 +1,7 @@
 services:
     pager_wp:
         build:
-            context: ./wp
+            context: ./wordpress
         container_name: pager_wp
         restart: always
         ports:
@@ -9,8 +9,8 @@ services:
         depends_on:
             - pager_db
         volumes:
-            - ./wp/src:/var/www/html
-            - ./wp-pager:/var/www/html/wp-content/plugins/wp-pager
+            - ./wordpress/var/www/html
+            - ./src:/var/www/html/wp-content/plugins/wp-pager
         environment:
             WORDPRESS_DB_HOST: pager_db
             WORDPRESS_DB_USER: pager
@@ -26,7 +26,7 @@ services:
         ports:
           - 2222:3306
         volumes:
-            - ./db/storage:/var/lib/mysql
+            - ./database:/var/lib/mysql
         environment:
             MYSQL_DATABASE: pager
             MYSQL_USER: pager
