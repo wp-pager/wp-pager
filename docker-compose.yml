@@ -1,0 +1,34 @@
+services:
+    pager_wp:
+        build:
+            context: ./wp
+        container_name: pager_wp
+        restart: always
+        ports:
+            - 8888:80
+        depends_on:
+            - pager_db
+        volumes:
+            - ./wp/src:/var/www/html
+            - ./wp-pager:/var/www/html/wp-content/plugins/wp-pager
+        environment:
+            WORDPRESS_DB_HOST: pager_db
+            WORDPRESS_DB_USER: pager
+            WORDPRESS_DB_PASSWORD: 111111
+            WORDPRESS_DB_NAME: pager
+            WORDPRESS_DEBUG: 1
+
+    pager_db:
+        image: mariadb:10.7.3-focal
+        command: --default-authentication-plugin=mysql_native_password
+        container_name: pager_db
+        restart: always
+        ports:
+          - 2222:3306
+        volumes:
+            - ./db/storage:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: pager
+            MYSQL_USER: pager
+            MYSQL_PASSWORD: 111111
+            MYSQL_ROOT_PASSWORD: 111111

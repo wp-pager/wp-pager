@@ -1,4 +1,2 @@
-.idea
-node_modules
-
-!.gitkeep
+db/storage
+wp/src/*
