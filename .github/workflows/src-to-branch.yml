@@ -1,0 +1,20 @@
+name: Copy src to branch
+
+on:
+    push:
+        branches: [master]
+
+jobs:
+    copy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: Copy src to new-branch
+              uses: planetoftheweb/copy-to-branches@v1.3
+              env:
+                  key: master
+                  branches: plugin
+                  clear-destination: true
+                  files: src
