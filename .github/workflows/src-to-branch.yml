@@ -44,9 +44,9 @@ jobs:
 
             - name: Move plugin files to root and remove plugin dir (on plugin branch)
               run: |
-                  shopt -s dotglob
-                  mv plugin/* .
-                  rmdir plugin
+                  ls -hla
+                  rsync -a plugin/ ./
+                  rm -rf plugin
                   git add .
                   git commit -m "Move plugin files to root and remove plugin dir"
                   git push origin plugin
