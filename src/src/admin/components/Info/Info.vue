@@ -9,9 +9,7 @@ import ShortcodeSection from '@admin/components/Info/Sections/ShortcodeSection.v
 <template>
     <div data-v-kcqpg38whf>
         <PageTitle>ℹ️ Info</PageTitle>
-        <PageIntro>
-            Learn about WP Pager and how to use it effectively.
-        </PageIntro>
+        <PageIntro> Learn about WP Pager and how to use it effectively. </PageIntro>
 
         <hr />
 
@@ -22,6 +20,3 @@ import ShortcodeSection from '@admin/components/Info/Sections/ShortcodeSection.v
         </div>
     </div>
 </template>
-
-<style lang="sass" scoped>
-</style>

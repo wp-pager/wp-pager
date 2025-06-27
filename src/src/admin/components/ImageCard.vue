@@ -23,22 +23,25 @@ const props = defineProps<Props>()
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-01klabn74la]
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    background: rgba(255, 255, 255, .8)
-    padding: 6px
-    border-radius: 6px
-    box-shadow: 2px 2px 7px rgba(0, 0, 0, .07)
+<style lang="scss" scoped>
+[data-v-01klabn74la] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 6px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.07);
 
-    .pager-card
-        position: relative
+    .pager-card {
+        position: relative;
 
-        img
-            max-width: 100%
-            max-height: 100%
-            border-radius: 6px
-            box-shadow: 2px 2px 7px rgba(0, 0, 0, .1)
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 6px;
+            box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
 </style>

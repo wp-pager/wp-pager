@@ -17,35 +17,35 @@ function updateAlbumMaxWidth(newValue: string): void {
 <template>
     <div data-v-weyt2y78i>
         <PageTitle>⚙️ Settings</PageTitle>
-        <PageIntro>
-            Settings and configurations for your Pager plugin.
-        </PageIntro>
+        <PageIntro> Settings and configurations for your Pager plugin. </PageIntro>
 
         <hr />
 
         <div v-if="settings" class="pager-form-inputs">
             <InputField
                 id="album-max-width"
-                :defaultValue="settings?.albumMaxWidth ? settings?.albumMaxWidth.toString() : '1000'"
+                :defaultValue="
+                    settings?.albumMaxWidth ? settings?.albumMaxWidth.toString() : '1000'
+                "
                 type="text"
                 :inputWidth="120"
                 @changed="updateAlbumMaxWidth"
             >
                 Album max width
 
-                <template #after>
-                    pixels
-                </template>
+                <template #after> pixels </template>
             </InputField>
         </div>
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-weyt2y78i]
-    .pager-form-inputs
-        display: flex
-        flex-direction: column
-        gap: 1.5rem
-        padding-top: 15px
+<style lang="scss" scoped>
+[data-v-weyt2y78i] {
+    .pager-form-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-top: 15px;
+    }
+}
 </style>

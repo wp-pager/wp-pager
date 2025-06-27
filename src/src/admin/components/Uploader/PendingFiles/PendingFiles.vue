@@ -13,22 +13,20 @@ const files = computed<File[]>(() => store.getters['pendingFiles/files'])
         <Controls />
 
         <div class="pager-files">
-            <PendingFile
-                v-for="file in files"
-                :key="file.name"
-                :file="file"
-            />
+            <PendingFile v-for="file in files" :key="file.name" :file="file" />
         </div>
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-f3f0egk]
-    margin-top: 15px
+<style lang="scss" scoped>
+[data-v-f3f0egk] {
+    margin-top: 15px;
 
-    .pager-files
-        margin-top: 15px
-        display: grid
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
-        grid-gap: 1rem
+    .pager-files {
+        margin-top: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 1rem;
+    }
+}
 </style>

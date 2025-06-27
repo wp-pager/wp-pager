@@ -4,17 +4,19 @@
     </transition>
 </template>
 
-<style lang="sass" scoped>
-.pager-appear
+<style lang="scss" scoped>
+.pager-appear {
     &-enter-active,
-    &-leave-active
-        transition: opacity .4s ease
-
+    &-leave-active {
+        transition: opacity 0.4s ease;
+    }
     &-enter-from,
-    &-leave-to
-        opacity: 0
-
+    &-leave-to {
+        opacity: 0;
+    }
     &-enter-to,
-    &-leave-from
-        opacity: 1
+    &-leave-from {
+        opacity: 1;
+    }
+}
 </style>

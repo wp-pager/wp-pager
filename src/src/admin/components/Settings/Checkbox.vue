@@ -23,7 +23,7 @@ const value = ref<boolean>(props.defaultValue)
             @change="emit('changed', value)"
             type="checkbox"
             :id="props.id"
-        >
+        />
 
         <label :for="props.id">
             <slot />
@@ -31,11 +31,13 @@ const value = ref<boolean>(props.defaultValue)
     </div>
 </template>
 
-<style lang="sass" scoped>
-.pager-input
-    display: flex
-    align-items: center
+<style lang="scss" scoped>
+.pager-input {
+    display: flex;
+    align-items: center;
 
-    input
-        margin-right: 0.5rem
+    input {
+        margin-right: 0.5rem;
+    }
+}
 </style>

@@ -4,17 +4,20 @@
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-nma29]
-    font-size: .7rem
-    color: #acacac
+<style lang="scss" scoped>
+[data-v-nma29] {
+    font-size: 0.7rem;
+    color: #acacac;
 
-    a
-        color: #acacac !important
-        font-weight: bold
-        text-decoration: none
+    a {
+        color: #acacac !important;
+        font-weight: bold;
+        text-decoration: none;
 
-        &:hover
-            color: #8e8e8e !important
-            text-decoration: none
+        &:hover {
+            color: #8e8e8e !important;
+            text-decoration: none;
+        }
+    }
+}
 </style>

@@ -47,8 +47,7 @@ function setTouchStart(e: TouchEvent): void {
 }
 
 function setTouchEnd(e: TouchEvent): void {
-    if (e.changedTouches)
-        store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
+    if (e.changedTouches) store.dispatch('swipe/setTouchEnd', e.changedTouches[0].clientX)
 }
 
 function setCurrentHeight(image: HTMLImageElement): void {
@@ -77,11 +76,14 @@ function setCurrentHeight(image: HTMLImageElement): void {
             >
                 <Arrows />
 
-                <section
-                    v-for="file in files"
-                    :key="file.page"
-                >
-                    <Component :is="swipeDirection === 'right' ? SwipeRightTransition : SwipeLeftTransition">
+                <section v-for="file in files" :key="file.page">
+                    <Component
+                        :is="
+                            swipeDirection === 'right'
+                                ? SwipeRightTransition
+                                : SwipeLeftTransition
+                        "
+                    >
                         <img
                             v-if="file.visible"
                             :src="file.url"
@@ -98,38 +100,46 @@ function setCurrentHeight(image: HTMLImageElement): void {
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-hw0krsr3]
-    overflow: hidden
-    position: relative
-    padding: 0 10px
-    z-index: 100
+<style lang="scss" scoped>
+[data-v-hw0krsr3] {
+    overflow: hidden;
+    position: relative;
+    padding: 0 10px;
+    z-index: 100;
 
-    .pager-album-image
-        user-select: none
-        position: relative
-        margin-left: auto
-        margin-right: auto
+    .pager-album-image {
+        user-select: none;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
 
-        &:hover [data-v-bnqp3]
-            opacity: 1
+        &:hover [data-v-bnqp3] {
+            opacity: 1;
+        }
+        section {
+            transition: all 0.5s ease-in-out;
 
-        section
-            transition: all .5s ease-in-out
+            img {
+                width: 100%;
+                user-select: none;
+                border-radius: 5px;
+                pointer-events: none;
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    [data-v-hw0krsr3] {
+        padding: 0 1px;
 
-            img
-                width: 100%
-                user-select: none
-                border-radius: 5px
-                pointer-events: none
-                box-shadow: 0 0 10px 0 rgba(0, 0, 0, .3)
-
-@media screen and (max-width: 768px)
-    [data-v-hw0krsr3]
-        padding: 0 1px
-
-        .pager-album-image
-            section
-                img
-                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .3)
+        .pager-album-image {
+            section {
+                img {
+                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+}
 </style>

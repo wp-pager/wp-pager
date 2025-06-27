@@ -26,13 +26,15 @@ const versionedUrl = computed<string>(() => `${props.file.url}?v=${Date.now()}`)
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-qlo935msqp9]
-    cursor: move
+<style lang="scss" scoped>
+[data-v-qlo935msqp9] {
+    cursor: move;
 
-    .image-title
-        margin-bottom: 5px
-        font-weight: bold
-        text-align: center
-        font-size: 1.1em
+    .image-title {
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 1.1em;
+    }
+}
 </style>

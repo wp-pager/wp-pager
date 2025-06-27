@@ -44,36 +44,40 @@ const { groupedFiles, pageChosenHandler } = useAlbumNumbers()
     </div>
 </template>
 
-<style lang="sass" scoped>
-$active: #6da816
+<style lang="scss" scoped>
+$active: #6da816;
 
-[data-v-qpxh391]
-    display: flex
-    flex-wrap: wrap
-    box-sizing: content-box !important
-    gap: 3px 10px
-    justify-content: center
-    align-items: flex-end
-    border-radius: 5px
-    padding: 7px 0
-    margin-bottom: 5px
+[data-v-qpxh391] {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: content-box !important;
+    gap: 3px 10px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 5px;
+    padding: 7px 0;
+    margin-bottom: 5px;
 
-    b
-        width: auto
-        text-align: center
-        min-width: 30px
-        font-weight: normal
+    b {
+        width: auto;
+        text-align: center;
+        min-width: 30px;
+        font-weight: normal;
 
-        .pager-nested-tab-title
-            margin-right: 4px
-
+        .pager-nested-tab-title {
+            margin-right: 4px;
+        }
         &:hover,
-        &.pager-active
-            cursor: pointer
+        &.pager-active {
+            cursor: pointer;
 
-            .pager-line
-                background-color: $active
-
-            .pager-number
-                color: $active
+            .pager-line {
+                background-color: $active;
+            }
+            .pager-number {
+                color: $active;
+            }
+        }
+    }
+}
 </style>

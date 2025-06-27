@@ -30,16 +30,18 @@ const value = ref<string>(props.defaultValue)
             :id="props.id"
             :type="props.type"
             :style="{ width: props.inputWidth + 'px' }"
-        >
+        />
 
         <slot name="after" />
     </div>
 </template>
 
-<style lang="sass" scoped>
-.pager-input
-    label
-        display: block
-        font-weight: bold
-        margin-bottom: 1px
+<style lang="scss" scoped>
+.pager-input {
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 1px;
+    }
+}
 </style>

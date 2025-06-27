@@ -65,44 +65,48 @@ async function giveImageTitle(): Promise<void> {
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-mklq4p19ma]
-    opacity: 0
-    display: flex
-    align-items: center
-    justify-content: center
-    gap: 9px
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: rgba(0, 0, 0, .2)
-    border-radius: 7px
-    transition: opacity .2s ease-in-out
+<style lang="scss" scoped>
+[data-v-mklq4p19ma] {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    transition: opacity 0.2s ease-in-out;
 
-    &:hover
-        opacity: 1
+    &:hover {
+        opacity: 1;
+    }
+    button,
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: 7px;
+        border-radius: 8px;
+        border: 2px solid #555;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: none;
+        color: #333;
 
-    button, a
-        display: flex
-        align-items: center
-        justify-content: center
-        background: none
-        border: none
-        padding: 7px
-        border-radius: 8px
-        border: 2px solid #555
-        cursor: pointer
-        background-color: white
-        box-shadow: none
-        color: #333
-
-        &:hover
-            border-color: green
-            color: green
-
-        .pager-icon
-            width: 30px
-            height: 30px
+        &:hover {
+            border-color: green;
+            color: green;
+        }
+        .pager-icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
 </style>
