@@ -4,6 +4,8 @@ on:
     push:
         branches: [master]
 
+permissions: read-all
+
 jobs:
     copy:
         runs-on: ubuntu-latest
@@ -11,7 +13,6 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-                  token: ${{ secrets.GH_TOKEN }}
             - name: Copy src to new-branch
               uses: planetoftheweb/copy-to-branches@v1.3
               env:
