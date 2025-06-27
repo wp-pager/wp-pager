@@ -37,13 +37,13 @@ jobs:
               with:
                   ref: plugin
 
-            - name: Ensure plugin branch is checked out
-              run: git checkout plugin
-
             - name: Set git user
               run: |
                   git config user.name "${{ github.actor }}"
                   git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+            - name: Fix permissions
+              run: sudo chown -R $USER:$USER .
 
             - name: Move plugin files to root and remove plugin dir (on plugin branch)
               run: |
