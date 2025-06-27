@@ -1,4 +1,4 @@
-name: Copy src to branch
+name: Copy plugin directory to plugin branch
 
 on:
     push:
@@ -11,20 +11,20 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-              with:
+              with
                   fetch-depth: 0
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '24'
             - name: Install dependencies
-              run: cd src && npm install
+              run: cd plugin && npm install
             - name: Build project
-              run: cd src && npm run prod
-            - name: Copy src to the plugin branch
+              run: cd plugin && npm run prod
+            - name: Copy plugin dir to the plugin branch
               uses: planetoftheweb/copy-to-branches@v1.3
               env:
                   key: master
                   branches: plugin
                   clear-destination: true
-                  files: src
+                  files: plugin

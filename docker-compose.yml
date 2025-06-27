@@ -10,7 +10,7 @@ services:
             - pager_db
         volumes:
             - ./wordpress/var/www/html
-            - ./src:/var/www/html/wp-content/plugins/wp-pager
+            - ./plugin:/var/www/html/wp-content/plugins/wp-pager
         environment:
             WORDPRESS_DB_HOST: pager_db
             WORDPRESS_DB_USER: pager
