@@ -28,3 +28,9 @@ jobs:
                   branches: plugin
                   clear-destination: true
                   files: plugin
+            - name: Move plugin files to root and remove plugin dir (on plugin branch)
+              if: github.ref == 'refs/heads/plugin'
+              run: |
+                  shopt -s dotglob
+                  mv plugin/* .
+                  rmdir plugin
