@@ -13,14 +13,18 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '24'
+
             - name: Install dependencies
               run: cd plugin && npm install
+
             - name: Build project
               run: cd plugin && npm run prod
+
             - name: Copy plugin dir to the plugin branch
               uses: planetoftheweb/copy-to-branches@v1.3
               env:
@@ -28,8 +32,8 @@ jobs:
                   branches: plugin
                   clear-destination: true
                   files: plugin
+
             - name: Move plugin files to root and remove plugin dir (on plugin branch)
-              if: github.ref == 'refs/heads/plugin'
               run: |
                   git fetch origin plugin
                   git checkout plugin
