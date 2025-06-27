@@ -37,6 +37,9 @@ jobs:
               with:
                   ref: plugin
 
+            - name: Ensure plugin branch is checked out
+              run: git checkout plugin
+
             - name: Set git user
               run: |
                   git config user.name "${{ github.actor }}"
