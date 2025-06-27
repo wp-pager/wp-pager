@@ -1,0 +1,55 @@
+name: Copy plugin directory to plugin branch
+
+on:
+    push:
+        branches: [master]
+
+permissions: write-all
+
+jobs:
+    copy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+
+            - name: Install dependencies
+              run: cd plugin && npm install
+
+            - name: Build project
+              run: cd plugin && npm run prod
+
+            - name: Copy plugin dir to the plugin branch
+              uses: planetoftheweb/copy-to-branches@v1.3
+              env:
+                  key: master
+                  branches: plugin
+                  clear-destination: true
+                  files: plugin
+
+            - uses: actions/checkout@v4
+              with:
+                  ref: plugin
+
+            - name: Set git user
+              run: |
+                  git config user.name "${{ github.actor }}"
+                  git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+            - name: Fix permissions
+              run: sudo chown -R $USER:$USER .
+
+            - name: Move plugin files to root and remove plugin dir (on plugin branch)
+              run: |
+                  ls -hla
+                  rsync -a plugin/ ./
+                  rm -rf plugin
+                  git add .
+                  git commit -m "Move plugin files to root and remove plugin dir"
+                  git push origin plugin
