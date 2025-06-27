@@ -33,10 +33,11 @@ jobs:
                   clear-destination: true
                   files: plugin
 
+            - uses: actions/checkout@v4
+              with:
+                  ref: plugin
             - name: Move plugin files to root and remove plugin dir (on plugin branch)
               run: |
-                  git fetch origin plugin
-                  git checkout plugin
                   shopt -s dotglob
                   mv plugin/* .
                   rmdir plugin
