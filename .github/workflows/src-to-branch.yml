@@ -31,6 +31,11 @@ jobs:
             - name: Move plugin files to root and remove plugin dir (on plugin branch)
               if: github.ref == 'refs/heads/plugin'
               run: |
+                  git fetch origin plugin
+                  git checkout plugin
                   shopt -s dotglob
                   mv plugin/* .
                   rmdir plugin
+                  git add .
+                  git commit -m "Move plugin files to root and remove plugin dir"
+                  git push origin plugin
