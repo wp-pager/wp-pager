@@ -27,4 +27,4 @@ jobs:
                   key: master
                   branches: plugin
                   clear-destination: true
-                  files: plugin
+                  files: plugin/*
