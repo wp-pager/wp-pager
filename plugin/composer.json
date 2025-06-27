@@ -1,0 +1,43 @@
+{
+    "name": "wp-pager/wp-pager",
+    "license": "MIT",
+    "description": " Welcome to WP Pager, the free WordPress plugin that empowers you to showcase your images in stunning album or gallery format. Our plugin boasts a sleek and user-friendly interface that enables you to effortlessly create and manage image galleries with ease.",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "menu",
+        "pager",
+        "restaurant"
+    ],
+    "homepage": "https://wp-pager.github.io",
+    "autoload": {
+        "psr-4": {
+            "WpPager\\": "inc/WpPager"
+        },
+        "files": [
+            "inc/functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "SerhiiCho",
+            "email": "serhiicho@protonmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.2.7",
+        "laravel/pint": "^1.7"
+    },
+    "require": {
+        "php": "^8.1",
+        "yahnis-elsts/plugin-update-checker": "^5.4"
+    },
+    "scripts": {
+        "build": [
+            "composer install --no-dev --optimize-autoloader",
+            "yarn prod"
+        ],
+        "version": "./bin/version $VERSION"
+    }
+}
