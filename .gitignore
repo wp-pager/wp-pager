@@ -1,2 +1,6 @@
-/database
-/wordpress
+node_modules
+vendor
+database
+wordpress
+
+!.gitkeep
