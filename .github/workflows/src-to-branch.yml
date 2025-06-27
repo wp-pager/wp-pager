@@ -20,7 +20,7 @@ jobs:
             - name: Install dependencies
               run: cd src && npm install
             - name: Build project
-              run: npm run prod && cd ..
+              run: cd src && npm run prod
             - name: Copy src to the plugin branch
               uses: planetoftheweb/copy-to-branches@v1.3
               env:
