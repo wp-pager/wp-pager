@@ -9,14 +9,16 @@ import PageIntro from '@admin/components/PageIntro.vue'
 const drag = ref<boolean>(false)
 const store = useStore()
 
-function dropImage(e: DragEvent): void {
-    if (!e.dataTransfer) {
+function dropImage(e: Event): void {
+    const dragEvent = e as DragEvent
+
+    if (!dragEvent.dataTransfer) {
         return
     }
 
     drag.value = false
 
-    const imageFiles = Array.from(e.dataTransfer.files)
+    const imageFiles = Array.from(dragEvent.dataTransfer.files)
 
     store.dispatch('pendingFiles/addFiles', imageFiles)
 }
@@ -33,7 +35,8 @@ function chooseImages(e: Event): void {
     <div data-v-plsy94b>
         <PageTitle>⬆️ Upload new files</PageTitle>
         <PageIntro>
-            Drop your files into the dropping area or click it to choose files from your device.
+            Drop your files into the dropping area or click it to choose files from your
+            device.
         </PageIntro>
 
         <input
@@ -63,45 +66,49 @@ function chooseImages(e: Event): void {
     <PendingFiles />
 </template>
 
-<style lang="sass" scoped>
-[data-v-plsy94b]
-    .pager-hidden-input
-        display: none
-        visibility: hidden
+<style lang="scss" scoped>
+[data-v-plsy94b] {
+    .pager-hidden-input {
+        display: none;
+        visibility: hidden;
+    }
+    label {
+        border: 4px dashed rgba(0, 0, 0, 0.2);
+        padding: 7px;
+        border-radius: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        background-color: rgba(0, 0, 0, 0.02);
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
 
-    label
-        border: 4px dashed rgba(0, 0, 0, .2)
-        padding: 7px
-        border-radius: 7px
-        display: flex
-        justify-content: center
-        align-items: center
-        height: 200px
-        background-color: rgba(0, 0, 0, .02)
-        cursor: pointer
-        transition: background-color .2s ease-in-out
+        &.pager-drag {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.5);
+        }
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+        &:hover h2 {
+            color: rgba(0, 0, 0, 0.7);
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
 
-        &.pager-drag
-            background-color: rgba(255, 255, 255, .7)
-            border-color: rgba(0, 0, 0, .5)
-
-        &:hover
-            background-color: rgba(0, 0, 0, .04)
-            border-color: rgba(0, 0, 0, .3)
-
-        &:hover h2
-            color: rgba(0, 0, 0, .7)
-
-        h2
-            font-size: 1.5rem
-            font-weight: 500
-            color: rgba(0, 0, 0, .5)
-            pointer-events: none
-            display: flex
-            align-items: center
-
-            .pager-icon
-                width: 2rem
-                height: 2rem
-                margin-right: 0.8rem
+            .pager-icon {
+                width: 2rem;
+                height: 2rem;
+                margin-right: 0.8rem;
+            }
+        }
+    }
+}
 </style>

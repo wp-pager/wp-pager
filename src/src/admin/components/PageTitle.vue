@@ -4,9 +4,10 @@
     </h2>
 </template>
 
-<style lang="sass" scoped>
-.pager-tab-title
-    font-size: 2rem
-    font-weight: 400
-    margin-bottom: 1.2rem
+<style lang="scss" scoped>
+.pager-tab-title {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+}
 </style>

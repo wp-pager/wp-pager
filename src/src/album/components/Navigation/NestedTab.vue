@@ -24,26 +24,28 @@ const props = defineProps<Props>()
     </button>
 </template>
 
-<style lang="sass" scoped>
-$active: #6da816
+<style lang="scss" scoped>
+$active: #6da816;
 
-.pager-tab-number
-    border-radius: 2px
-    border: none
-    padding: 1px
-    min-width: 20px
-    display: inline-block
-    background-color: #c5c5c5
-    color: white
-    margin-left: 2px
-    cursor: pointer
-    transition: background-color .1s ease-in-out
-    font-family: arial
-    line-height: 1.2
+.pager-tab-number {
+    border-radius: 2px;
+    border: none;
+    padding: 1px;
+    min-width: 20px;
+    display: inline-block;
+    background-color: #c5c5c5;
+    color: white;
+    margin-left: 2px;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out;
+    font-family: arial;
+    line-height: 1.2;
 
-    &:hover
-        background-color: $active
-
-    &.pager-active
-        background-color: $active
+    &:hover {
+        background-color: $active;
+    }
+    &.pager-active {
+        background-color: $active;
+    }
+}
 </style>

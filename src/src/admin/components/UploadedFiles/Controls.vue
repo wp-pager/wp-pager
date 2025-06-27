@@ -41,16 +41,19 @@ async function deleteAllFiles(): Promise<void> {
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-01fk3851k]
-    margin-bottom: 1.4rem
+<style lang="scss" scoped>
+[data-v-01fk3851k] {
+    margin-bottom: 1.4rem;
 
-    .pager-btn
-        display: flex
-        align-items: center
-        gap: 7px
+    .pager-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
 
-        .pager-icon
-            width: 17px
-            height: 17px
+        .pager-icon {
+            width: 17px;
+            height: 17px;
+        }
+    }
+}
 </style>

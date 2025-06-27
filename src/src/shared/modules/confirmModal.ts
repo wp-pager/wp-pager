@@ -1,7 +1,7 @@
 import type { SweetAlertOptions } from 'sweetalert2'
 import Swal from 'sweetalert2'
 
-export default async <T = any>(options?: SweetAlertOptions<T>) => {
+export default async (options?: SweetAlertOptions) => {
     return await Swal.fire({
         title: 'Are you sure?',
         showConfirmButton: true,

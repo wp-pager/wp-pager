@@ -11,8 +11,7 @@ const store = useStore()
 const files = computed<File[]>(() => store.getters['pendingFiles/files'])
 
 async function uploadAll(): Promise<void> {
-    if (files.value.length === 0)
-        return
+    if (files.value.length === 0) return
 
     const answer = await confirmModal({
         text: 'Are you sure you want to upload all files?',
@@ -27,8 +26,7 @@ async function uploadAll(): Promise<void> {
 }
 
 function clearAll(): void {
-    if (files.value.length === 0)
-        return
+    if (files.value.length === 0) return
 
     store.dispatch('pendingFiles/clearFiles')
 }
@@ -56,17 +54,20 @@ function clearAll(): void {
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-1fs0uvn0qu]
-    display: flex
-    gap: .5rem
+<style lang="scss" scoped>
+[data-v-1fs0uvn0qu] {
+    display: flex;
+    gap: 0.5rem;
 
-    .pager-btn
-        display: flex
-        align-items: center
-        gap: 7px
+    .pager-btn {
+        display: flex;
+        align-items: center;
+        gap: 7px;
 
-        .pager-icon
-            width: 1.3rem
-            height: 1.3rem
+        .pager-icon {
+            width: 1.3rem;
+            height: 1.3rem;
+        }
+    }
+}
 </style>

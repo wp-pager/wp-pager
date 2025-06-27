@@ -23,7 +23,8 @@ const files = computed<ImageFile[]>({
         <PageTitle>📂 Uploaded Files</PageTitle>
 
         <PageIntro>
-            These are the files that have been uploaded to the server. You can drag and drop them to change the order.
+            These are the files that have been uploaded to the server. You can drag and
+            drop them to change the order.
         </PageIntro>
 
         <Controls />
@@ -35,28 +36,23 @@ const files = computed<ImageFile[]>({
         </h3>
 
         <div v-else>
-            <VueDraggableNext
-                class="pager-files list-group w-full"
-                v-model="files"
-            >
-                <UploadedFile
-                    v-for="file in files"
-                    :key="file.page"
-                    :file="file"
-                />
+            <VueDraggableNext class="pager-files list-group w-full" v-model="files">
+                <UploadedFile v-for="file in files" :key="file.page" :file="file" />
             </VueDraggableNext>
         </div>
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-kosbj3f]
-    .pager-files
-        display: grid
-        grid-template-columns: repeat(auto-fill, 300px)
-        grid-gap: 1rem
-
-    .pager-no-files
-        font-size: 1.2rem
-        font-weight: 400
+<style lang="scss" scoped>
+[data-v-kosbj3f] {
+    .pager-files {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px);
+        grid-gap: 1rem;
+    }
+    .pager-no-files {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+}
 </style>

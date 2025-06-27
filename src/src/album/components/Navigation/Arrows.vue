@@ -62,58 +62,66 @@ async function handleLeftDirection(): Promise<void> {
     </div>
 </template>
 
-<style lang="sass" scoped>
-[data-v-bnqp3]
-    opacity: 0
+<style lang="scss" scoped>
+[data-v-bnqp3] {
+    opacity: 0;
 
-    button
-        background: none
-        border: none
-        cursor: pointer
-        position: absolute
-        top: 50%
-        margin-top: -25px
-        background-color: white
-        border: 1px solid #eaeaea
-        color: black
-        border-radius: 50%
-        width: 50px
-        height: 50px
-        display: flex
-        align-items: center
-        justify-content: center
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
-        transition: transform .1s ease
-        z-index: 10
-        opacity: .6
-        padding: 10px
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        margin-top: -25px;
+        background-color: white;
+        border: 1px solid #eaeaea;
+        color: black;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        transition: transform 0.1s ease;
+        z-index: 10;
+        opacity: 0.6;
+        padding: 10px;
 
-        &.pager-right-button
-            right: 17px
+        &.pager-right-button {
+            right: 17px;
 
-            &:hover
-                transform: scale(1.2)
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+        &.pager-left-button {
+            left: 17px;
+            transform: rotate(180deg);
 
-        &.pager-left-button
-            left: 17px
-            transform: rotate(180deg)
+            &:hover {
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    [data-v-bnqp3] {
+        button {
+            width: 38px;
+            height: 38px;
+            padding: 8px;
 
-            &:hover
-                transform: scale(1.2) rotate(180deg)
-
-        img
-            width: 100%
-
-@media screen and (max-width: 768px)
-    [data-v-bnqp3]
-        button
-            width: 38px
-            height: 38px
-            padding: 8px
-
-            &.pager-right-button
-                right: 3px
-
-            &.pager-left-button
-                left: 3px
+            &.pager-right-button {
+                right: 3px;
+            }
+            &.pager-left-button {
+                left: 3px;
+            }
+        }
+    }
+}
 </style>
