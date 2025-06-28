@@ -30,8 +30,14 @@ jobs:
                   npm install
                   npm run prod
                   cd ..
-                  rsync -av --progress plugin/* temp --exclude node_modules
+                  rsync -av plugin/* temp --exclude node_modules
 
             - name: Move plugin content to plugin branch
               run: |
                   git checkout plugin
+                  rm -rf .github .vscode
+                  rsync -a plugin/ .
+                  rm -rf temp
+                  git add .
+                  git commit -m "ci: update files"
+                  git push origin plugin
