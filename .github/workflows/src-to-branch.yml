@@ -36,6 +36,7 @@ jobs:
 
             - name: Move plugin content to plugin branch
               run: |
+                  git fetch origin plugin:plugin
                   git checkout --no-guess plugin --
                   rm -rf .github .vscode
                   rsync -a plugin/ .
