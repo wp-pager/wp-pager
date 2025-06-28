@@ -10,46 +10,36 @@ jobs:
     copy:
         runs-on: ubuntu-latest
         steps:
+            # Checkout into my repo locally
             - uses: actions/checkout@v4
               with:
-                  fetch-depth: 0
+                  fetch-depth: 0 # Fetch the entire Git history
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '24'
 
-            - name: Install dependencies
-              run: cd plugin && npm install
+            - name: Install and build assets
+              run: |
+                  cd plugin
+                  npm install
+                  npm run prod
 
-            - name: Build project
-              run: cd plugin && npm run prod
-
-            - name: Copy plugin dir to the plugin branch
-              uses: planetoftheweb/copy-to-branches@v1.3
-              env:
-                  key: master
-                  branches: plugin
-                  clear-destination: true
-                  files: plugin
-
+            # Checkout into my repo locally
             - uses: actions/checkout@v4
               with:
-                  ref: plugin
+                  fetch-depth: 0 # Fetch the entire Git history
+                  ref: plugin # Choose branch
 
             - name: Set git user
               run: |
                   git config user.name "${{ github.actor }}"
                   git config user.email "${{ github.actor }}@users.noreply.github.com"
+                  sudo chown -R $USER:$USER .
 
-            - name: Fix permissions
-              run: sudo chown -R $USER:$USER .
-
-            - name: Move plugin files to root and remove plugin dir (on plugin branch)
+            - name: Move plugin files to the plugin branch
               run: |
-                  ls -hla
-                  rsync -a plugin/ ./
-                  rm -rf plugin
-                  git add .
-                  git commit -m "Move plugin files to root and remove plugin dir"
+                  git checkout -p origin/master -- build/*
+                  git commit -m "ci: Move files from `plugin` to `plugin` branch"
                   git push origin plugin
