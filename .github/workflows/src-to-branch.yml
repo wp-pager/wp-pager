@@ -15,10 +15,14 @@ jobs:
               with:
                   fetch-depth: 0 # Fetch the entire Git history
 
-            - name: Setup Node.js
+            - name: Setup Node.js and Git user
               uses: actions/setup-node@v4
               with:
                   node-version: '24'
+              run: |
+                  git config user.name "${{ github.actor }}"
+                  git config user.email "${{ github.actor }}@users.noreply.github.com"
+                  sudo chown -R $USER:$USER .
 
             - name: Install and build assets
               run: |
@@ -26,20 +30,6 @@ jobs:
                   npm install
                   npm run prod
 
-            # Checkout into my repo locally
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0 # Fetch the entire Git history
-                  ref: plugin # Choose branch
-
-            - name: Set git user
+            - name: Move plugin content to plugin branch
               run: |
-                  git config user.name "${{ github.actor }}"
-                  git config user.email "${{ github.actor }}@users.noreply.github.com"
-                  sudo chown -R $USER:$USER .
-
-            - name: Move plugin files to the plugin branch
-              run: |
-                  git checkout -p origin/master -- build/*
-                  git commit -m "ci: Move files from `plugin` to `plugin` branch"
-                  git push origin plugin
+                  git checkout plugin
