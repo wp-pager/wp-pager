@@ -40,8 +40,13 @@ jobs:
                   git checkout --no-guess plugin --
                   rm -rf -- .github .vscode
                   rsync -a plugin/ .
-                  rm -rf temp
-                  git add .
-                  git commit -m "ci: update files"
-                  git push origin plugin
-                  rm -f -- package-lock.json composer.lock
+                  rm -rf -- temp package-lock.json composer.lock
+
+                  # Only commit and push if there are changes
+                  if [ -n "$(git status --porcelain)" ]; then
+                    git add .
+                    git commit -m "ci: update files"
+                    git push origin plugin
+                  else
+                    echo "No changes to commit"
+                  fi
