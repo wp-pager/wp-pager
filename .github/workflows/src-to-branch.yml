@@ -29,6 +29,8 @@ jobs:
                   cd plugin
                   npm install
                   npm run prod
+                  cd ..
+                  rsync -av --progress plugin/* temp --exclude node_modules
 
             - name: Move plugin content to plugin branch
               run: |
