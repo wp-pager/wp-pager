@@ -1,7 +1,7 @@
 services:
     pager_wp:
         build:
-            context: ./wordpress
+            context: .
         container_name: pager_wp
         restart: always
         ports:
