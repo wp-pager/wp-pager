@@ -8,7 +8,7 @@ services:
         container_name: wp-pager-app
         restart: always
         ports:
-            - 80:8080
+            - 8080:80
         depends_on:
             - db
         networks:
@@ -19,7 +19,7 @@ services:
             - /var/www/html/wp-content/plugins/wp-pager/vendor
             - /var/www/html/wp-content/plugins/wp-pager/node_modules
         environment:
-            WORDPRESS_DB_HOST: pager_db
+            WORDPRESS_DB_HOST: db
             WORDPRESS_DB_USER: pager
             WORDPRESS_DB_PASSWORD: 111111
             WORDPRESS_DB_NAME: pager

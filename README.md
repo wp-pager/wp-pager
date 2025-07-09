@@ -26,7 +26,7 @@ For Podman, run this:
 podman-compose up -d
 ```
 
-Wait until all containers will be up and running. Visit `http://localhost:8080`. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more
+Wait until all containers will be up and running. Visit `http://localhost:8080`. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more until database will spin up.
 
 ### Enter Running Container
 To enter the running container you can use this command for Docker:
@@ -37,6 +37,8 @@ For Podman, run this:
 ```bash
 podman-compose exec app bash
 ```
+
+Inside the container, you can navigate to `/var/www/html/wp-content/plugins/wp-pager` directory to run `npm` and `composer` commands.
 
 ### Copy `vendor` and `node_modules`
 If you don't have NPM and Composer installed on your machine (like myself), you can copy `vendor` and `node_modules` from the running container to get proper intellisense to your editor. For Docker run this:
