@@ -1,0 +1,52 @@
+name: Copy plugin directory to plugin branch
+
+on:
+    push:
+        branches: [master]
+
+permissions: write-all
+
+jobs:
+    copy:
+        runs-on: ubuntu-latest
+        steps:
+            # Checkout into my repo locally
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0 # Fetch the entire Git history
+
+            - name: Setup Node.js and Git user
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+
+            - name: Setup git user
+              run: |
+                  git config user.name "${{ github.actor }}"
+                  git config user.email "${{ github.actor }}@users.noreply.github.com"
+                  sudo chown -R $USER:$USER .
+
+            - name: Install and build assets
+              run: |
+                  cd plugin
+                  npm install
+                  npm run prod
+                  cd ..
+                  rsync -av plugin/* temp --exclude node_modules
+
+            - name: Move plugin content to plugin branch
+              run: |
+                  git fetch origin plugin:plugin
+                  git checkout --no-guess plugin --
+                  rm -rf -- .github .vscode
+                  rsync -a plugin/ .
+                  rm -rf -- temp package-lock.json composer.lock
+
+                  # Only commit and push if there are changes
+                  if [ -n "$(git status --porcelain)" ]; then
+                    git add .
+                    git commit -m "ci: update files"
+                    git push origin plugin
+                  else
+                    echo "No changes to commit"
+                  fi
