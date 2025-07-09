@@ -66,7 +66,7 @@ podman-compose down
 - Password: `password`
 
 ## Database Info
-- Host: `pager_db`
+- Host: `db`
 - User: `pager`
 - Password: `111111`
 - Database Name: `pager`
