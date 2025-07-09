@@ -1,5 +1,5 @@
 === WP Pager ===
-Stable tag: 0.21
+Stable tag: 1.0
 Requires at least: 6.0
 Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
@@ -31,6 +31,9 @@ Yes, you can request a feature by creating an issue on [GitHub](https://github.c
 The full list of questions and answers you can find on the [Official website](https://wp-pager.github.io/#frequently-asked-questions).
 
 == Changelog ==
+
+= 1.0 =
+* Removed deprecated [pager_menu] shortcode, now, you should use [wp_pager_album] instead
 
 = 0.21 =
 * Change to search for updates on `plugin` branch instead of `master`

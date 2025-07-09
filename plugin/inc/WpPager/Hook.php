@@ -51,12 +51,6 @@ class Hook
 
     private function registerShortcodes(): void
     {
-        /** @deprecated Deprecated and should be deleted in version 1.0 */
-        add_shortcode('pager_menu', function () {
-            wp_enqueue_script('pager-album');
-            return '<div id="pager-album-app"></div>';
-        });
-
         add_shortcode('wp_pager_album', function () {
             wp_enqueue_script('pager-album');
             return '<div id="pager-album-app"></div>';
