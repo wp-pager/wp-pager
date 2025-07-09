@@ -1,3 +1,8 @@
 .git
-src/node_modules
+.github
+.vscode
+node_modules
 database
+LICENSE
+*.md
+.env
