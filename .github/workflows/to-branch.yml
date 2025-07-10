@@ -1,0 +1,52 @@
+name: Copy plugin directory to plugin branch
+
+on:
+    push:
+        branches: [master]
+
+permissions: write-all
+
+jobs:
+    copy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  ref: master # Explicitly checkout master branch
+
+            - name: Setup environment
+              run: |
+                  git config user.name "${{ github.actor }}"
+                  git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+            - name: Build plugin assets
+              run: |
+                  cd plugin
+                  npm install
+                  npm run prod
+                  cd ..
+
+            - name: Sync to plugin branch
+              run: |
+                  # Create or reset plugin branch
+                  git checkout --orphan temp-plugin
+                  git rm -rf . > /dev/null 2>&1 || true
+
+                  # Copy ONLY plugin contents (excluding specified directories/files)
+                  rsync -av \
+                    --exclude='.git/' \
+                    --exclude='node_modules/' \
+                    --exclude='.github/' \
+                    --exclude='.vscode/' \
+                    plugin/ .
+
+                  # Commit and push
+                  if [ -n "$(git status --porcelain)" ]; then
+                    git add -A
+                    git commit -m "ci: Update plugin files"
+                    git branch -M plugin
+                    git push -f origin plugin
+                  else
+                    echo "No changes to commit"
+                  fi
