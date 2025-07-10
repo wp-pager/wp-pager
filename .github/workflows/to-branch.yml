@@ -12,12 +12,16 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - id: date
+
+            - name: Install and build assets
               run: |
-                  echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+                  cd plugin
+                  npm install
+                  npm run prod
+
             - uses: tuftsrt/copy-to-branch@v1
               with:
-                  destination-branch: binder
+                  destination-branch: plugin
                   clear-destination: 'true'
                   copy: |
                       plugin/*|
