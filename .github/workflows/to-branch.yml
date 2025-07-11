@@ -9,7 +9,7 @@ jobs:
     mirror-to-plugin:
         runs-on: ubuntu-latest
         steps:
-            - uses: SerhiiCho/copy-to-branch@v1
+            - uses: tuftsrt/copy-to-branch@v1
               with:
                   destination-branch: plugin
                   clear-destination: true
