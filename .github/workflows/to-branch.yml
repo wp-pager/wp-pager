@@ -22,7 +22,9 @@ jobs:
             - name: Install dependencies
               uses: php-actions/composer@v6
               with:
-                command: cd plugin && composer install --no-dev --no-interaction
+                php_version: "8.1"
+                working-directory: ./plugin
+                command: install --no-dev --no-interaction
 
             - uses: tuftsrt/copy-to-branch@v1
               with:
