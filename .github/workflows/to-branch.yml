@@ -44,7 +44,7 @@ jobs:
                   php_version: 8.1
                   command: install --no-dev --no-interaction
 
-            - name: Install and build assets
+            - name: Push to plugin branch
               run: |
                   # Only commit and push if there are changes
                   if [ -n "$(git status --porcelain)" ]; then

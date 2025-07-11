@@ -3,3 +3,8 @@
 /assets/js/*
 
 !.gitkeep
+
+# Github Actions
+output.log
+docker_tag
+DOCKER_ENV
