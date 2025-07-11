@@ -36,7 +36,6 @@ jobs:
               run: |
                   npm install
                   npm run prod
-                  rm -rf node_modules
 
             - name: Install dependencies
               uses: php-actions/composer@v6
@@ -48,7 +47,7 @@ jobs:
               run: |
                   # Only commit and push if there are changes
                   if [ -n "$(git status --porcelain)" ]; then
-                      git add .
+                      git add vendor assets/js
                       git commit -m "ci: update files"
                       git push origin plugin
                   else

@@ -1,2 +1,4 @@
 /database
 /wordpress
+/plugin/vendor
+/plugin/assets/js/*
