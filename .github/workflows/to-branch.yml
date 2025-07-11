@@ -1,4 +1,4 @@
-name: copy-to-plugin-branch
+name: mirror-to-plugin
 
 on:
     push:
@@ -6,29 +6,51 @@ on:
             - master
 
 jobs:
-    mirror-to-binder:
+    mirror-to-plugin:
         runs-on: ubuntu-latest
         steps:
+            - uses: SerhiiCho/copy-to-branch@v1
+              with:
+                  destination-branch: plugin
+                  clear-destination: true
+                  copy: |
+                      plugin/|
+
             - uses: actions/checkout@v4
               with:
+                  ref: plugin
                   fetch-depth: 0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+
+            - name: Setup git user
+              run: |
+                  git config user.name "${{ github.actor }}"
+                  git config user.email "${{ github.actor }}@users.noreply.github.com"
+                  sudo chown -R $USER:$USER .
 
             - name: Install and build assets
               run: |
-                  cd plugin
                   npm install
                   npm run prod
+                  rm -rf node_modules
 
             - name: Install dependencies
               uses: php-actions/composer@v6
               with:
-                php_version: "8.1"
-                working_dir: ./plugin
-                command: install --no-dev --no-interaction
+                  php_version: 8.1
+                  command: install --no-dev --no-interaction
 
-            - uses: tuftsrt/copy-to-branch@v1
-              with:
-                  destination-branch: plugin
-                  clear-destination: 'true'
-                  copy: |
-                      plugin/*|
+            - name: Install and build assets
+              run: |
+                  # Only commit and push if there are changes
+                  if [ -n "$(git status --porcelain)" ]; then
+                      git add .
+                      git commit -m "ci: update files"
+                      git push origin plugin
+                  else
+                      echo "No changes to commit"
+                  fi
