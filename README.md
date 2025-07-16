@@ -4,24 +4,15 @@ WP Pager is a WordPress plugin for displaying images in a form of a restaurant m
 The main purpose of this plugin is to give users a filling of a real restaurant menu where they can turn pages and see the whole menu.
 
 ## Development
-This project is a Dockerized WordPress installation with WP Pager plugin installed. You can use it to test the plugin or to develop it. To get started, you need to have [🦦 Podman](https://podman.io/) or [🐳 Docker](https://app.docker.com/) installed on your machine. Then you can follow the instructions below.
+> [!NOTE]
+> If you use [🐳 Docker](https://app.docker.com/) instead of [🦦 Podman](https://podman.io/), just replace `podman-compose` with `docker compose`, and `podman` with `docker` in code examples below.
 
 ### Build the Image
-For Docker, run this:
-```bash
-docker compose build
-```
-For Podman, run this:
 ```bash
 podman-compose build
 ```
 
 ### Start a Container
-For Docker, run this:
-```bash
-docker compose up -d
-```
-For Podman, run this:
 ```bash
 podman-compose up -d
 ```
@@ -29,11 +20,7 @@ podman-compose up -d
 Wait until all containers will be up and running. Visit `http://localhost:8080`. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more until database will spin up.
 
 ### Enter Running Container
-To enter the running container you can use this command for Docker:
-```bash
-docker compose exec app bash
-```
-For Podman, run this:
+To enter the running container you can use this command:
 ```bash
 podman-compose exec app bash
 ```
@@ -41,24 +28,14 @@ podman-compose exec app bash
 Inside the container, you can navigate to `/var/www/html/wp-content/plugins/wp-pager` directory to run `npm` and `composer` commands.
 
 ### Copy `vendor` and `node_modules`
-If you don't have NPM and Composer installed on your machine (like myself), you can copy `vendor` and `node_modules` from the running container to get proper intellisense to your editor. For Docker run this:
-
-```bash
-docker cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/vendor plugin/ && \
-docker cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/node_modules plugin/
-```
-For Podman, run this:
+If you don't have NPM and Composer installed on your machine (like myself), you can copy `vendor` and `node_modules` from the running container to get proper intellisense to your editor:
 ```bash
 podman cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/vendor plugin/ && \
 podman cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/node_modules plugin/
 ```
 
 ### Destroy Container
-After you are done working on a project, you can remove networks and running containers by running this Docker command:
-```bash
-docker compose down
-```
-For Podman, run this:
+After you are done working on a project, you can remove networks and running containers by running this command:
 ```bash
 podman-compose down
 ```
