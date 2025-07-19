@@ -15,10 +15,10 @@ services:
         networks:
             - database
         volumes:
-            - ./wordpress:/var/www/html:w
-            - ./plugin:/var/www/html/wp-content/plugins/wp-pager:w
-            - /var/www/html/wp-content/plugins/wp-pager/vendor:w
-            - /var/www/html/wp-content/plugins/wp-pager/node_modules:w
+            - ./wordpress:/var/www/html:z
+            - ./plugin:/var/www/html/wp-content/plugins/wp-pager:z
+            - /var/www/html/wp-content/plugins/wp-pager/vendor:z
+            - /var/www/html/wp-content/plugins/wp-pager/node_modules:z
         environment:
             WORDPRESS_DB_HOST: db
             WORDPRESS_DB_USER: pager
@@ -36,12 +36,15 @@ services:
         networks:
             - database
         volumes:
-            - ./database:/var/lib/mysql
+            - db_data:/var/lib/mysql:z
         environment:
             MYSQL_DATABASE: pager
             MYSQL_USER: pager
             MYSQL_PASSWORD: 111111
             MYSQL_ROOT_PASSWORD: 111111
+
+volumes:
+    db_data:
 
 networks:
     database:
