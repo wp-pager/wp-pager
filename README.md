@@ -27,13 +27,6 @@ podman-compose exec app bash
 
 Inside the container, you can navigate to `/var/www/html/wp-content/plugins/wp-pager` directory to run `npm` and `composer` commands.
 
-### Copy `vendor` and `node_modules`
-If you don't have NPM and Composer installed on your machine (like myself), you can copy `vendor` and `node_modules` from the running container to get proper intellisense to your editor:
-```bash
-podman cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/vendor plugin/ && \
-podman cp wp-pager-app:/var/www/html/wp-content/plugins/wp-pager/node_modules plugin/
-```
-
 ### Destroy Container
 After you are done working on a project, you can remove networks and running containers by running this command:
 ```bash

@@ -17,8 +17,6 @@ services:
         volumes:
             - ./wordpress:/var/www/html:z
             - ./plugin:/var/www/html/wp-content/plugins/wp-pager:z
-            - /var/www/html/wp-content/plugins/wp-pager/vendor:z
-            - /var/www/html/wp-content/plugins/wp-pager/node_modules:z
         environment:
             WORDPRESS_DB_HOST: db
             WORDPRESS_DB_USER: pager
