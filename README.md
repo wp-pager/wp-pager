@@ -4,33 +4,76 @@ WP Pager is a WordPress plugin for displaying images in a form of a restaurant m
 The main purpose of this plugin is to give users a filling of a real restaurant menu where they can turn pages and see the whole menu.
 
 ## Development
-> [!NOTE]
-> If you use [🐳 Docker](https://app.docker.com/) instead of [🦦 Podman](https://podman.io/), just replace `podman-compose` with `docker compose`, and `podman` with `docker` in code examples below.
 
 ### Build the Image
+With Podman:
 ```bash
 podman-compose build
 ```
 
+With Docker:
+```bash
+docker compose build
+```
+
+#### Create `node_modules`
+Run this command to install npm packages and generate a `node_modules` directory on your local machine if you don't have it. With Podman:
+```bash
+podman-compose run --rm app bash -c "cd wp-content/plugins/wp-pager && npm i"
+```
+
+With Docker:
+```bash
+docker compose run --rm app bash -c "cd wp-content/plugins/wp-pager && npm i"
+```
+
+#### Create `vendor` directory
+Run this command to install php packages and generate a `vendor` directory on your local machine if you don't have it:
+
+```bash
+podman-compose run --rm app bash -c "cd wp-content/plugins/wp-pager && composer install"
+```
+
+With Docker:
+```bash
+docker compose run --rm app bash -c "cd wp-content/plugins/wp-pager && composer install"
+```
+
 ### Start a Container
+With Podman:
 ```bash
 podman-compose up -d
+```
+
+With Docker:
+```bash
+docker compose up -d
 ```
 
 Wait until all containers will be up and running. Visit `http://localhost:8080`. If you see the WordPress installation page, you are good to go. If you see an error, wait a bit more until database will spin up.
 
 ### Enter Running Container
-To enter the running container you can use this command:
+To enter the running container you can use this command. With Podman:
 ```bash
 podman-compose exec app bash
+```
+
+With Docker:
+```bash
+docker compose exec app bash
 ```
 
 Inside the container, you can navigate to `/var/www/html/wp-content/plugins/wp-pager` directory to run `npm` and `composer` commands.
 
 ### Destroy Container
-After you are done working on a project, you can remove networks and running containers by running this command:
+After you are done working on a project, you can remove networks and running containers by running this command. With Podman:
 ```bash
 podman-compose down
+```
+
+With Docker:
+```bash
+docker compose down
 ```
 
 ## Admin Panel Info
