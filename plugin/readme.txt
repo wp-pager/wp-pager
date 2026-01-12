@@ -32,8 +32,12 @@ The full list of questions and answers you can find on the [Official website](ht
 
 == Changelog ==
 
+= 1.2 =
+* Renamed Containerfile to Dockerfile
+* Added more information to README.md file
+
 = 1.1 =
-* Update author link from serhii.io to serhiicho.com
+* Updated author link from serhii.io to serhiicho.com
 
 = 1.0 =
 * Removed deprecated [pager_menu] shortcode, now, you should use [wp_pager_album] instead
