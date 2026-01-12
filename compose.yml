@@ -3,9 +3,7 @@ name: wp-pager
 services:
     app:
         image: wp-pager-app
-        build:
-            context: .
-            dockerfile: Containerfile
+        build: .
         container_name: wp-pager-app
         restart: always
         ports:
@@ -15,8 +13,8 @@ services:
         networks:
             - database
         volumes:
-            - ./wordpress:/var/www/html:z
-            - ./plugin:/var/www/html/wp-content/plugins/wp-pager:z
+            - ./wordpress:/var/www/html:Z
+            - ./plugin:/var/www/html/wp-content/plugins/wp-pager:Z
         environment:
             WORDPRESS_DB_HOST: db
             WORDPRESS_DB_USER: pager
@@ -34,7 +32,7 @@ services:
         networks:
             - database
         volumes:
-            - db_data:/var/lib/mysql:z
+            - db_data:/var/lib/mysql:Z
         environment:
             MYSQL_DATABASE: pager
             MYSQL_USER: pager
