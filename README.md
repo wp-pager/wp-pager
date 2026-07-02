@@ -22,7 +22,9 @@ docker compose build
 
 #### Create `node_modules`
 
-Run this command to install npm packages and generate a `node_modules` directory on your local machine if you don't have it. With Podman:
+Run this command to install npm packages and generate a `node_modules` directory on your local machine if you don't have it.
+
+With Podman:
 
 ```bash
 podman-compose run --rm app bash -c "cd wp-content/plugins/wp-pager && npm i"
@@ -37,6 +39,8 @@ docker compose run --rm app bash -c "cd wp-content/plugins/wp-pager && npm i"
 #### Create `vendor` directory
 
 Run this command to install php packages and generate a `vendor` directory on your local machine if you don't have it:
+
+With Podman:
 
 ```bash
 podman-compose run --rm app bash -c "cd wp-content/plugins/wp-pager && composer install"
