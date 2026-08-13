@@ -13,8 +13,7 @@ jobs:
               with:
                   destination-branch: plugin
                   clear-destination: true
-                  copy: |
-                      plugin/|
+                  copy: "plugin/|"
 
             - uses: actions/checkout@v4
               with:
