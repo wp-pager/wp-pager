@@ -7,10 +7,10 @@ on:
 jobs:
   mirror-to-plugin:
     runs-on: burn
-    name: Mirrow to plugin branch
+    name: Mirror to plugin branch
     steps:
       - name: Install dependencies
-        run:
+        run: |
           apt update
           apt install -y rsync
 
