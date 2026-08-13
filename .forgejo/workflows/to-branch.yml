@@ -1,15 +1,15 @@
-name: mirror-to-plugin
+name: Mirror to plugin branch
 
 on:
     push:
-        branches:
-            - master
+        branches: [master]
 
 jobs:
     mirror-to-plugin:
-        runs-on: ubuntu-latest
+        runs-on: burn
+        name: Mirrow to plugin branch
         steps:
-            - uses: tuftsrt/copy-to-branch@v1
+            - uses: https://github.com/tuftsrt/copy-to-branch@v1
               with:
                   destination-branch: plugin
                   clear-destination: true
@@ -21,16 +21,11 @@ jobs:
                   ref: plugin
                   fetch-depth: 0
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '24'
-
             - name: Setup git user
               run: |
                   git config user.name "${{ github.actor }}"
                   git config user.email "${{ github.actor }}@users.noreply.github.com"
-                  sudo chown -R $USER:$USER .
+                  chown -R $USER:$USER .
 
             - name: Install and build assets
               run: |
@@ -38,7 +33,7 @@ jobs:
                   npm run prod
 
             - name: Install dependencies
-              uses: php-actions/composer@v6
+              uses: https://github.com/php-actions/composer@v6
               with:
                   php_version: 8.1
                   command: install --no-dev --no-interaction
