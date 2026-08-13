@@ -22,8 +22,8 @@ jobs:
 
       - name: Setup git user
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "SerhiiCho"
+          git config user.email "SerhiiCho@users.noreply.codeberg.org"
           chown -R $USER:$USER .
 
       - name: Install and build assets
