@@ -37,13 +37,15 @@ jobs:
           npm install
           npm run prod
 
+      - name: Install PHP and Composer
+        run: |
+          apt update
+          apt install -y php-cli php-xml php-mbstring php-curl php-zip unzip
+          curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
       - name: Install dependencies
-        uses: https://github.com/php-actions/composer@v6
-        with:
-          php_version: 8.1
-          command: install
-          progress: yes
-          dev: no
+        run: |
+          composer install --no-dev --no-progress --no-interaction
 
       - name: Push to plugin branch
         run: |

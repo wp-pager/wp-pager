@@ -10,7 +10,7 @@
         "pager",
         "restaurant"
     ],
-    "homepage": "https://wp-pager.github.io",
+    "homepage": "https://wp-pager.codeberg.page",
     "autoload": {
         "psr-4": {
             "WpPager\\": "inc/WpPager"

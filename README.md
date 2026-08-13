@@ -112,6 +112,6 @@ docker compose down
 
 ## License
 
-The WP Pager project is licensed under the [MIT License](https://github.com/wp-pager/wp-pager/blob/master/LICENCE)
+The WP Pager project is licensed under the [MIT License](https://codeberg.org/wp-pager/wp-pager/src/branch/master/LICENCE)
 
 > I'm keeping the project with PSR-12 code style, so please, make sure that you are using the same code style. For convenience, there is a Laravel Pint formatter that formats your code automatically. You can read more about Laravel Pint [here](https://laravel.com/docs/pint)
