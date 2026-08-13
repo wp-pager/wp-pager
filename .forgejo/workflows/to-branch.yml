@@ -1,4 +1,4 @@
-name: Mirror to plugin branch
+name: Mirror to the plugin branch
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   mirror-to-plugin:
     runs-on: burn
-    name: Mirror to plugin branch
+    name: Mirror to the plugin branch
     steps:
       - name: Install dependencies
         run: |
@@ -41,7 +41,9 @@ jobs:
         uses: https://github.com/php-actions/composer@v6
         with:
           php_version: 8.1
-          command: install --no-dev --no-interaction
+          command: install
+          progress: yes
+          dev: no
 
       - name: Push to plugin branch
         run: |
