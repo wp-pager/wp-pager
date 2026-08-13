@@ -1,49 +1,49 @@
 name: Mirror to plugin branch
 
 on:
-    push:
-        branches: [master]
+  push:
+    branches: [master]
 
 jobs:
-    mirror-to-plugin:
-        runs-on: burn
-        name: Mirrow to plugin branch
-        steps:
-            - uses: https://github.com/tuftsrt/copy-to-branch@v1
-              with:
-                  destination-branch: plugin
-                  clear-destination: true
-                  copy: "plugin/|"
+  mirror-to-plugin:
+    runs-on: burn
+    name: Mirrow to plugin branch
+    steps:
+      - uses: https://github.com/tuftsrt/copy-to-branch@v1
+        with:
+          destination-branch: plugin
+          clear-destination: true
+          copy: plugin/|
 
-            - uses: actions/checkout@v4
-              with:
-                  ref: plugin
-                  fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          ref: plugin
+          fetch-depth: 0
 
-            - name: Setup git user
-              run: |
-                  git config user.name "${{ github.actor }}"
-                  git config user.email "${{ github.actor }}@users.noreply.github.com"
-                  chown -R $USER:$USER .
+      - name: Setup git user
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          chown -R $USER:$USER .
 
-            - name: Install and build assets
-              run: |
-                  npm install
-                  npm run prod
+      - name: Install and build assets
+        run: |
+          npm install
+          npm run prod
 
-            - name: Install dependencies
-              uses: https://github.com/php-actions/composer@v6
-              with:
-                  php_version: 8.1
-                  command: install --no-dev --no-interaction
+      - name: Install dependencies
+        uses: https://github.com/php-actions/composer@v6
+        with:
+          php_version: 8.1
+          command: install --no-dev --no-interaction
 
-            - name: Push to plugin branch
-              run: |
-                  # Only commit and push if there are changes
-                  if [ -n "$(git status --porcelain)" ]; then
-                      git add vendor assets/js
-                      git commit -m "ci: update files"
-                      git push origin plugin
-                  else
-                      echo "No changes to commit"
-                  fi
+      - name: Push to plugin branch
+        run: |
+          # Only commit and push if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+              git add vendor assets/js
+              git commit -m "ci: update files"
+              git push origin plugin
+          else
+              echo "No changes to commit"
+          fi
