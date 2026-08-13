@@ -9,7 +9,13 @@ jobs:
     runs-on: burn
     name: Mirrow to plugin branch
     steps:
-      - uses: https://github.com/tuftsrt/copy-to-branch@v1
+      - name: Install dependencies
+        run:
+          apt update
+          apt install -y rsync
+
+      - name: Copy to plugin branch
+        uses: https://github.com/tuftsrt/copy-to-branch@v1
         with:
           destination-branch: plugin
           clear-destination: true
