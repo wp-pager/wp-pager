@@ -7,8 +7,10 @@ on:
 
 jobs:
   mirror-to-plugin:
-    runs-on: burn
+    runs-on: podman
+    container: docker.io/library/node:26
     name: Mirror to the plugin branch
+
     steps:
       - name: Install dependencies
         run: |
