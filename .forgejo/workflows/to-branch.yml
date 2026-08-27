@@ -8,7 +8,7 @@ on:
 jobs:
   mirror-to-plugin:
     runs-on: podman
-    container: docker.io/library/node:26
+    container: docker.io/library/node:20
     name: Mirror to the plugin branch
 
     steps:
