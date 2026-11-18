@@ -1,6 +1,6 @@
 <template>
     <div data-v-nma29>
-        Powered by <a href="https://wp-pager.codeberg.page" target="_blank">WP Pager</a>
+        Powered by <a href="https://wp-pager.serhiicho.com" target="_blank">WP Pager</a>
     </div>
 </template>
 
