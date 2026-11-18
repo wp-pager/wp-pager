@@ -13,11 +13,6 @@ jobs:
         php-version: ["8.1"]
 
     steps:
-      - name: Install dependencies
-        run: |
-          apt update
-          apt install -y rsync
-
       - name: Copy to plugin branch
         uses: tuftsrt/copy-to-branch@v1
         with:
