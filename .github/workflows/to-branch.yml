@@ -1,5 +1,4 @@
 name: Mirror to the plugin branch
-enable-email-notifications: true
 
 on:
   push:
@@ -7,9 +6,11 @@ on:
 
 jobs:
   mirror-to-plugin:
-    runs-on: podman
-    container: docker.io/library/node:20
+    runs-on: ubuntu-latest
     name: Mirror to the plugin branch
+    strategy:
+      matrix:
+        php-version: ["8.1"]
 
     steps:
       - name: Install dependencies
@@ -18,7 +19,7 @@ jobs:
           apt install -y rsync
 
       - name: Copy to plugin branch
-        uses: https://github.com/tuftsrt/copy-to-branch@v1
+        uses: tuftsrt/copy-to-branch@v1
         with:
           destination-branch: plugin
           clear-destination: true
@@ -32,18 +33,13 @@ jobs:
       - name: Setup git user
         run: |
           git config user.name "SerhiiCho"
-          git config user.email "SerhiiCho@users.noreply.codeberg.org"
+          git config user.email "SerhiiCho@users.noreply.github.com"
           chown -R $USER:$USER .
 
       - name: Install and build assets
         run: |
           npm install
           npm run prod
-
-      - name: Install PHP with composer
-        uses: https://codeberg.org/act/install-php@v1
-        with:
-          php-version: "8.1"
 
       - name: Install dependencies
         run: |
