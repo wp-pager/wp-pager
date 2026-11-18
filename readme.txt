@@ -1,11 +1,11 @@
 === WP Pager ===
-Stable tag: 1.3
+Stable tag: 1.5
 Requires at least: 6.0
 Tested up to: 6.2.0
 Tags: menu, album, images, files, gallery, restaurant, food, food menu
 Requires PHP: 8.1
 License: MIT
-License URI: https://github.com/wp-pager/wp-pager/blob/master/LICENCE
+License URI: https://github.com/wp-pager/wp-pager/blob/master/LICENSE
 Donate link: https://www.buymeacoffee.com/serhiicho
 
 WP Pager is a WordPress plugin for displaying images in a form of a restaurant menu
@@ -32,8 +32,11 @@ The full list of questions and answers you can find on the [Official website](ht
 
 == Changelog ==
 
-= 1.3 =
-* Moved from GitHub to Codeberg
+= 1.5 =
+* Move from Codeberg to GitHub
+
+= 1.4 =
+* Move from GitHub to Codeberg
 
 = 1.2 =
 * Renamed Containerfile to Dockerfile
